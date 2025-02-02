@@ -1,0 +1,11 @@
+@import "bootstrap";
+
+//a nuxt root div-je is felvegye a 100%-ot
+html, body, body > div:first-of-type {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: $light;
+}
