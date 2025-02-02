@@ -57,14 +57,14 @@ export default {
                     title: "Ghospel",
                     songs: [
                         {
-                            author: "Létai Kis Gabi",
-                            title: "Köszönöm hogy vagy",
+                            author: "Pánczél Tamás",
+                            title: "Létai Kis Gabi - Köszönöm hogy vagy",
                             src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
                             cover: Létai_Kis_Gabi,
                             description: "egy hosszú hosszú hosszú hosszú hosszú hosszú hosszú hosszúleírás"
                         },
                         {
-                            author: "valaki",
+                            author: "Pánczél Tamás",
                             title: "Szeretet himnusz",
                             src: Szeretet_himnusz,
                             cover: null,
