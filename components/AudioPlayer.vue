@@ -21,7 +21,7 @@
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="d-flex align-items-center">
                             <div
-                                class="fs-1 me-2 position-relative" style="left: -6px;"
+                                class="fs-1 me-2 position-relative" style="left: -6px; cursor: pointer;"
                                 @click="togglePlay"
                             >
                                 <i
@@ -38,6 +38,7 @@
                         <div class="volume-container">
                             <div
                                 class="fs-3"
+                                style="cursor: pointer;"
                                 @click="toggleMute"
                             >
                                 <i
@@ -73,54 +74,10 @@
             </div>
         </div>
     </div>
+    <div class="mt-3">
+        <ShowMore :content="description" />
+    </div>
 </div>
-<!--<div class="audio-player">
-    <div
-        class="timeline"
-        ref="timeline"
-        @click="setTime"
-    >
-        <div class="progress" ref="progressBar"></div>
-    </div>
-    <div class="controls">
-        <div class="play-container">
-            <div
-                class="toggle-play"
-                @click="togglePlay"
-            >
-                <i
-                    class="bi"
-                    :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
-                ></i>
-            </div>
-        </div>
-        <div class="time">
-            <div class="current">{{ currentTime }}</div>
-            <div class="divider">/</div>
-            <div class="length">{{ length }}</div>
-        </div>
-        <div class="name">{{ title }}</div>
-        <div class="volume-container">
-            <div
-                class="volume-button"
-                @click="toggleMute"
-            >
-                <i
-                    class="bi"
-                    :class="[isMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
-                ></i>
-            </div>
-            
-            <div
-                class="volume-slider"
-                ref="volumeSlider"
-                @click="setVolume"
-            >
-                <div class="volume-percentage" ref="volumePercentage"></div>
-            </div>
-        </div>
-    </div>
-</div>-->
 </template>
 
 <script>
@@ -141,6 +98,10 @@ export default {
             default: ""
         },
         cover: {
+            type: String,
+            default: ""   
+        },
+        description: {
             type: String,
             default: ""   
         },
@@ -196,7 +157,7 @@ export default {
             const newVolume = (sliderHeight - offsetY) / sliderHeight;
             this.audioPlayer.volume = newVolume;
             console.log(offsetY, sliderHeight, newVolume);
-            this.$refs.volumePercentage.style.height = newVolume * 100 + "%";
+            this.$refs.volumePercentage.style.height = (newVolume * 100 + 1.5) + "%";
         },
         togglePlay() {
             this.isPlaying ? this.pause() : this.play();
