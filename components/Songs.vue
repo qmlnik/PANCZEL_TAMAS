@@ -2,15 +2,12 @@
     <section class="section-container p-4 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
             <h3 class="mb-3 text-primary text-center">Categories</h3>
-            <div class="d-flex justify-content-center flex-wrap">
+            <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
                 <div
                     v-for="(songCategory, index) in songCategoryOrder"
                     :key="songCategory"
-                    :class="[
-                        songCategory === currentCategory ? 'category-selected' : null,
-                        index !== songCategoryOrder.length - 1 ? 'me-3' : null
-                    ]"
-                    class="song-category p-3 rounded"
+                    :class="[songCategory === currentCategory ? 'category-selected' : null]"
+                    class="song-category p-3 rounded border border-dark"
                     @click="changeCategory(songCategory)"
                 >
                     {{ songCategories[songCategory].title }}
@@ -235,6 +232,8 @@ export default {
 <style lang="scss">
 @import "~/node_modules/bootstrap/scss/functions";
 @import "~/assets/bootstrap/variables";
+@import "~/node_modules/bootstrap/scss/variables";
+@import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .section-container {
     background-image: url("~/assets/images/songs_background.jpg");
@@ -253,6 +252,10 @@ export default {
 
         &.category-selected {
             background: $primary;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
         }
     }
 }

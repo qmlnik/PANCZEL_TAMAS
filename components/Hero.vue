@@ -47,7 +47,7 @@
         </div>
         <div
             class="position-absolute"
-            style="bottom: 5%; left: 50%; transform: translate(-50%, 0);"
+            style="bottom: 3%; left: 50%; transform: translate(-50%, 0);"
         >
             <ScrollIndicator />
         </div>
