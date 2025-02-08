@@ -123,8 +123,10 @@ export default {
             () => {
                 this.length = this.getTimeCodeFromNum(this.audioPlayer.duration);
                 this.audioPlayer.volume = .75;
-                this.$refs.volumePercentage.style.height = "75%";
-                
+                // language select reference null
+                if (this.$refs.volumePercentage !== null) {
+                    this.$refs.volumePercentage.style.height = "75%";
+                }
             },
             false
         );

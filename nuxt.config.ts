@@ -28,5 +28,11 @@ export default defineNuxtConfig({
             }
         ],
         defaultLocale: "hu"
-    }
+    },
+    plugins: [
+        {
+            src: "~/plugins/bootstrap.js",
+            mode: "client"
+        }
+    ]
 })

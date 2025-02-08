@@ -1,11 +1,15 @@
 <template>
-    <div class="selector-container position-relative d-inline-block">
-        <div class="d-flex align-items-center backdrop p-2 rounded" style="cursor: pointer;">
+    <div class="selector-container dropdown">
+        <div
+            class="d-flex align-items-center backdrop p-2 rounded"
+            style="cursor: pointer;"
+            data-bs-toggle="dropdown"
+        >
             <img :src="currentLocale.src" :alt="currentLocale.code" width="25" height="13" />
             <span class="mx-1">{{ currentLocale.codeDisplay }}</span>
             <i class="bi bi-caret-down-fill" style="font-size: 0.75rem;"></i>
         </div>
-        <div class="selector-dropdown backdrop p-2 rounded">
+        <div class="selector-dropdown dropdown-menu dropdown-menu-end backdrop p-2 rounded">
             <div class="mb-2" style="white-space: nowrap;">{{ $t('languageSelect') }}:</div>
             <div
                 v-for="({ code, codeDisplay, src }) in selectableLocales"
@@ -62,17 +66,8 @@ export default {
 .selector-container {
     color: $secondary;
 
-    &:hover .selector-dropdown {
-        opacity: 1;
-    }
-
     .selector-dropdown {
-        position: absolute;
-        top: calc(100% + 10px);
-        right: 0;
-        opacity: 0;
-        transition: .3s;
-        z-index: 1;
+        color: $secondary;
 
         .selector-dropdown-lang {
             transition: .3s;
