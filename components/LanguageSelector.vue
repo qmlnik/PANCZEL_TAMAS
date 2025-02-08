@@ -5,20 +5,20 @@
             style="cursor: pointer;"
             data-bs-toggle="dropdown"
         >
-            <img :src="currentLocale.src" :alt="currentLocale.code" width="25" height="13" />
+            <img :src="currentLocale.flag" :alt="currentLocale.code" width="25" />
             <span class="mx-1">{{ currentLocale.codeDisplay }}</span>
             <i class="bi bi-caret-down-fill" style="font-size: 0.75rem;"></i>
         </div>
         <div class="selector-dropdown dropdown-menu dropdown-menu-end backdrop p-2 rounded">
             <div class="mb-2" style="white-space: nowrap;">{{ $t('languageSelect') }}:</div>
             <div
-                v-for="({ code, codeDisplay, src }) in selectableLocales"
+                v-for="({ code, codeDisplay, flag }) in selectableLocales"
                 :key="code"
-                class="selector-dropdown-lang px-2 rounded"
+                class="selector-dropdown-lang p-2 rounded"
                 style="cursor: pointer;"
                 @click="$i18n.setLocale(code)"
             >
-                <img :src="src" :alt="code" width="25" height="13" />
+                <img :src="flag" :alt="code" width="25" />
                 <span class="ms-1">{{ codeDisplay }}</span>
             </div>
         </div>
@@ -26,8 +26,8 @@
 </template> 
 
 <script>
-import english_flag from "~/assets/images/english_flag.webp";
-import hungarian_flag from "~/assets/images/hungarian_flag.webp";
+import GB_SVG from "~/assets/svgs/gb.svg";
+import HU_SVG from "~/assets/svgs/hu.svg";
 
 export default {
     computed: {
@@ -35,8 +35,8 @@ export default {
             return this.$i18n.availableLocales.map(code => ({
                 code: code,
                 codeDisplay: code.toUpperCase(), 
-                src: this.getFlag(code)
-            }))
+                flag: this.getFlag(code)
+            }));
         },
         selectableLocales() {
             return this.availableLocalesProcessed.filter(({ code }) => code !== this.$i18n.locale);
@@ -49,11 +49,11 @@ export default {
         getFlag(code) {
             switch(code) {
             case "en":
-                return english_flag;
+                return GB_SVG;
             case "hu":
-                return hungarian_flag;
+                return HU_SVG;
             default:
-                return hungarian_flag;
+                return HU_SVG;
             }
         }
     }
