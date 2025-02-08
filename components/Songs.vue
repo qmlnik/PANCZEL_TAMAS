@@ -1,7 +1,7 @@
 <template>
     <section class="section-container p-4 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
-            <h3 class="mb-3 text-primary text-center">Categories</h3>
+            <h3 class="mb-3 text-primary text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
                 <div
                     v-for="songCategory in songCategoryOrder"
