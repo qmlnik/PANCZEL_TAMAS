@@ -7,17 +7,16 @@
         </div>
         <div class="selector-dropdown backdrop p-2 rounded">
             <div class="mb-2" style="white-space: nowrap;">{{ $t('languageSelect') }}:</div>
-            <NuxtLinkLocale
+            <div
                 v-for="({ code, codeDisplay, src }) in selectableLocales"
                 :key="code"
                 class="selector-dropdown-lang px-2 rounded"
                 style="cursor: pointer;"
-                to="/"
-                :locale="code"
+                @click="$i18n.setLocale(code)"
             >
                 <img :src="src" :alt="code" width="25" height="13" />
                 <span class="ms-1">{{ codeDisplay }}</span>
-            </NuxtLinkLocale>
+            </div>
         </div>
     </div>
 </template> 
@@ -52,10 +51,6 @@ export default {
             default:
                 return hungarian_flag;
             }
-        },
-        async selectLanguage(code) {
-            this.$i18n.setLocale(code);
-            await this.$i18n.finalizePendingLocaleChange();
         }
     }
 };
@@ -65,6 +60,8 @@ export default {
 @import "~/assets/bootstrap/variables";
 
 .selector-container {
+    color: $secondary;
+
     &:hover .selector-dropdown {
         opacity: 1;
     }

@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     ],
     modules: [
         "@nuxt/image",
-        "@nuxtjs/i18n"
+        "@nuxtjs/i18n",
+        "@pinia/nuxt"
     ],
     image: {
         dir: "assets/images",

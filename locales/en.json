@@ -12,7 +12,7 @@
         }
     },
     "footer": {
-        "addres": "Address",
+        "address": "Address",
         "phone": "Phone",
         "email": "Email",
         "connect": "Connect"

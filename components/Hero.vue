@@ -2,7 +2,7 @@
     <div class="position-relative" style="width: 100%; height: 90vh;">
         <img src="~/assets/images/Hero_Background.webp" class="hero-background">
         <img src="~/assets/images/Hero_Tamas.png" class="hero-full-body-portrait">
-        <div style="position: absolute; top: 100px; right: 100px;color: white;">
+        <div class="language-selector-container">
             <LanguageSelector />
         </div>
         
@@ -15,7 +15,7 @@
             <img style="object-fit: cover; height: 100%; width: 100%;" src="~/assets/images/header_background.avif" />
         </picture>-->
         <div class="hero-content">
-            <ScrollFadeIn>
+            <ScrollFadeIn :isBlockFadeInAfterLoad="true">
                 <div class="hero-title-container">
                     <h1 class="hero-title text-primary text-uppercase mb-0 fw-normal">
                         {{ $t('hero.title') }}
@@ -27,7 +27,7 @@
             </ScrollFadeIn>
             
             <div class="hero-card d-none d-sm-block">
-                <ScrollFadeIn :transitionDelay="0.5">
+                <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
                     <div
                         class="text-secondary backdrop"
                         style="
@@ -74,6 +74,18 @@
 </template>
 
 <script>
+import { useMainStore } from "~/stores";
+
+export default {
+    setup () {
+        return { $store: useMainStore() };
+    },
+    mounted() {
+        setTimeout(() => {
+            this.$store.isHeroLoaded = true; 
+        }, 500);   
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -81,6 +93,17 @@
 @import "~/node_modules/bootstrap/scss/variables";
 @import "~/assets/bootstrap/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
+
+.language-selector-container {
+    position: absolute;
+    right: 20%;
+    top: 50px;
+
+    @include media-breakpoint-down(sm) {
+        right: 5%;
+        top: 20px;
+    }
+}
 
 .hero-background {
     position: absolute;

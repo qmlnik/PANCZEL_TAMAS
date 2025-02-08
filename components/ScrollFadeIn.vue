@@ -1,7 +1,12 @@
 <template>
     <div
         ref="scrollRef"
-        :class="['scroll-animation', isInView ? 'in-view' : null]"
+        :class="[
+            ...(!(isBlockFadeInAfterLoad && $store.isHeroLoaded) ? [
+                'scroll-animation',
+                isInView ? 'in-view' : null
+            ] : [])
+        ]"
         :style="`transition-delay: ${transitionDelay}s`"
     >
         <slot></slot>
@@ -9,12 +14,22 @@
 </template>
 
 <script>
+import { useMainStore } from "~/stores";
+
 export default {
     props: {
         transitionDelay: {
             type: Number,
             default: 0.25
+        },
+        // nyelvváltáskor ne bugoljon be az animáció
+        isBlockFadeInAfterLoad: {
+            type: Number,
+            default: false
         }
+    },
+    setup () {
+        return { $store: useMainStore() };
     },
     data() {
         return { isInView: false, observer: null }

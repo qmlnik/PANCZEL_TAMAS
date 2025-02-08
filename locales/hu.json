@@ -12,7 +12,7 @@
         }
     },
     "footer": {
-        "addres": "Cím",
+        "address": "Cím",
         "phone": "Telefon",
         "email": "Email",
         "connect": "Kapcsolat"
