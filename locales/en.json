@@ -1,0 +1,20 @@
+{
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "languageSelect": "Select language",
+    "hero": {
+        "title": "tamas panczel",
+        "subtitle": "Violinist. Composer. Conductor",
+        "introduction": {
+            "title": "introduction",
+            "subtitle": "Passion drives every note",
+            "content": "At the heart of this extraordinary artist\"s musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself."
+        }
+    },
+    "footer": {
+        "addres": "Address",
+        "phone": "Phone",
+        "email": "Email",
+        "connect": "Connect"
+    }
+}

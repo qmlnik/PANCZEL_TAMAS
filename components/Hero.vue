@@ -2,6 +2,10 @@
     <div class="position-relative" style="width: 100%; height: 90vh;">
         <img src="~/assets/images/Hero_Background.webp" class="hero-background">
         <img src="~/assets/images/Hero_Tamas.png" class="hero-full-body-portrait">
+        <div style="position: absolute; top: 100px; right: 100px;color: white;">
+            <LanguageSelector />
+        </div>
+        
         <!--<picture>
             <source
                 media="(max-width: 576px)"
@@ -14,10 +18,10 @@
             <ScrollFadeIn>
                 <div class="hero-title-container">
                     <h1 class="hero-title text-primary text-uppercase mb-0 fw-normal">
-                        tamas panczel
+                        {{ $t('hero.title') }}
                     </h1>
                     <div class="text-secondary fst-italic fs-5">
-                        Violinist. Composer. Conductor
+                        {{ $t('hero.subtitle') }}
                     </div>
                 </div>
             </ScrollFadeIn>
@@ -25,22 +29,21 @@
             <div class="hero-card d-none d-sm-block">
                 <ScrollFadeIn :transitionDelay="0.5">
                     <div
-                        class="text-secondary"
+                        class="text-secondary backdrop"
                         style="
-                            background: rgba(0, 0, 0, 0.6);
                             border-radius: 0.5rem;
                             padding: 1.5rem;
                             margin-top: 75px;
                             max-width: 600px;
                         "
                     >
-                        <h3 class="text-uppercase fw-bold">introduction</h3>
-                        <div>Passion drives every note</div>
+                        <h3 class="text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                        <div>{{ $t('hero.introduction.subtitle') }}</div>
                         <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
                         <div class="fst-italic mb-3">
-                            At the heart of this extraordinary artist's musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself.
+                            {{ $t('hero.introduction.content') }}
                         </div>
-                        <button class="btn btn-primary text-dark">Show more</button>
+                        <button class="btn btn-primary text-dark">{{ $t('showMore') }}</button>
                     </div>
                 </ScrollFadeIn>
             </div>
@@ -55,24 +58,28 @@
     <div class="d-block d-sm-none p-4">
         <ScrollFadeIn>
             <div
-                class="text-secondary"
-                style="background: rgba(0, 0, 0, 0.6); border-radius: 0.5rem; padding: 1.5rem;"
+                class="text-secondary backdrop"
+                style="border-radius: 0.5rem; padding: 1.5rem;"
             >
-                <h3 class="text-uppercase fw-bold">introduction</h3>
-                <div>Passion drives every note</div>
+                <h3 class="text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                <div>{{ $t('hero.introduction.subtitle') }}</div>
                 <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
                 <div class="fst-italic mb-3">
-                    At the heart of this extraordinary artist's musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself.
+                    {{ $t('hero.introduction.content') }}
                 </div>
-                <button class="btn btn-primary text-dark">Show more</button>
+                <button class="btn btn-primary text-dark">{{ $t('showMore') }}</button>
             </div>
         </ScrollFadeIn>
     </div>
 </template>
 
+<script>
+</script>
+
 <style lang="scss" scoped>
 @import "~/node_modules/bootstrap/scss/functions";
 @import "~/node_modules/bootstrap/scss/variables";
+@import "~/assets/bootstrap/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .hero-background {
@@ -105,7 +112,7 @@
     padding: 0;
 
     @include media-breakpoint-down(sm) {
-        background: rgba(0, 0, 0, 0.6);
+        background: $backdrop;
         padding: 1.5rem;
         border-radius: 0.5rem;
         text-align: center;

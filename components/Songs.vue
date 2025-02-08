@@ -4,21 +4,21 @@
             <h3 class="mb-3 text-primary text-center">Categories</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
                 <div
-                    v-for="(songCategory, index) in songCategoryOrder"
+                    v-for="songCategory in songCategoryOrder"
                     :key="songCategory"
                     :class="[songCategory === currentCategory ? 'category-selected' : null]"
                     class="song-category p-3 rounded border border-dark"
                     @click="changeCategory(songCategory)"
                 >
-                    {{ songCategories[songCategory].title }}
+                    {{ songCategories[songCategory].title[$i18n.locale] }}
                 </div>
             </div>
         </div>
-        <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ songCategories[currentCategory].title }}</div>
+        <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ songCategories[currentCategory].title[$i18n.locale] }}</div>
         <ClientOnly>
             <div style="max-width: 1000px">
                 <div
-                    v-for="({ author, title, src, cover, description }, index) in songCategories[currentCategory].songs"
+                    v-for="({ [$i18n.locale]: { author, title, description }, src, cover }, index) in songCategories[currentCategory].songs"
                     :key="`${author}-${title}`"
                     :class="[index < songCategories[currentCategory].songs.length - 1 ? 'mb-3' : null]"
                 >
@@ -71,151 +71,288 @@ export default {
             songCategoryOrder: ["ghospel", "classic", "classicWindQuintet", "classicKlezmerSzvit", "anotherComposerStyle"],
             songCategories: {
                 ghospel: {
-                    title: "Ghospel",
+                    title: {
+                        en: "Ghospel",
+                        hu: "Ghospel"
+                    },
                     songs: [
                         {
-                            author: "Pánczél Tamás",
-                            title: "Köszönöm hogy vagy (Létai Kis Gabi)",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Köszönöm hogy vagy (Létai Kis Gabi)",
+                                description: "a long long long long long long long long long long long long description"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Köszönöm hogy vagy (Létai Kis Gabi)",
+                                description: "egy hosszú hosszú hosszú hosszú hosszú hosszú hosszú hosszúleírás"
+                            },
                             src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
-                            cover: Létai_Kis_Gabi,
-                            description: "egy hosszú hosszú hosszú hosszú hosszú hosszú hosszú hosszúleírás"
+                            cover: Létai_Kis_Gabi
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Szeretet himnusz",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Szeretet himnusz",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Szeretet himnusz",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Szeretet_himnusz,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Fejes Zoli és es a Vidám Szimfónikusok",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Fejes Zoli és es a Vidám Szimfónikusok",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Fejes Zoli és es a Vidám Szimfónikusok",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Fejes_Zolies_es_a_Vidam_Szimfonikusok,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         }
                     ]
                 },
                 classic: {
-                    title: "Classic",
+                    title: {
+                        en: "Classic",
+                        hu: "Klasszikus"
+                    },
                     songs: [
                         {
-                            author: "Pánczél Tamás",
-                            title: "Átváltozások",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Átváltozások",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Átváltozások",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Atvaltozasok,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Divertimento Concertante",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Divertimento Concertante",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Divertimento Concertante",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Divertimento_Concertante,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Hadd éljek",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Hadd éljek",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Hadd éljek",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Hadd_eljek,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Passacagila",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Passacagila",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Passacagila",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Passacagila,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Psalm 29",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Psalm 29",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Psalm 29",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Psalm_29,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         }
                     ]
                 },
                 classicWindQuintet: {
-                    title: "Classic - Wind quintet",
+                    title: {
+                        en: "Classic - Wind quintet",
+                        hu: "Klasszikus - Fúvós ötös"
+                    },
                     songs: [
                         {
-                            author: "Pánczél Tamás",
-                            title: "Fuvosotos 1",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Fuvosotos 1",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Fuvosotos 1",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Fuvosotos_1,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Fuvosotos 2",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Fuvosotos 2",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Fuvosotos 2",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Fuvosotos_2,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Fuvosotos 3",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Fuvosotos 3",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Fuvosotos 3",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Fuvosotos_3,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "Fuvosotos 4",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Fuvosotos 4",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Fuvosotos 4",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Fuvosotos_4,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         }
                     ]
                 },
                 classicKlezmerSzvit: {
-                    title: "Classic - Klezmer Szvit",
+                    title: {
+                        en: "Classic - Klezmer Szvit",
+                        hu: "Klasszikus - Klezmer Szvit"
+                    },
                     songs: [
                         {
-                            author: "Pánczél Tamás",
-                            title: "16",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "16",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "16",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Klezmer_16,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "17",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "17",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "17",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Klezmer_17,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "18",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "18",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "18",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Klezmer_18,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         },
                         {
-                            author: "Pánczél Tamás",
-                            title: "19",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "19",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "19",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Klezmer_19,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         }
                     ]
                 },
                 anotherComposerStyle: {
-                    title: "Others",
+                    title: {
+                        en: "Others",
+                        hu: "Mások stílusában"
+                    },
                     songs: [
                         {
-                            author: "Johann Sebastian Bach",
-                            title: "Bach Largo",
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Bach Largo",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Bach Largo",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
                             src: Bach_Largo,
-                            cover: null,
-                            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            cover: null
                         }
                     ]
                 }
             }
         };
+    },
+    mounted() {
+        console.log(this.$router);
     },
     methods: {
         changeCategory(newCategory) {
@@ -231,8 +368,8 @@ export default {
 
 <style lang="scss">
 @import "~/node_modules/bootstrap/scss/functions";
-@import "~/assets/bootstrap/variables";
 @import "~/node_modules/bootstrap/scss/variables";
+@import "~/assets/bootstrap/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .section-container {

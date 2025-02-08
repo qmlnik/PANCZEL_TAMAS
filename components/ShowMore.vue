@@ -12,7 +12,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <button v-if="isDisplayShowMore" class="btn btn-primary mt-3" @click="isShowMoreOpen = !isShowMoreOpen">
-                Show {{ isShowMoreOpen ? "less" : "more"}}
+                {{ $t(isShowMoreOpen ? "showLess" : "showMore") }}
                 <i :class="['bi', isShowMoreOpen ? 'bi-caret-up-fill' : 'bi-caret-down-fill']"></i>
             </button>
         </div>
