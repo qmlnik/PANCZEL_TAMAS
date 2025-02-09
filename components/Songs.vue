@@ -351,9 +351,6 @@ export default {
             }
         };
     },
-    mounted() {
-        console.log(this.$router);
-    },
     methods: {
         changeCategory(newCategory) {
             this.currentCategory = newCategory;
