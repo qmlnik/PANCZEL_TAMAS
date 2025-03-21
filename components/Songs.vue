@@ -54,6 +54,7 @@ import Fuvosotos_1 from "~/assets/songs/classic_wind_quintet/Fuvosotos_1.mp3";
 import Fuvosotos_2 from "~/assets/songs/classic_wind_quintet/Fuvosotos_2.mp3";
 import Fuvosotos_3 from "~/assets/songs/classic_wind_quintet/Fuvosotos_3.mp3";
 import Fuvosotos_4 from "~/assets/songs/classic_wind_quintet/Fuvosotos_4.mp3";
+import nemklezmer from "~/assets/songs/classic_wind_quintet/nemklezmer.mp3";
 
 import Klezmer_16 from "~/assets/songs/classic_klezmer_szvit/16.mp3";
 import Klezmer_17 from "~/assets/songs/classic_klezmer_szvit/17.mp3";
@@ -216,6 +217,20 @@ export default {
                                 description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
                             },
                             src: Fuvosotos_1,
+                            cover: null
+                        },
+                        {
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "nemklezmer title",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "nemklezmer cím",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
+                            src: nemklezmer,
                             cover: null
                         },
                         {
