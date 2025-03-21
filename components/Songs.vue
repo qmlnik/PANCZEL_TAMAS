@@ -49,6 +49,8 @@ import Divertimento_Concertante from "~/assets/songs/classic/Divertimento_Concer
 import Hadd_eljek from "~/assets/songs/classic/Hadd_eljek.mp3";
 import Passacagila from "~/assets/songs/classic/Passacagila.mp3";
 import Psalm_29 from "~/assets/songs/classic/Psalm_29.mp3";
+import felolvasaspanczel from "~/assets/songs/classic/felolvasaspanczel.mp3";
+
 
 import Fuvosotos_1 from "~/assets/songs/classic_wind_quintet/Fuvosotos_1.mp3";
 import Fuvosotos_2 from "~/assets/songs/classic_wind_quintet/Fuvosotos_2.mp3";
@@ -64,6 +66,8 @@ import Klezmer_19 from "~/assets/songs/classic_klezmer_szvit/19.mp3";
 import Bach_Largo from "~/assets/songs/other_composers_style/Bach_Largo.mp3";
 
 import Létai_Kis_Gabi from "~/assets/images/Létai_Kis_Gabi.jpg";
+
+import pecsitibor from "~/assets/images/pecsitibor.jpg";
 
 export default {
     data() {
@@ -196,6 +200,20 @@ export default {
                             },
                             src: Psalm_29,
                             cover: null
+                        },
+                        {
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "felolvasas panczel angol",
+                                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "felolvasás Pánczél magyar",
+                                description: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos laklajtás, a szelik után a bibecske egyedül a kajos ferges mozás zölésében gyódja a csajas cseredet. Tárdóságban alás pitázásra pésedik egy padt törnyő. A röveren jadza halát fecselő dzsere alapján legalább két padt törnyőre kodhatna vezeget, ezzel szemben a ványos ferges csinylós mázásnak sem kajos mozása, kozása, sem savasága nincs. Ezek zöléséért a rögés óta zsázik az egyelőre pofás tökötő. Teje várhatóan az erej folyamán fajzja a hanyászámot, mert ezt – a sommás csitlet fókáit komolyan áttanulmányozva és a ható tancs kalgását méltányolva – szükségszerűen folontosnak gyódja. Ezt mezte asztompában mályozás lávár, a radom kartó süvezése, miután sommás küldeletével, empő pegással ingált."
+                            },
+                            src: felolvasaspanczel,
+                            cover: pecsitibor
                         }
                     ]
                 },
