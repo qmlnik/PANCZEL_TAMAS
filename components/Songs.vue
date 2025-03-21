@@ -79,12 +79,12 @@ export default {
                         {
                             en: {
                                 author: "Tamas Panczel",
-                                title: "Köszönöm hogy vagy (Létai Kis Gabi)",
+                                title: "Thank you that you are for me (Létai Kis Gabi)",
                                 description: "a long long long long long long long long long long long long description"
                             },
                             hu: {
                                 author: "Pánczél Tamás",
-                                title: "Köszönöm hogy vagy (Létai Kis Gabi)",
+                                title: "Köszönöm hogy vagy nekem (Létai Kis Gabi)",
                                 description: "egy hosszú hosszú hosszú hosszú hosszú hosszú hosszú hosszúleírás"
                             },
                             src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
