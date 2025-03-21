@@ -25,7 +25,7 @@ export default defineI18nConfig(() => ({
             }
         },
         hu: {
-            showMore: "Többet",
+            showMore: "Mutass többet",
             showLess: "Kevesebbet",
             languageSelect: "Nyelv választása",
             hero: {
