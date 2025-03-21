@@ -72,8 +72,8 @@ export default {
             songCategories: {
                 ghospel: {
                     title: {
-                        en: "Ghospeler",
-                        hu: "Ghospeler"
+                        en: "Ghospel",
+                        hu: "Ghospel"
                     },
                     songs: [
                         {
