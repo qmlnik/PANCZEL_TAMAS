@@ -14,20 +14,7 @@ export default defineNuxtConfig({
         dir: "assets/images",
     },
     i18n: {
-        lazy: true,
-        langDir: "/locales",
-        strategy: "prefix_except_default",
-        locales:  [
-            {
-                code: "en",
-                file: "en.json"
-            },
-            {
-                code: "hu",
-                file: "hu.json"
-            }
-        ],
-        defaultLocale: "hu"
+        vueI18n: './i18n.config.ts'
     },
     plugins: [
         {
