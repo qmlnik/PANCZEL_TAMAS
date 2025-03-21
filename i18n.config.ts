@@ -8,7 +8,7 @@ export default defineI18nConfig(() => ({
             showLess: "Show less",
             languageSelect: "Select language",
             hero: {
-                title: "tamas panczel",
+                title: "pecsi david took controll",
                 subtitle: "Violinist. Composer. Conductor",
                 introduction: {
                     title: "introduction",
@@ -29,7 +29,7 @@ export default defineI18nConfig(() => ({
             showLess: "Kevesebbet",
             languageSelect: "Nyelv választása",
             hero: {
-                title: "pánczél tamás",
+                title: "Pécsi Dávid átvette az irányítást",
                 subtitle: "Hegedűművész. Zeneszerző.",
                 introduction: {
                     title: "bemutatkozás",
