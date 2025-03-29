@@ -370,8 +370,6 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .section-container {
-    background-image: url("~/assets/images/songs_background.jpg");
-
     .song-category {
         cursor: pointer;
         transition: .3s;
@@ -381,7 +379,7 @@ export default {
         align-items: center;
 
         &:hover {
-            background: #c7bc9b;
+            background: $primary-light;
         }
 
         &.category-selected {

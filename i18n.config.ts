@@ -1,6 +1,5 @@
 export default defineI18nConfig(() => ({
     legacy: false,
-    strategy: "prefix_except_default",
     locale: "en",
     messages: {
         en: {
@@ -9,7 +8,11 @@ export default defineI18nConfig(() => ({
             languageSelect: "Select language",
             hero: {
                 title: "tamas panczel",
-                subtitle: "Violinist. Composer. Conductor",
+                subtitle: {
+                    violinist: "Violinist",
+                    composer: "Composer",
+                    conductor: "Conductor"
+                },
                 introduction: {
                     title: "introduction",
                     subtitle: "Passion drives every note",
@@ -30,7 +33,11 @@ export default defineI18nConfig(() => ({
             languageSelect: "Nyelv választása",
             hero: {
                 title: "pánczél tamás",
-                subtitle: "Hegedűművész. Zeneszerző.",
+                subtitle: {
+                    violinist: "Hegedűművész",
+                    composer: "Zeneszerző",
+                    conductor: "Karmester"
+                },
                 introduction: {
                     title: "bemutatkozás",
                     subtitle: "Minden hangot a szenvedély vezet",
@@ -46,5 +53,4 @@ export default defineI18nConfig(() => ({
             }
         }
     },
-    defaultLocale: "en"
 }))

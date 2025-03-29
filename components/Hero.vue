@@ -1,6 +1,5 @@
 <template>
     <div class="hero-container position-relative" style="width: 100%; height: 90vh;">
-        <img src="~/assets/images/Hero_Background.webp" class="hero-background">
         <img src="~/assets/images/Hero_Tamas.png" class="hero-full-body-portrait">
         <div class="language-selector-container">
             <LanguageSelector />
@@ -17,12 +16,30 @@
         <div class="hero-content">
             <ScrollFadeIn :isBlockFadeInAfterLoad="true">
                 <div class="hero-title-container">
-                    <h1 class="hero-title text-primary text-uppercase mb-0 fw-normal">
+                    <h1 class="hero-title text-primary text-uppercase fw-normal">
                         {{ $t('hero.title') }}
                     </h1>
-                    <div class="text-secondary fst-italic fs-5">
-                        {{ $t('hero.subtitle') }}
-                    </div>
+                    <NuxtLinkLocale
+                        to="/violinist"
+                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                        activeClass="menu-active"
+                    >
+                        {{ $t('hero.subtitle.violinist') }}
+                    </NuxtLinkLocale>
+                    <NuxtLinkLocale
+                        to="/composer"
+                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                        activeClass="menu-active"
+                    >
+                        {{ $t('hero.subtitle.composer') }}
+                    </NuxtLinkLocale>
+                    <NuxtLinkLocale
+                        to="/conductor"
+                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                        activeClass="menu-active"
+                    >
+                        {{ $t('hero.subtitle.conductor') }}
+                    </NuxtLinkLocale>
                 </div>
             </ScrollFadeIn>
             
@@ -80,6 +97,13 @@ export default {
     setup () {
         return { $store: useMainStore() };
     },
+    watch: {
+        "$route.path": {
+            handler(newhand) {
+                console.log(this.$route);
+            }
+        }
+    },
     mounted() {
         setTimeout(() => {
             this.$store.isHeroLoaded = true; 
@@ -95,7 +119,7 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .hero-container {
-    &:after {
+    /*&:after {
         content: '';
         position: absolute;
         left: 0;
@@ -106,6 +130,19 @@ export default {
 
         @include media-breakpoint-down(sm) {
             background-image: linear-gradient(to top, white, rgba(0, 0, 0, 0));
+        }
+    }*/
+
+    .menu-element {
+        transition: .3s;
+
+        &:hover, &.menu-active {
+            background: $primary-light;
+            color: $dark;
+        }
+
+        &.menu-active {
+
         }
     }
 
@@ -120,15 +157,6 @@ export default {
         }
     }
 
-    .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-
     .hero-full-body-portrait {
         position: absolute;
         bottom: 0;
@@ -136,6 +164,8 @@ export default {
         object-fit: contain;
         height: 95%;
         width: 33%;
+        -webkit-mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
+        mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
 
         @include media-breakpoint-down(sm) {
             height: 100%;
