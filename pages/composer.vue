@@ -1,5 +1,5 @@
 <template>
-    <section class="section-container p-4 d-flex align-items-center flex-column">
+    <section class="p-4 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
             <h3 class="mb-3 text-primary text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
@@ -16,24 +16,23 @@
         </div>
         <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ songCategories[currentCategory].title[$i18n.locale] }}</div>
         <ClientOnly>
-            <div style="max-width: 1000px">
-                <div
-                    v-for="({ [$i18n.locale]: { author, title, description }, src, cover }, index) in songCategories[currentCategory].songs"
-                    :key="`${author}-${title}`"
-                    :class="[index < songCategories[currentCategory].songs.length - 1 ? 'mb-3' : null]"
-                >
-                    <ScrollFadeIn>
-                        <AudioPlayer
-                            ref="songs"
-                            :author="author"
-                            :title="title"
-                            :src="src"
-                            :cover="cover"
-                            :description="description"
-                            @play="stopAllAudio"
-                        />
-                    </ScrollFadeIn>
-                </div>
+            <div
+                v-for="({ [$i18n.locale]: { author, title, description }, src, cover }, index) in songCategories[currentCategory].songs"
+                :key="`${author}-${title}`"
+                :class="[index < songCategories[currentCategory].songs.length - 1 ? 'mb-3' : null]"
+                class="w-100"
+            >
+                <ScrollFadeIn>
+                    <AudioPlayer
+                        ref="songs"
+                        :author="author"
+                        :title="title"
+                        :src="src"
+                        :cover="cover"
+                        :description="description"
+                        @play="stopAllAudio"
+                    />
+                </ScrollFadeIn>
             </div>
         </ClientOnly>
     </section>
@@ -369,28 +368,24 @@ export default {
 @import "~/assets/bootstrap/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
-.section-container {
-    .song-category {
-        cursor: pointer;
-        transition: .3s;
-        background: $secondary;
-        color: $dark;
-        display: flex;
-        align-items: center;
+.song-category {
+    cursor: pointer;
+    transition: .3s;
+    background: $secondary;
+    color: $dark;
+    display: flex;
+    align-items: center;
 
-        &:hover {
-            background: $primary-light;
-        }
+    &:hover {
+        background: $primary-light;
+    }
 
-        &.category-selected {
-            background: $primary;
-        }
+    &.category-selected {
+        background: $primary;
+    }
 
-        @include media-breakpoint-down(sm) {
-            width: 100%;
-        }
+    @include media-breakpoint-down(sm) {
+        width: 100%;
     }
 }
-
-
 </style>

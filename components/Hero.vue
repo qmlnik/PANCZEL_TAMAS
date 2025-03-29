@@ -1,6 +1,6 @@
 <template>
     <div class="hero-container position-relative" style="width: 100%; height: 90vh;">
-        <img src="~/assets/images/Hero_Tamas.png" class="hero-full-body-portrait">
+        <img :src="currentPageBodyImg" class="hero-body-img" ref="pageBodyImg">
         <div class="language-selector-container">
             <LanguageSelector />
         </div>
@@ -91,23 +91,90 @@
 </template>
 
 <script>
+import gsap from "gsap";
 import { useMainStore } from "~/stores";
 
+import heroBodyConductorImg from "~/assets/images/hero_body_conductor.png";
+import heroBodyViolinistImg from "~/assets/images/hero_body_violinist.png";
+
+const ALL_PAGE_BODY_IMG = {
+    composer: heroBodyConductorImg,
+    conductor: heroBodyConductorImg,
+    violinist: heroBodyViolinistImg,
+};
+const PAGE_BODY_TRANSITION_MS = 500;
+
 export default {
-    setup () {
-        return { $store: useMainStore() };
-    },
-    watch: {
-        "$route.path": {
-            handler(newhand) {
-                console.log(this.$route);
+    emits: ["navigationBodyImgFinished"],
+    setup (props, { emit }) {
+        const route = useRoute();
+        const getRouteBaseName = useRouteBaseName();
+
+        const currentPageBodyImg = ref(ALL_PAGE_BODY_IMG[getRouteBaseName(route)]);
+        const pageBodyImg = useTemplateRef("pageBodyImg");
+
+        onMounted(() => {
+            gsap.to(
+                pageBodyImg.value,
+                {
+                    opacity: 1,
+                    bottom: 0,
+                    duration: PAGE_BODY_TRANSITION_MS / 1000,
+                    ease: "power4.out"
+                }
+            );
+        });
+
+        const router = useRouter();
+
+        router.afterEach(async (to, from) => {
+            const toPageName = getRouteBaseName(to);
+            const fromPageName = getRouteBaseName(from);
+
+            const isLocaleRouteChange = toPageName === fromPageName;
+
+            if (isLocaleRouteChange) {
+                return;
             }
-        }
+
+            await new Promise(resolve => {
+                gsap.to(
+                    pageBodyImg.value,
+                    {
+                        opacity: 0,
+                        bottom: "30px",
+                        duration: PAGE_BODY_TRANSITION_MS / 1000,
+                        ease: "power4.out",
+                        onComplete: resolve
+                    }
+                );
+            });
+
+            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[toPageName];
+
+            await new Promise(resolve => {
+                gsap.to(
+                    pageBodyImg.value,
+                    {
+                        opacity: 1,
+                        bottom: 0,
+                        delay: 0.1,
+                        duration: PAGE_BODY_TRANSITION_MS / 1000,
+                        ease: "power4.out",
+                        onComplete: resolve
+                    }
+                );
+            });
+
+            emit("navigationBodyImgFinished");
+        })
+
+        return { currentPageBodyImg, $store: useMainStore() };
     },
     mounted() {
         setTimeout(() => {
             this.$store.isHeroLoaded = true; 
-        }, 500);   
+        }, 500);
     }
 };
 </script>
@@ -119,20 +186,6 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .hero-container {
-    /*&:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: calc(100% - 30px);
-        bottom: 0;
-        background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0));
-
-        @include media-breakpoint-down(sm) {
-            background-image: linear-gradient(to top, white, rgba(0, 0, 0, 0));
-        }
-    }*/
-
     .menu-element {
         transition: .3s;
 
@@ -157,9 +210,10 @@ export default {
         }
     }
 
-    .hero-full-body-portrait {
+    .hero-body-img {
+        opacity: 0;
         position: absolute;
-        bottom: 0;
+        bottom: 100px;
         left: 3%;
         object-fit: contain;
         height: 95%;

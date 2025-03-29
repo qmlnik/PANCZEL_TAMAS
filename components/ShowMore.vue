@@ -20,7 +20,7 @@
 </template>
 
 <script>
-const COLLAPSED_HEIGHT = 50;
+const COLLAPSED_HEIGHT = 200;
 
 export default {
     props: {

@@ -4,14 +4,23 @@
     </div>
 
 
-    <Hero />
-    <div class="content-backdrop">
-        <NuxtPage />
+    <Hero @navigation-body-img-finished="scrollToContent" />
+    <div class="content-backdrop" ref="content">
+        <div class="container">
+            <NuxtPage />
+        </div>
     </div>
     <Footer />
 </template>
 
 <script>
+export default {
+    methods: {
+        scrollToContent() {
+            this.$refs.content.scrollIntoView();
+        }
+    }
+};
 </script>
 
 <style lang="scss">
