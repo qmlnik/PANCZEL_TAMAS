@@ -109,8 +109,6 @@ export default {
 
             currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getRouteBaseName(route)];
 
-            console.log(currentPageBodyImg.value);
-
             let isPageBodyImgInitLoaded = false;
 
             const pageBodyImgInitLoaded = () => {

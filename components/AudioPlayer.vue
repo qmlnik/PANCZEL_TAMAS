@@ -182,18 +182,20 @@ export default {
     },
     mounted() {
         this.audioPlayer = new Audio();
-        this.audioPlayer.preload = "none";
+        //this.audioPlayer.preload = "none";
         this.audioPlayer.src = this.src;
-        
+
+        this.audioPlayer.volume = .75;
+                
+        // language select reference null
+        if (this.$refs.volumePercentage !== null) {
+            this.$refs.volumePercentage.style.height = "75%";
+        }
+
         this.audioPlayer.addEventListener(
             "loadeddata",
             () => {
                 this.length = this.getTimeCodeFromNum(this.audioPlayer.duration);
-                this.audioPlayer.volume = .75;
-                // language select reference null
-                if (this.$refs.volumePercentage !== null) {
-                    this.$refs.volumePercentage.style.height = "75%";
-                }
             },
             false
         );
