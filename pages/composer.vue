@@ -1,5 +1,5 @@
 <template>
-    <section class="p-sm-4 p-2 d-flex align-items-center flex-column">
+    <section class="p-sm-4 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
             <h3 class="mb-3 text-primary text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
@@ -17,10 +17,9 @@
         <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ songCategories[currentCategory].title[$i18n.locale] }}</div>
         <ClientOnly>
             <div
-                v-for="({ [$i18n.locale]: { author, title, description }, src, cover }, index) in songCategories[currentCategory].songs"
+                v-for="({ [$i18n.locale]: { author, title, description }, src, cover }) in songCategories[currentCategory].songs"
                 :key="`${author}-${title}`"
-                :class="[index < songCategories[currentCategory].songs.length - 1 ? 'mb-3' : null]"
-                class="w-100"
+                class="w-100 mb-3"
             >
                 <ScrollFadeIn>
                     <AudioPlayer

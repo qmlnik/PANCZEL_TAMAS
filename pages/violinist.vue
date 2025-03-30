@@ -1,17 +1,15 @@
 <template>
-    <div class="p-4 pb-0">
-        <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</div>
-        <div
-            v-for="video in videos"
-            :key="video"
-            class="d-flex"
-        >
-            <ScrollFadeIn class="w-100 mb-3">
-                <div class="p-3 rounded bg-light">
-                    <iframe class="w-100" style="aspect-ratio: 16 / 9;" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </ScrollFadeIn>
-        </div>
+    <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</div>
+    <div
+        v-for="video in videos"
+        :key="video"
+        class="d-flex"
+    >
+        <ScrollFadeIn class="w-100 mb-3">
+            <div class="p-3 rounded bg-light">
+                <iframe class="w-100" style="aspect-ratio: 16 / 9;" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </ScrollFadeIn>
     </div>
 </template>
 

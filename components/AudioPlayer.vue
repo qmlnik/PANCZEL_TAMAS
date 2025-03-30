@@ -1,5 +1,5 @@
 <template>
-<div class="audio-player p-4 rounded bg-light">
+<div class="audio-player p-3 p-sm-4 rounded bg-light">
     <div class="d-flex">
         <img
             :src="cover?.length ? cover : coverPlaceholder"

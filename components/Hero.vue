@@ -66,17 +66,19 @@
             <ScrollIndicator />
         </div>
     </div>
-    <div class="introduction-separate p-4">
-        <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
-            <div class="hero-introduction text-secondary backdrop">
-                <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
-                <div>{{ $t('hero.introduction.subtitle') }}</div>
-                <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                <div class="fst-italic mb-3">
-                    {{ $t('hero.introduction.content') }}
+    <div class="introduction-separate py-4">
+        <div class="container">
+            <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
+                <div class="hero-introduction text-secondary backdrop">
+                    <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                    <div>{{ $t('hero.introduction.subtitle') }}</div>
+                    <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
+                    <div class="fst-italic mb-3">
+                        {{ $t('hero.introduction.content') }}
+                    </div>
                 </div>
-            </div>
-        </ScrollFadeIn>
+            </ScrollFadeIn>
+        </div>
     </div>
 </template>
 
@@ -201,6 +203,11 @@ export default {
 .hero-container {
     width: 100%;
     height: 90vh;
+    min-height: 720px;
+
+    @media (max-aspect-ratio: 12/9) {
+        min-height: auto;
+    }
 
     @media (max-aspect-ratio: 9/9) {
         height: 95vh;
@@ -255,11 +262,6 @@ export default {
         @media (max-aspect-ratio: 12/9) {
             right: 5%;
         }
-
-        /*@include media-breakpoint-down(sm) {
-            right: 5%;
-            top: 20px;
-        }*/
     }
 
     .hero-content {
@@ -285,15 +287,9 @@ export default {
         @media (max-aspect-ratio: 7/9) {
             top: auto;
             bottom: 18%;
-            width: 90%;
-            left: 5%;
+            width: 94%;
+            left: 3%;
         }
-
-        /*@include media-breakpoint-down(sm) {
-            top: 70%;
-            width: 90%;
-            left: 5%;
-        }*/
 
         .hero-title-container {
             @media (max-aspect-ratio: 9/9) {
@@ -302,6 +298,10 @@ export default {
                 border-radius: 0.5rem;
                 text-align: center;
                 display: inline-block;
+            }
+
+            @media (max-aspect-ratio: 6/9) {
+                padding: 4vw;
             }
 
             .hero-title {
@@ -317,12 +317,12 @@ export default {
                 }
 
                 @media (max-aspect-ratio: 7/9) {
-                    font-size: 8vw;
+                    font-size: 7.75vw;
                 }
 
-                /*@include media-breakpoint-down(sm) {
-                    font-size: 8vw;
-                }*/
+                @media (max-aspect-ratio: 6/9) {
+                    font-size: 9.5vw;
+                }
             }
 
             .menu-element {
@@ -338,6 +338,10 @@ export default {
 
                 @media (max-aspect-ratio: 7/9) {
                     font-size: 3vw;
+                }
+
+                @media (max-aspect-ratio: 6/9) {
+                    font-size: 3.5vw;
                 }
 
                 &:hover, &.menu-active {
@@ -419,6 +423,8 @@ export default {
     }
 
     .hero-introduction {
+        margin: 0;
+
         @media (max-aspect-ratio: 7/9) {
             display: block !important;
         }
