@@ -1,8 +1,11 @@
 <template>
-    <div style="position: fixed; height: 100vh; width: 100vw; z-index: -1;">
-        <img src="~/assets/images/Hero_Background.webp" class="hero-background">
-    </div>
-
+    <img
+        v-show="isBackgroundImgLoaded"
+        src="~/assets/images/Hero_Background.webp"
+        class="background-img"
+        ref="backgroundImg"
+        @load="backgroundImgLoaded"
+    >
 
     <Hero @navigation-body-img-finished="scrollToContent" />
     <div class="content-backdrop" ref="content">
@@ -15,37 +18,43 @@
 
 <script>
 export default {
+    data() {
+        return { isBackgroundImgLoaded: false };
+    },
+    mounted() {
+        if (this.$refs.backgroundImg.complete) {
+            this.backgroundImgLoaded();
+        }
+    },
     methods: {
         scrollToContent() {
             this.$refs.content.scrollIntoView();
+        },
+        backgroundImgLoaded() {
+            this.isBackgroundImgLoaded = true;
         }
     }
 };
 </script>
 
 <style lang="scss">
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
+@import "~/assets/bootstrap/variables";
 
-.content-backdrop {
-    background: rgba(0, 0, 0, 0.4);
-    position: relative;
+body {
+    background: black;
 
-    &:after {
-        content: '';
-        position: absolute;
+    .background-img {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: -1;
+        top: 0;
         left: 0;
-        right: 0;
-        height: 30px;
-        top: -30px;
-        bottom: 0;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+        object-fit: cover;
+    }
+
+    .content-backdrop {
+        background: $content-backdrop;
     }
 }
 </style>

@@ -1,6 +1,10 @@
 <template>
     <div class="hero-container position-relative" style="width: 100%; height: 90vh;">
-        <img :src="currentPageBodyImg" class="hero-body-img" ref="pageBodyImg">
+        <img
+            :src="currentPageBodyImg"
+            class="hero-body-img"
+            ref="pageBodyImg"
+        >
         <div class="language-selector-container">
             <LanguageSelector />
         </div>
@@ -19,27 +23,29 @@
                     <h1 class="hero-title text-primary text-uppercase fw-normal">
                         {{ $t('hero.title') }}
                     </h1>
-                    <NuxtLinkLocale
-                        to="/violinist"
-                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
-                        activeClass="menu-active"
-                    >
-                        {{ $t('hero.subtitle.violinist') }}
-                    </NuxtLinkLocale>
-                    <NuxtLinkLocale
-                        to="/composer"
-                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
-                        activeClass="menu-active"
-                    >
-                        {{ $t('hero.subtitle.composer') }}
-                    </NuxtLinkLocale>
-                    <NuxtLinkLocale
-                        to="/conductor"
-                        class="menu-element p-2 backdrop border border-secondary me-2 rounded"
-                        activeClass="menu-active"
-                    >
-                        {{ $t('hero.subtitle.conductor') }}
-                    </NuxtLinkLocale>
+                    <div class="d-flex justify-content-center flex-wrap" style="row-gap: 0.5rem;">
+                        <NuxtLinkLocale
+                            to="/violinist"
+                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            activeClass="menu-active"
+                        >
+                            {{ $t('hero.subtitle.violinist') }}
+                        </NuxtLinkLocale>
+                        <NuxtLinkLocale
+                            to="/composer"
+                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            activeClass="menu-active"
+                        >
+                            {{ $t('hero.subtitle.composer') }}
+                        </NuxtLinkLocale>
+                        <NuxtLinkLocale
+                            to="/conductor"
+                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            activeClass="menu-active"
+                        >
+                            {{ $t('hero.subtitle.conductor') }}
+                        </NuxtLinkLocale>
+                    </div>
                 </div>
             </ScrollFadeIn>
             
@@ -72,7 +78,7 @@
             <ScrollIndicator />
         </div>
     </div>
-    <div class="d-block d-sm-none p-4">
+    <div class="introduction-sm d-block d-sm-none p-4 pb-0">
         <ScrollFadeIn>
             <div
                 class="text-secondary backdrop"
@@ -113,16 +119,30 @@ export default {
         const currentPageBodyImg = ref(ALL_PAGE_BODY_IMG[getRouteBaseName(route)]);
         const pageBodyImg = useTemplateRef("pageBodyImg");
 
+        let isPageBodyImgInitLoaded = false;
+
+        const pageBodyImgInitLoaded = () => {
+            if (!isPageBodyImgInitLoaded) {
+                gsap.to(
+                    pageBodyImg.value,
+                    {
+                        opacity: 1,
+                        bottom: 0,
+                        duration: PAGE_BODY_TRANSITION_MS / 1000,
+                        ease: "power4.out"
+                    }
+                );
+
+                isPageBodyImgInitLoaded = true;
+            }
+        };
+
         onMounted(() => {
-            gsap.to(
-                pageBodyImg.value,
-                {
-                    opacity: 1,
-                    bottom: 0,
-                    duration: PAGE_BODY_TRANSITION_MS / 1000,
-                    ease: "power4.out"
-                }
-            );
+            if (pageBodyImg.value.complete) {
+                pageBodyImgInitLoaded();
+            } else {
+                pageBodyImg.value.addEventListener("load", pageBodyImgInitLoaded);
+            }
         });
 
         const router = useRouter();
@@ -152,13 +172,22 @@ export default {
 
             currentPageBodyImg.value = ALL_PAGE_BODY_IMG[toPageName];
 
+            let callback = null;
+
+            await new Promise(resolve => {
+                callback = resolve;
+                pageBodyImg.value.addEventListener("load", resolve);
+            });
+
+            pageBodyImg.value.removeEventListener("load", callback);
+
             await new Promise(resolve => {
                 gsap.to(
                     pageBodyImg.value,
                     {
                         opacity: 1,
                         bottom: 0,
-                        delay: 0.1,
+                        delay: 0.2, 
                         duration: PAGE_BODY_TRANSITION_MS / 1000,
                         ease: "power4.out",
                         onComplete: resolve
@@ -186,16 +215,24 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .hero-container {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 30px;
+        bottom: 0;
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    }
+
     .menu-element {
         transition: .3s;
 
         &:hover, &.menu-active {
             background: $primary-light;
             color: $dark;
-        }
-
-        &.menu-active {
-
         }
     }
 
@@ -261,5 +298,9 @@ export default {
             }
         }
     }
+}
+
+.introduction-sm {
+    background: $content-backdrop;
 }
 </style>
