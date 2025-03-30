@@ -1,5 +1,5 @@
 <template>
-    <section class="p-4 d-flex align-items-center flex-column">
+    <section class="p-sm-4 p-2 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
             <h3 class="mb-3 text-primary text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">

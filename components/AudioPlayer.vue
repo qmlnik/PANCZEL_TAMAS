@@ -17,7 +17,7 @@
                         {{ author }}
                     </div>
                 </div>
-                <div class="w-100">
+                <div class="w-100 d-none d-sm-block">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="d-flex align-items-center">
                             <div
@@ -72,6 +72,60 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="w-100 d-block d-sm-none mt-2">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex align-items-center">
+                <div
+                    class="fs-1 me-2 position-relative" style="left: -6px; cursor: pointer;"
+                    @click="togglePlay"
+                >
+                    <i
+                        class="bi"
+                        :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
+                    ></i>
+                </div>
+                <div>
+                    <span class="current">{{ currentTime }}</span>
+                    <span class="mx-1">/</span>
+                    <span>{{ length }}</span>
+                </div>
+            </div>
+            <div class="volume-container">
+                <div
+                    class="fs-3"
+                    style="cursor: pointer;"
+                    @click="toggleMute"
+                >
+                    <i
+                        class="bi"
+                        :class="[isMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
+                    ></i>
+                </div>
+                
+                <div class="volume-slider-container">
+                    <div
+                        ref="volumeSlider"
+                        class="volume-slider"
+                        @click="setVolume"
+                    >
+                        <div class="volume-percentage" ref="volumePercentage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            ref="timeline"
+            class="w-100 bg-secondary"
+            style="height: 8px; cursor: pointer;"
+            @click="setTime"
+        >
+            <div
+                ref="progressBar"
+                class="bg-primary h-100"
+                style="transition: .25s; width: 0;"
+            ></div>
         </div>
     </div>
     <div class="mt-3">

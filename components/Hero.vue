@@ -1,10 +1,12 @@
 <template>
-    <div class="hero-container position-relative" style="width: 100%; height: 90vh;">
-        <img
-            :src="currentPageBodyImg"
-            class="hero-body-img"
-            ref="pageBodyImg"
-        >
+    <div class="hero-container position-relative">
+        <div class="hero-body-img-container">
+            <img
+                :src="currentPageBodyImg"
+                class="hero-body-img"
+                ref="pageBodyImg"
+            >
+        </div>
         <div class="language-selector-container">
             <LanguageSelector />
         </div>
@@ -23,24 +25,24 @@
                     <h1 class="hero-title text-primary text-uppercase fw-normal">
                         {{ $t('hero.title') }}
                     </h1>
-                    <div class="d-flex justify-content-center flex-wrap" style="row-gap: 0.5rem;">
+                    <div class="d-flex d-sm-block justify-content-center flex-wrap" style="row-gap: 0.5rem;">
                         <NuxtLinkLocale
                             to="/violinist"
-                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             activeClass="menu-active"
                         >
                             {{ $t('hero.subtitle.violinist') }}
                         </NuxtLinkLocale>
                         <NuxtLinkLocale
                             to="/composer"
-                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             activeClass="menu-active"
                         >
                             {{ $t('hero.subtitle.composer') }}
                         </NuxtLinkLocale>
                         <NuxtLinkLocale
                             to="/conductor"
-                            class="menu-element p-2 backdrop border border-secondary me-2 rounded"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             activeClass="menu-active"
                         >
                             {{ $t('hero.subtitle.conductor') }}
@@ -49,48 +51,30 @@
                 </div>
             </ScrollFadeIn>
             
-            <div class="hero-card d-none d-sm-block">
-                <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
-                    <div
-                        class="text-secondary backdrop"
-                        style="
-                            border-radius: 0.5rem;
-                            padding: 1.5rem;
-                            margin-top: 75px;
-                            max-width: 600px;
-                        "
-                    >
-                        <h3 class="text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
-                        <div>{{ $t('hero.introduction.subtitle') }}</div>
-                        <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                        <div class="fst-italic mb-3">
-                            {{ $t('hero.introduction.content') }}
-                        </div>
-                        <button class="btn btn-primary text-dark">{{ $t('showMore') }}</button>
+            <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
+                <div class="hero-introduction text-secondary backdrop">
+                    <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                    <div>{{ $t('hero.introduction.subtitle') }}</div>
+                    <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
+                    <div class="fst-italic mb-3">
+                        {{ $t('hero.introduction.content') }}
                     </div>
-                </ScrollFadeIn>
-            </div>
+                </div>
+            </ScrollFadeIn>
         </div>
-        <div
-            class="position-absolute"
-            style="bottom: 3%; left: 50%; transform: translate(-50%, 0);"
-        >
+        <div class="scroll-indicator-container">
             <ScrollIndicator />
         </div>
     </div>
-    <div class="introduction-sm d-block d-sm-none p-4 pb-0">
-        <ScrollFadeIn>
-            <div
-                class="text-secondary backdrop"
-                style="border-radius: 0.5rem; padding: 1.5rem;"
-            >
-                <h3 class="text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+    <div class="introduction-separate p-4">
+        <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
+            <div class="hero-introduction text-secondary backdrop">
+                <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
                 <div>{{ $t('hero.introduction.subtitle') }}</div>
                 <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
                 <div class="fst-italic mb-3">
                     {{ $t('hero.introduction.content') }}
                 </div>
-                <button class="btn btn-primary text-dark">{{ $t('showMore') }}</button>
             </div>
         </ScrollFadeIn>
     </div>
@@ -215,7 +199,12 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .hero-container {
-    position: relative;
+    width: 100%;
+    height: 90vh;
+
+    @media (max-aspect-ratio: 9/9) {
+        height: 95vh;
+    }
 
     &:after {
         content: '';
@@ -227,80 +216,212 @@ export default {
         background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
     }
 
-    .menu-element {
-        transition: .3s;
+    .hero-body-img-container {
+        left: 5%;
+        width: 25%;
+        height: 95%;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
 
-        &:hover, &.menu-active {
-            background: $primary-light;
-            color: $dark;
+        @media (max-aspect-ratio: 12/9) {
+            height: 90%;
+            left: 8%;
+        }
+
+        @media (max-aspect-ratio: 9/9) {
+            left: 50%;
+            transform: translate(-50%, 0);
+            height: 98%;
+        }
+
+        .hero-body-img {
+            opacity: 0;
+            bottom: 30px;
+            position: relative;
+            height: 100%;
+            width: auto;
+            -webkit-mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
+            mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
         }
     }
 
     .language-selector-container {
         position: absolute;
-        right: 20%;
-        top: 50px;
+        right: 15%;
+        top: 5%;
 
-        @include media-breakpoint-down(sm) {
+        @media (max-aspect-ratio: 12/9) {
+            right: 5%;
+        }
+
+        /*@include media-breakpoint-down(sm) {
             right: 5%;
             top: 20px;
-        }
-    }
-
-    .hero-body-img {
-        opacity: 0;
-        position: absolute;
-        bottom: 100px;
-        left: 3%;
-        object-fit: contain;
-        height: 95%;
-        width: 33%;
-        -webkit-mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
-        mask-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) calc(100% - 30px), transparent);
-
-        @include media-breakpoint-down(sm) {
-            height: 100%;
-            width: auto;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-    }
-
-    .hero-title-container {
-        background: none;
-        padding: 0;
-
-        @include media-breakpoint-down(sm) {
-            background: $backdrop;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            text-align: center;
-        }
+        }*/
     }
 
     .hero-content {
         position: absolute;
         left: 35%;
-        top: 150px;
+        width: 50%;
+        top: 15%;
 
-        @include media-breakpoint-down(sm) {
-            top: 70%;
+        @media (max-aspect-ratio: 12/9) {
+            left: 41%;
+            width: 54%;
+        }
+
+        @media (max-aspect-ratio: 9/9) {
+            width: 80%;
+            left: 10%;
+            top: 25%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        @media (max-aspect-ratio: 7/9) {
+            top: auto;
+            bottom: 18%;
             width: 90%;
             left: 5%;
         }
 
-        .hero-title {
-            letter-spacing: 0.2rem;
-            font-size: 4rem;
+        /*@include media-breakpoint-down(sm) {
+            top: 70%;
+            width: 90%;
+            left: 5%;
+        }*/
 
-            @include media-breakpoint-down(sm) {
-                font-size: 8vw;
+        .hero-title-container {
+            @media (max-aspect-ratio: 9/9) {
+                background: $backdrop;
+                padding: 1.5rem;
+                border-radius: 0.5rem;
+                text-align: center;
+                display: inline-block;
             }
+
+            .hero-title {
+                letter-spacing: 0.2rem;
+                font-size: 4rem;
+
+                @media (max-aspect-ratio: 12/9) {
+                    font-size: 6vw;
+                }
+
+                @media (max-aspect-ratio: 9/9) {
+                    font-size: 7vw;
+                }
+
+                @media (max-aspect-ratio: 7/9) {
+                    font-size: 8vw;
+                }
+
+                /*@include media-breakpoint-down(sm) {
+                    font-size: 8vw;
+                }*/
+            }
+
+            .menu-element {
+                transition: .3s;
+
+                @media (max-aspect-ratio: 12/9) {
+                    font-size: 1.75vw;
+                }
+
+                @media (max-aspect-ratio: 9/9) {
+                    font-size: 2vw;
+                }
+
+                @media (max-aspect-ratio: 7/9) {
+                    font-size: 3vw;
+                }
+
+                &:hover, &.menu-active {
+                    background: $primary-light;
+                    color: $dark;
+                }
+            }
+        }
+    }
+
+    .scroll-indicator-container {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 1.25vw;
+        height: 1.25vw;
+
+        @media (max-aspect-ratio: 12/9) {
+            width: 2vw;
+            height: 2vw;
+        }
+
+        @media (max-aspect-ratio: 9/9) {
+            bottom: 8%;
+            width: 3vw;
+            height: 3vw;
+        }
+
+        @media (max-aspect-ratio: 7/9) {
+            width: 4vw;
+            height: 4vw;
         }
     }
 }
 
-.introduction-sm {
+.hero-introduction {
+    border-radius: 0.5rem;
+    padding: 1.75rem;
+    margin-top: 7%;
+    max-width: 600px;
+
+    @media (max-aspect-ratio: 12/9) {
+        font-size: 1.5vw;
+        max-width: none;
+    }
+
+    @media (max-aspect-ratio: 9/9) {
+        margin-top: 5%;
+        font-size: 2vw;
+    }
+
+    @media (max-aspect-ratio: 7/9) {
+        display: none;
+        font-size: 1rem;
+    }
+
+    .hero-introduction-title {
+        @media (max-aspect-ratio: 12/9) {
+            font-size: 3vw;
+        }
+
+        @media (max-aspect-ratio: 9/9) {
+            font-size: 3.5vw;
+        }
+
+        @media (max-aspect-ratio: 7/9) {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.introduction-separate {
     background: $content-backdrop;
+    display: none;
+
+    @media (max-aspect-ratio: 7/9) {
+        display: block;
+    }
+
+    .hero-introduction {
+        @media (max-aspect-ratio: 7/9) {
+            display: block !important;
+        }
+    }
 }
 </style>

@@ -9,7 +9,7 @@
 
     <Hero @navigation-body-img-finished="scrollToContent" />
     <div class="content-backdrop" ref="content">
-        <div class="container">
+        <div class="container-md">
             <NuxtPage />
         </div>
     </div>
@@ -41,8 +41,6 @@ export default {
 @import "~/assets/bootstrap/variables";
 
 body {
-    background: black;
-
     .background-img {
         position: fixed;
         height: 100vh;
