@@ -93,31 +93,42 @@ const PAGE_BODY_TRANSITION_MS = 500;
 export default {
     emits: ["navigationBodyImgFinished"],
     setup (props, { emit }) {
-        const route = useRoute();
-        const getRouteBaseName = useRouteBaseName();
+        const currentPageBodyImg = ref(null);
 
-        const currentPageBodyImg = ref(ALL_PAGE_BODY_IMG[getRouteBaseName(route)]);
         const pageBodyImg = useTemplateRef("pageBodyImg");
 
-        let isPageBodyImgInitLoaded = false;
+        onMounted(async () => {
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 10);
+            });
 
-        const pageBodyImgInitLoaded = () => {
-            if (!isPageBodyImgInitLoaded) {
-                gsap.to(
-                    pageBodyImg.value,
-                    {
-                        opacity: 1,
-                        bottom: 0,
-                        duration: PAGE_BODY_TRANSITION_MS / 1000,
-                        ease: "power4.out"
-                    }
-                );
+            const route = useRoute();
+            const getRouteBaseName = useRouteBaseName();
 
-                isPageBodyImgInitLoaded = true;
-            }
-        };
+            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getRouteBaseName(route)];
 
-        onMounted(() => {
+            console.log(currentPageBodyImg.value);
+
+            let isPageBodyImgInitLoaded = false;
+
+            const pageBodyImgInitLoaded = () => {
+                if (!isPageBodyImgInitLoaded) {
+                    gsap.to(
+                        pageBodyImg.value,
+                        {
+                            opacity: 1,
+                            bottom: 0,
+                            duration: PAGE_BODY_TRANSITION_MS / 1000,
+                            ease: "power4.out"
+                        }
+                    );
+
+                    isPageBodyImgInitLoaded = true;
+                }
+            };
+
             if (pageBodyImg.value.complete) {
                 pageBodyImgInitLoaded();
             } else {
@@ -128,6 +139,7 @@ export default {
         const router = useRouter();
 
         router.afterEach(async (to, from) => {
+            const getRouteBaseName = useRouteBaseName();
             const toPageName = getRouteBaseName(to);
             const fromPageName = getRouteBaseName(from);
 
