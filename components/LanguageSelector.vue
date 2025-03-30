@@ -5,7 +5,12 @@
             style="cursor: pointer;"
             data-bs-toggle="dropdown"
         >
-            <img :src="currentLocale.flag" :alt="currentLocale.code" width="25" />
+            <img
+                :src="currentLocale.flag"
+                :alt="currentLocale.code"
+                width="25"
+                alt="current locale flag"
+            />
             <span class="mx-1">{{ currentLocale.codeDisplay }}</span>
             <i class="bi bi-caret-down-fill" style="font-size: 0.75rem;"></i>
         </div>

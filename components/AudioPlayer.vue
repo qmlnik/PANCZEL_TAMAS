@@ -6,6 +6,7 @@
             width="150"
             height="150"
             style="box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 40px -5px; object-fit: cover;"
+            alt="cover"
         />
         <div class="ms-3 w-100">
             <div class="d-flex flex-column justify-content-between h-100 w-100">

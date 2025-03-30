@@ -16,6 +16,26 @@
     <Footer />
 </template>
 
+<script setup>
+const { t } = useI18n();
+const i18nHead = useLocaleHead({
+    addDirAttribute: true,
+    addSeoAttributes: true
+});
+
+useHead({
+    htmlAttrs: {
+        lang: () => i18nHead.value.htmlAttrs.lang,
+        dir: () => i18nHead.value.htmlAttrs.dir
+    },
+    link: [...(i18nHead.value.link || [])],
+    meta: [
+        { name: "description", content: () => t("meta.content") },
+        ...(i18nHead.value.meta || [])
+    ]
+});
+</script>
+
 <script>
 export default {
     data() {

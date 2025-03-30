@@ -37,6 +37,14 @@
     </section>
 </template>
 
+<script setup>
+const { t } = useI18n();
+
+useHead({
+    title: `${t("meta.title")} | ${t("meta.pageTitle.composer")}`,
+});
+</script>
+
 <script>
 import Letai_Kis_Gabi_Koszonom_hogy_vagy from "~/assets/songs/ghospel/Letai_Kis_Gabi_Koszonom_hogy_vagy.mp3";
 import Szeretet_himnusz from "~/assets/songs/ghospel/Szeretet_himnusz.mp3";

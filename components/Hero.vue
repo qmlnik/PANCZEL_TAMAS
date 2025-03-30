@@ -5,6 +5,9 @@
                 :src="currentPageBodyImg"
                 class="hero-body-img"
                 ref="pageBodyImg"
+                height="1177"
+                width="640"
+                alt="portrait"
             >
         </div>
         <div class="language-selector-container">
@@ -53,7 +56,7 @@
             
             <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
                 <div class="hero-introduction text-secondary backdrop">
-                    <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                    <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
                     <div class="fst-italic mb-3">
@@ -70,7 +73,7 @@
         <div class="container">
             <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
                 <div class="hero-introduction text-secondary backdrop">
-                    <h3 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h3>
+                    <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
                     <div class="fst-italic mb-3">
