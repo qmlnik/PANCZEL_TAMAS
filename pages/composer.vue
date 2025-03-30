@@ -1,7 +1,7 @@
 <template>
     <section class="p-sm-4 d-flex align-items-center flex-column">
         <div class="bg-light p-3 mb-4 fs-6 rounded">
-            <h3 class="mb-3 text-primary text-center">{{ $t("categories") }}</h3>
+            <h3 class="mb-3 text-primary-light text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
                 <div
                     v-for="songCategory in songCategoryOrder"
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ songCategories[currentCategory].title[$i18n.locale] }}</div>
+        <h3 class="text-center fs-2 text-primary-light mb-4 fw-bold">{{ songCategories[currentCategory].title[$i18n.locale] }}</h3>
         <ClientOnly>
             <div
                 v-for="({ [$i18n.locale]: { author, title, description }, src, cover }) in songCategories[currentCategory].songs"

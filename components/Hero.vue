@@ -13,15 +13,6 @@
         <div class="language-selector-container">
             <LanguageSelector />
         </div>
-        
-        <!--<picture>
-            <source
-                media="(max-width: 576px)"
-                srcset="~/assets/images/Tamas_mobile.jpg"
-            >
-            <source srcset="~/assets/images/header_background.avif">
-            <img style="object-fit: cover; height: 100%; width: 100%;" src="~/assets/images/header_background.avif" />
-        </picture>-->
         <div class="hero-content">
             <ScrollFadeIn :isBlockFadeInAfterLoad="true">
                 <div class="hero-title-container">
@@ -59,7 +50,7 @@
                     <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                    <div class="fst-italic mb-3">
+                    <div>
                         {{ $t('hero.introduction.content') }}
                     </div>
                 </div>
@@ -76,7 +67,7 @@
                     <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                    <div class="fst-italic mb-3">
+                    <div>
                         {{ $t('hero.introduction.content') }}
                     </div>
                 </div>
@@ -246,6 +237,10 @@ export default {
             height: 98%;
         }
 
+        @media screen and (orientation:landscape) and (max-height: SM) {
+            width: 20%;
+        }
+
         .hero-body-img {
             opacity: 0;
             bottom: 30px;
@@ -259,18 +254,14 @@ export default {
 
     .language-selector-container {
         position: absolute;
-        right: 15%;
+        right: 5%;
         top: 5%;
-
-        @media (max-aspect-ratio: 12/9) {
-            right: 5%;
-        }
     }
 
     .hero-content {
         position: absolute;
         left: 35%;
-        width: 50%;
+        width: 60%;
         top: 15%;
 
         @media (max-aspect-ratio: 12/9) {
@@ -292,6 +283,11 @@ export default {
             bottom: 18%;
             width: 94%;
             left: 3%;
+        }
+
+        @media screen and (orientation:landscape) and (max-height: SM) {
+            width: 65%;
+            left: 30%;
         }
 
         .hero-title-container {
@@ -324,7 +320,11 @@ export default {
                 }
 
                 @media (max-aspect-ratio: 6/9) {
-                    font-size: 9.5vw;
+                    font-size: 9vw;
+                }
+
+                @media screen and (orientation:landscape) and (max-height: 768px) {
+                    font-size: 6.75vw;
                 }
             }
 
@@ -347,6 +347,10 @@ export default {
                     font-size: 3.5vw;
                 }
 
+                @media screen and (orientation:landscape) and (max-height: 768px) {
+                    font-size: 2.25vw;
+                }
+
                 &:hover, &.menu-active {
                     background: $primary-light;
                     color: $dark;
@@ -360,8 +364,8 @@ export default {
         bottom: 5%;
         left: 50%;
         transform: translate(-50%, 0);
-        width: 1.25vw;
-        height: 1.25vw;
+        width: 20px;
+        height: 20px;
 
         @media (max-aspect-ratio: 12/9) {
             width: 2vw;
@@ -402,6 +406,10 @@ export default {
         font-size: 1rem;
     }
 
+    @media screen and (orientation:landscape) and (max-height: 768px) {
+        font-size: 2.15vw;
+    }
+
     .hero-introduction-title {
         @media (max-aspect-ratio: 12/9) {
             font-size: 3vw;
@@ -413,6 +421,10 @@ export default {
 
         @media (max-aspect-ratio: 7/9) {
             font-size: 1.5rem;
+        }
+
+        @media screen and (orientation:landscape) and (max-height: 768px) {
+            font-size: 3.5vw;
         }
     }
 }

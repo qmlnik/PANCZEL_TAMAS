@@ -1,5 +1,5 @@
 <template>
-
+    <h3 class="text-center fs-2 text-primary-light py-4 mb-0 fw-bold">{{ $t('hero.subtitle.conductor') }}</h3>
 </template>
 
 <script setup>

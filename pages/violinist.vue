@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center fs-2 text-primary mb-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</div>
+    <h3 class="text-center fs-2 text-primary-light py-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</h3>
     <div
         v-for="video in videos"
         :key="video"

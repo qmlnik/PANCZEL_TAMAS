@@ -18,7 +18,10 @@
                         {{ author }}
                     </div>
                 </div>
-                <div class="w-100 d-none d-sm-block">
+                <div
+                    v-if="!isMobileView"
+                    class="w-100"
+                >
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="d-flex align-items-center">
                             <div
@@ -75,7 +78,10 @@
             </div>
         </div>
     </div>
-    <div class="w-100 d-block d-sm-none mt-2">
+    <div
+        v-if="isMobileView"
+        class="w-100 mt-2"
+    >
         <div class="d-flex justify-content-between align-items-center w-100">
             <div class="d-flex align-items-center">
                 <div
@@ -163,16 +169,22 @@ export default {
     },
     data() {
         return {
-            audioPlayer: new Audio(this.src),
+            audioPlayer: null,
             currentTime: "00:00",
             length: "00:00",
             progressBarInterval: null,
             isPlaying: false,
             isMuted: false,
-            coverPlaceholder: cover_placeholder
+            coverPlaceholder: cover_placeholder,
+            isMobileView: false,
+            resizeEventListener: null
         };
     },
     mounted() {
+        this.audioPlayer = new Audio();
+        this.audioPlayer.preload = "none";
+        this.audioPlayer.src = this.src;
+        
         this.audioPlayer.addEventListener(
             "loadeddata",
             () => {
@@ -185,6 +197,15 @@ export default {
             },
             false
         );
+
+        this.isMobileView = window.innerWidth < 576;
+
+        this.resizeEventListener = window.addEventListener("resize", () => {
+            this.isMobileView = window.innerWidth < 576;
+        });
+    },
+    beforeUnmount() {
+        window.removeEventListener("resize", this.resizeEventListener);
     },
     methods: {
         getTimeCodeFromNum(num) {
@@ -213,7 +234,6 @@ export default {
             const sliderHeight = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).height);
             const newVolume = (sliderHeight - offsetY) / sliderHeight;
             this.audioPlayer.volume = newVolume;
-            console.log(offsetY, sliderHeight, newVolume);
             this.$refs.volumePercentage.style.height = (newVolume * 100 + 1.5) + "%";
         },
         togglePlay() {

@@ -4,6 +4,7 @@
         src="~/assets/images/Hero_Background.webp"
         class="background-img"
         ref="backgroundImg"
+        alt="background"
         @load="backgroundImgLoaded"
     >
 
