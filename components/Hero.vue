@@ -295,9 +295,10 @@ export default {
             left: 3%;
         }
 
-        @media screen and (orientation:landscape) and (max-height: SM) {
+        @media screen and (orientation: landscape) and (max-width: 992px) {
             width: 65%;
             left: 30%;
+            top: 12%;
         }
 
         .hero-title-container {
@@ -333,7 +334,7 @@ export default {
                     font-size: 9vw;
                 }
 
-                @media screen and (orientation:landscape) and (max-height: 768px) {
+                @media screen and (orientation:landscape) and (max-width: 992px) {
                     font-size: 6.75vw;
                 }
             }
@@ -357,7 +358,7 @@ export default {
                     font-size: 3.5vw;
                 }
 
-                @media screen and (orientation:landscape) and (max-height: 768px) {
+                @media screen and (orientation:landscape) and (max-width: 992px) {
                     font-size: 2.25vw;
                 }
 
@@ -416,7 +417,7 @@ export default {
         font-size: 1rem;
     }
 
-    @media screen and (orientation:landscape) and (max-height: 768px) {
+    @media screen and (orientation:landscape) and (max-width: 992px) {
         font-size: 2.15vw;
     }
 
@@ -433,7 +434,7 @@ export default {
             font-size: 1.5rem;
         }
 
-        @media screen and (orientation:landscape) and (max-height: 768px) {
+        @media screen and (orientation:landscape) and (max-width: 992px) {
             font-size: 3.5vw;
         }
     }
