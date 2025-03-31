@@ -162,14 +162,16 @@ export default {
 
             currentPageBodyImg.value = ALL_PAGE_BODY_IMG[toPageName];
 
-            let callback = null;
+            if (!pageBodyImg.value?.complete) {
+                let callback = null;
 
-            await new Promise(resolve => {
-                callback = resolve;
-                pageBodyImg.value.addEventListener("load", resolve);
-            });
+                await new Promise(resolve => {
+                    callback = resolve;
+                    pageBodyImg.value.addEventListener("load", resolve);
+                });
 
-            pageBodyImg.value.removeEventListener("load", callback);
+                pageBodyImg.value.removeEventListener("load", callback);
+            }
 
             await new Promise(resolve => {
                 gsap.to(
@@ -317,6 +319,7 @@ export default {
             .hero-title {
                 letter-spacing: 0.2rem;
                 font-size: 4rem;
+                font-family: heroHeader;
 
                 @media (max-aspect-ratio: 12/9) {
                     font-size: 6vw;

@@ -10,7 +10,7 @@ export default defineI18nConfig(() => ({
                     composer: "Composer",
                     conductor: "Conductor"
                 },
-                content: "At the heart of this extraordinary artist\"s musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself."
+                content: "Official site of Tamas Panczel Hungarian composer, conductor and violinist."
             },
             error: {
                 general: "An error has occured, back to the homepage",
@@ -49,7 +49,7 @@ export default defineI18nConfig(() => ({
                     composer: "Zeneszerző",
                     conductor: "Karmester"
                 },
-                content: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos."
+                content: "Pánczél Tamás magyar zeneszerző, karmester és hegedűművész hivatalos oldala."
             },
             error: {
                 general: "Hiba történt, vissza a főoldalra",
