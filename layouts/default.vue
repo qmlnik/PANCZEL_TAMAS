@@ -32,6 +32,7 @@ useHead({
     link: [...(i18nHead.value.link || [])],
     meta: [
         { name: "description", content: () => t("meta.content") },
+        { name: "robots", content: "noindex, nofollow" },
         ...(i18nHead.value.meta || [])
     ]
 });
