@@ -9,7 +9,7 @@
     >
 
     <Hero @navigation-body-img-finished="scrollToContent" />
-    <div class="content-backdrop" ref="content">
+    <div class="content-backdrop w-100 d-inline-block" ref="content">
         <div class="container-md">
             <NuxtPage />
         </div>

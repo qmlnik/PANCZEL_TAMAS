@@ -2,6 +2,7 @@
     <div class="hero-container position-relative">
         <div class="hero-body-img-container">
             <img
+                :key="imgUpdateKey"
                 :src="currentPageBodyImg"
                 class="hero-body-img"
                 ref="pageBodyImg"
@@ -97,6 +98,8 @@ export default {
 
         const pageBodyImg = useTemplateRef("pageBodyImg");
 
+        const imgUpdateKey = ref(0);
+
         onMounted(async () => {
             await new Promise(resolve => {
                 setTimeout(() => {
@@ -161,6 +164,9 @@ export default {
             });
 
             currentPageBodyImg.value = ALL_PAGE_BODY_IMG[toPageName];
+            imgUpdateKey.value++;
+
+            await nextTick();
 
             if (!pageBodyImg.value?.complete) {
                 let callback = null;
@@ -190,7 +196,7 @@ export default {
             emit("navigationBodyImgFinished");
         })
 
-        return { currentPageBodyImg, $store: useMainStore() };
+        return { imgUpdateKey, currentPageBodyImg, $store: useMainStore() };
     },
     mounted() {
         setTimeout(() => {
