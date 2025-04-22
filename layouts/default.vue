@@ -9,7 +9,7 @@
     >
 
     <Hero @navigation-body-img-finished="scrollToContent" />
-    <div class="content-backdrop" ref="content">
+    <div class="content-backdrop w-100 d-inline-block" ref="content">
         <div class="container-md">
             <NuxtPage />
         </div>
@@ -32,6 +32,7 @@ useHead({
     link: [...(i18nHead.value.link || [])],
     meta: [
         { name: "description", content: () => t("meta.content") },
+        { name: "robots", content: "noindex, nofollow" },
         ...(i18nHead.value.meta || [])
     ]
 });

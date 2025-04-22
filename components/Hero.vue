@@ -2,6 +2,7 @@
     <div class="hero-container position-relative">
         <div class="hero-body-img-container">
             <img
+                :key="imgUpdateKey"
                 :src="currentPageBodyImg"
                 class="hero-body-img"
                 ref="pageBodyImg"
@@ -97,6 +98,8 @@ export default {
 
         const pageBodyImg = useTemplateRef("pageBodyImg");
 
+        const imgUpdateKey = ref(0);
+
         onMounted(async () => {
             await new Promise(resolve => {
                 setTimeout(() => {
@@ -161,15 +164,20 @@ export default {
             });
 
             currentPageBodyImg.value = ALL_PAGE_BODY_IMG[toPageName];
+            imgUpdateKey.value++;
 
-            let callback = null;
+            await nextTick();
 
-            await new Promise(resolve => {
-                callback = resolve;
-                pageBodyImg.value.addEventListener("load", resolve);
-            });
+            if (!pageBodyImg.value?.complete) {
+                let callback = null;
 
-            pageBodyImg.value.removeEventListener("load", callback);
+                await new Promise(resolve => {
+                    callback = resolve;
+                    pageBodyImg.value.addEventListener("load", resolve);
+                });
+
+                pageBodyImg.value.removeEventListener("load", callback);
+            }
 
             await new Promise(resolve => {
                 gsap.to(
@@ -188,7 +196,7 @@ export default {
             emit("navigationBodyImgFinished");
         })
 
-        return { currentPageBodyImg, $store: useMainStore() };
+        return { imgUpdateKey, currentPageBodyImg, $store: useMainStore() };
     },
     mounted() {
         setTimeout(() => {
@@ -295,9 +303,10 @@ export default {
             left: 3%;
         }
 
-        @media screen and (orientation:landscape) and (max-height: SM) {
+        @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
             width: 65%;
             left: 30%;
+            top: 12%;
         }
 
         .hero-title-container {
@@ -316,6 +325,7 @@ export default {
             .hero-title {
                 letter-spacing: 0.2rem;
                 font-size: 4rem;
+                font-family: heroHeader;
 
                 @media (max-aspect-ratio: 12/9) {
                     font-size: 6vw;
@@ -333,7 +343,7 @@ export default {
                     font-size: 9vw;
                 }
 
-                @media screen and (orientation:landscape) and (max-height: 768px) {
+                @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
                     font-size: 6.75vw;
                 }
             }
@@ -357,7 +367,7 @@ export default {
                     font-size: 3.5vw;
                 }
 
-                @media screen and (orientation:landscape) and (max-height: 768px) {
+                @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
                     font-size: 2.25vw;
                 }
 
@@ -416,7 +426,7 @@ export default {
         font-size: 1rem;
     }
 
-    @media screen and (orientation:landscape) and (max-height: 768px) {
+    @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
         font-size: 2.15vw;
     }
 
@@ -433,7 +443,7 @@ export default {
             font-size: 1.5rem;
         }
 
-        @media screen and (orientation:landscape) and (max-height: 768px) {
+        @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
             font-size: 3.5vw;
         }
     }

@@ -44,10 +44,12 @@ export default {
         this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
         this.setCollapseHeight();
 
-        this.resizeEventListener = window.addEventListener("resize", () => {
+        this.resizeEventListener = () => {
             this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
             this.setCollapseHeight();
-        });
+        };
+
+        window.addEventListener("resize", this.resizeEventListener);
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.resizeEventListener);

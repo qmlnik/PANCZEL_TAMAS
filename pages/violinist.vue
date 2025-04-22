@@ -1,16 +1,9 @@
 <template>
     <h3 class="text-center fs-2 text-primary-light py-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</h3>
-    <div
-        v-for="video in videos"
-        :key="video"
-        class="d-flex"
-    >
-        <ScrollFadeIn class="w-100 mb-3">
-            <div class="p-3 rounded bg-light">
-                <iframe class="w-100" style="aspect-ratio: 16 / 9;" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </ScrollFadeIn>
-    </div>
+    <Content
+        ref="content"
+        :contents="content"
+    />
 </template>
 
 <script setup>
@@ -22,13 +15,43 @@ useHead({
 </script>
 
 <script>
+import Bach_Largo from "~/assets/songs/composer/other_composers_style/Bach_Largo.mp3";
+import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
+
 export default {
     data() {
         return {
-            videos: [
-                "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD",
-                "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9",
-                "https://www.youtube.com/embed/muFgh1CSPEE?si=oLY-NrJh-hg6hkMl"
+            content: [
+                {
+                    type: CONTENT_TYPE.AUDIO,
+                    en: {
+                        author: "Tamas Panczel",
+                        title: "Bach Largo",
+                        description: ""
+                    },
+                    hu: {
+                        author: "Pánczél Tamás",
+                        title: "Bach Largo",
+                        description: ""
+                    },
+                    src: Bach_Largo,
+                    cover: null
+                },
+                {
+                    type: CONTENT_TYPE.AUDIO,
+                    en: {
+                        author: "Tamas Panczel",
+                        title: "extract of g-minor fuge",
+                        description: ""
+                    },
+                    hu: {
+                        author: "Pánczél Tamás",
+                        title: "g-moll fuga részlet",
+                        description: ""
+                    },
+                    src: gmollfugareszlet,
+                    cover: null
+                }
             ]
         };
     }

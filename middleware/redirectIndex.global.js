@@ -4,6 +4,6 @@ export default defineNuxtRouteMiddleware(to => {
     if (isRedirectFromIndex) {
         const localePath = useLocalePath();
 
-        return navigateTo(localePath("violinist"));
+        return navigateTo(localePath("composer"));
     }
 });

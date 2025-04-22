@@ -10,7 +10,7 @@ export default defineI18nConfig(() => ({
                     composer: "Composer",
                     conductor: "Conductor"
                 },
-                content: "At the heart of this extraordinary artist\"s musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself."
+                content: "Official site of Tamas Panczel Hungarian composer, conductor and violinist."
             },
             error: {
                 general: "An error has occured, back to the homepage",
@@ -22,7 +22,11 @@ export default defineI18nConfig(() => ({
             languageSelect: "Select language",
             hero: {
                 title: "tamas panczel",
-                subtitle: "Violinist. Composer. Conductor",
+                subtitle: {
+                    violinist: "Violinist",
+                    composer: "Composer",
+                    conductor: "Conductor"
+                },
                 introduction: {
                     title: "introduction",
                     subtitle: "Passion drives every note",
@@ -38,12 +42,30 @@ export default defineI18nConfig(() => ({
             }
         },
         hu: {
+            meta: {
+                title: "Pánczél Tamás",
+                pageTitle: {
+                    violinist: "Hegedűművész",
+                    composer: "Zeneszerző",
+                    conductor: "Karmester"
+                },
+                content: "Pánczél Tamás magyar zeneszerző, karmester és hegedűművész hivatalos oldala."
+            },
+            error: {
+                general: "Hiba történt, vissza a főoldalra",
+                '404': "Oldal nem található",
+                back: "Vissza a főoldalra"
+            },
             showMore: "Többet",
             showLess: "Kevesebbet",
             languageSelect: "Nyelv választása",
             hero: {
                 title: "pánczél tamás",
-                subtitle: "Hegedűművész. Zeneszerző.",
+                subtitle: {
+                    violinist: "Hegedűművész",
+                    composer: "Zeneszerző",
+                    conductor: "Karmester"
+                },
                 introduction: {
                     title: "bemutatkozás",
                     subtitle: "Minden hangot a szenvedély vezet",

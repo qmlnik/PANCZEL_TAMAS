@@ -201,10 +201,12 @@ export default {
         );
 
         this.isMobileView = window.innerWidth < 576;
-
-        this.resizeEventListener = window.addEventListener("resize", () => {
+        
+        this.resizeEventListener = () => {
             this.isMobileView = window.innerWidth < 576;
-        });
+        };
+
+        window.addEventListener("resize", this.resizeEventListener);
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.resizeEventListener);
