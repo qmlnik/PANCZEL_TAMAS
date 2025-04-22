@@ -7,9 +7,13 @@ html, body, body > div:first-of-type {
 
 a {
     text-decoration: none;
-    color: $light;
+    color: $secondary;
 }
 
 .backdrop {
     background: $backdrop;
+}
+
+.text-primary-light {
+    color: $primary-light;
 }

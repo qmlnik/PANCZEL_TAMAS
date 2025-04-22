@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="w-100 h-100">
         <div class="scroll-indicator-arrow" style="margin-bottom: -3px;"></div>
         <div class="scroll-indicator-arrow" style="animation-delay: 100ms"></div>
     </div>
@@ -14,8 +14,8 @@
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .scroll-indicator-arrow {
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
     border-width: 2px;
     border-right-color: white;
     border-bottom-color: white;
@@ -26,16 +26,6 @@
     position: relative;
     border-radius: 2px;
     animation: scroll-indicator 1.5s infinite;
-
-    @include media-breakpoint-down(md) {
-        width: 20px;
-        height: 20px;
-    }
-
-    @include media-breakpoint-down(sm) {
-        width: 15px;
-        height: 15px;
-    }
 }
 
 @keyframes scroll-indicator {

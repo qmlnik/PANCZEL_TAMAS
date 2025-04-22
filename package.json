@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host=0.0.0.0",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -17,6 +17,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "flag-icons": "^7.3.2",
+    "gsap": "^3.12.7",
     "nuxt": "^3.15.4",
     "pinia": "^2.3.1",
     "scroll-animations-js": "^1.0.12",

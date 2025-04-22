@@ -1,11 +1,12 @@
 <template>
-<div class="audio-player p-4 rounded bg-light">
+<div class="audio-player p-3 p-sm-4 rounded bg-light">
     <div class="d-flex">
         <img
             :src="cover?.length ? cover : coverPlaceholder"
             width="150"
             height="150"
             style="box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 40px -5px; object-fit: cover;"
+            alt="cover"
         />
         <div class="ms-3 w-100">
             <div class="d-flex flex-column justify-content-between h-100 w-100">
@@ -17,7 +18,10 @@
                         {{ author }}
                     </div>
                 </div>
-                <div class="w-100">
+                <div
+                    v-if="!isMobileView"
+                    class="w-100"
+                >
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="d-flex align-items-center">
                             <div
@@ -74,6 +78,63 @@
             </div>
         </div>
     </div>
+    <div
+        v-if="isMobileView"
+        class="w-100 mt-2"
+    >
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex align-items-center">
+                <div
+                    class="fs-1 me-2 position-relative" style="left: -6px; cursor: pointer;"
+                    @click="togglePlay"
+                >
+                    <i
+                        class="bi"
+                        :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
+                    ></i>
+                </div>
+                <div>
+                    <span class="current">{{ currentTime }}</span>
+                    <span class="mx-1">/</span>
+                    <span>{{ length }}</span>
+                </div>
+            </div>
+            <div class="volume-container">
+                <div
+                    class="fs-3"
+                    style="cursor: pointer;"
+                    @click="toggleMute"
+                >
+                    <i
+                        class="bi"
+                        :class="[isMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
+                    ></i>
+                </div>
+                
+                <div class="volume-slider-container">
+                    <div
+                        ref="volumeSlider"
+                        class="volume-slider"
+                        @click="setVolume"
+                    >
+                        <div class="volume-percentage" ref="volumePercentage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            ref="timeline"
+            class="w-100 bg-secondary"
+            style="height: 8px; cursor: pointer;"
+            @click="setTime"
+        >
+            <div
+                ref="progressBar"
+                class="bg-primary h-100"
+                style="transition: .25s; width: 0;"
+            ></div>
+        </div>
+    </div>
     <div class="mt-3">
         <ShowMore :content="description" />
     </div>
@@ -108,28 +169,45 @@ export default {
     },
     data() {
         return {
-            audioPlayer: new Audio(this.src),
+            audioPlayer: null,
             currentTime: "00:00",
             length: "00:00",
             progressBarInterval: null,
             isPlaying: false,
             isMuted: false,
-            coverPlaceholder: cover_placeholder
+            coverPlaceholder: cover_placeholder,
+            isMobileView: false,
+            resizeEventListener: null
         };
     },
     mounted() {
+        this.audioPlayer = new Audio();
+        //this.audioPlayer.preload = "none";
+        this.audioPlayer.src = this.src;
+
+        this.audioPlayer.volume = .75;
+                
+        // language select reference null
+        if (this.$refs.volumePercentage !== null) {
+            this.$refs.volumePercentage.style.height = "75%";
+        }
+
         this.audioPlayer.addEventListener(
             "loadeddata",
             () => {
                 this.length = this.getTimeCodeFromNum(this.audioPlayer.duration);
-                this.audioPlayer.volume = .75;
-                // language select reference null
-                if (this.$refs.volumePercentage !== null) {
-                    this.$refs.volumePercentage.style.height = "75%";
-                }
             },
             false
         );
+
+        this.isMobileView = window.innerWidth < 576;
+
+        this.resizeEventListener = window.addEventListener("resize", () => {
+            this.isMobileView = window.innerWidth < 576;
+        });
+    },
+    beforeUnmount() {
+        window.removeEventListener("resize", this.resizeEventListener);
     },
     methods: {
         getTimeCodeFromNum(num) {
@@ -158,7 +236,6 @@ export default {
             const sliderHeight = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).height);
             const newVolume = (sliderHeight - offsetY) / sliderHeight;
             this.audioPlayer.volume = newVolume;
-            console.log(offsetY, sliderHeight, newVolume);
             this.$refs.volumePercentage.style.height = (newVolume * 100 + 1.5) + "%";
         },
         togglePlay() {

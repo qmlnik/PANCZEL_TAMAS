@@ -20,7 +20,7 @@
 </template>
 
 <script>
-const COLLAPSED_HEIGHT = 50;
+const COLLAPSED_HEIGHT = 200;
 
 export default {
     props: {
@@ -29,7 +29,12 @@ export default {
             required: true
         }
     },
-    data: () => ({ isShowMoreOpen: false, isDisplayShowMore: false, collapseHeight: 'auto' }),
+    data: () => ({
+        isShowMoreOpen: false,
+        isDisplayShowMore: false,
+        collapseHeight: 'auto',
+        resizeEventListener: null
+    }),
     watch: {
         isShowMoreOpen() {
             this.setCollapseHeight();
@@ -38,6 +43,14 @@ export default {
     mounted() {
         this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
         this.setCollapseHeight();
+
+        this.resizeEventListener = window.addEventListener("resize", () => {
+            this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
+            this.setCollapseHeight();
+        });
+    },
+    beforeUnmount() {
+        window.removeEventListener("resize", this.resizeEventListener);
     },
     methods: {
         setCollapseHeight() {
