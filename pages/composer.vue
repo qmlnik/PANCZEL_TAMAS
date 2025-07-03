@@ -48,7 +48,7 @@ import Klezmer_Szvit from "~/assets/songs/composer/classic/Klezmer_Szvit.mp3";
 
 import Létai_Kis_Gabi from "~/assets/images/Létai_Kis_Gabi.jpg";
 
-import pecsitibor from "~/assets/images/pecsitibor.jpg";
+
 
 export default {
     data() {
@@ -64,22 +64,11 @@ export default {
                     content: [
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD" 
+                            src: "https://www.youtube.com/watch?v=Z_wT0pKZZf4" 
                         },
                         {
-                            type: CONTENT_TYPE.AUDIO,
-                            en: {
-                                author: "Tamas Panczel",
-                                title: "Szeretet himnusz",
-                                description: ""
-                            },
-                            hu: {
-                                author: "Pánczél Tamás",
-                                title: "Szeretet himnusz",
-                                description: ""
-                            },
-                            src: Szeretet_himnusz,
-                            cover: null
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/watch?v=3Tpobd5Fn80&list=RD3Tpobd5Fn80&start_radio=1" 
                         },
                         {
                             type: CONTENT_TYPE.AUDIO,
@@ -115,15 +104,34 @@ export default {
                             type: CONTENT_TYPE.AUDIO,
                             en: {
                                 author: "Tamas Panczel",
-                                title: "Hadd éljek",
+                                title: "Klezmer Szvit",
                                 description: ""
                             },
                             hu: {
                                 author: "Pánczél Tamás",
-                                title: "Hadd éljek",
+                                title: "Klezmer Szvit",
                                 description: ""
                             },
-                            src: Hadd_eljek,
+                            src: Klezmer_Szvit,
+                            cover: null
+                        },
+                        {
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD" 
+                        },
+                        {
+                            type: CONTENT_TYPE.AUDIO,
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Szeretet himnusz",
+                                description: ""
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Szeretet himnusz",
+                                description: ""
+                            },
+                            src: Szeretet_himnusz,
                             cover: null
                         },
                         {
@@ -150,10 +158,25 @@ export default {
                             },
                             hu: {
                                 author: "Pánczél Tamás",
-                                title: "Psalm 29",
+                                title: "29. Zsoltár",
                                 description: ""
                             },
                             src: Psalm_29,
+                            cover: null
+                        },
+                        {
+                            type: CONTENT_TYPE.AUDIO,
+                            en: {
+                                author: "Tamas Panczel",
+                                title: "Hadd éljek",
+                                description: ""
+                            },
+                            hu: {
+                                author: "Pánczél Tamás",
+                                title: "Hadd éljek",
+                                description: ""
+                            },
+                            src: Hadd_eljek,
                             cover: null
                         },
                         {
@@ -172,20 +195,9 @@ export default {
                             cover: null
                         },
                         {
-                            type: CONTENT_TYPE.AUDIO,
-                            en: {
-                                author: "Tamas Panczel",
-                                title: "Klezmer Szvit",
-                                description: ""
-                            },
-                            hu: {
-                                author: "Pánczél Tamás",
-                                title: "Klezmer Szvit",
-                                description: ""
-                            },
-                            src: Klezmer_Szvit,
-                            cover: null
-                        }
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/watch?v=bTg4-bp8DKU&list=RDbTg4-bp8DKU&start_radio=1" 
+                        },
                     ]
                 },
                 anotherComposerStyle: {
@@ -200,8 +212,20 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/muFgh1CSPEE?si=oLY-NrJh-hg6hkMl" 
+                            src: "https://www.youtube.com/watch?v=c6KBV3-ljEw" 
                         },
+                        {
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/watch?v=GoFo-taTX5w" 
+                        },
+                        {
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/watch?v=3hfql7b-DnQ" 
+                        },
+                        {
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/watch?v=8D7ZzNtR-eI" 
+                        }
                     ]
                 },
                 gospel: {
@@ -223,7 +247,7 @@ export default {
                                 description: ""
                             },
                             src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
-                            cover: Létai_Kis_Gabi
+                            cover: null
                         },
                         {
                             type: CONTENT_TYPE.AUDIO,
@@ -239,7 +263,7 @@ export default {
                             },
                             src: Fejes_Zolies_es_a_Vidam_Szimfonikusok,
                             cover: null
-                        }
+                        },
                     ]
                 }
             }

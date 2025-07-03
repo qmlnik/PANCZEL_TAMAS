@@ -83,6 +83,7 @@ import { useMainStore } from "~/stores";
 
 import heroBodyConductorImg from "~/assets/images/hero_body_conductor.png";
 import heroBodyViolinistImg from "~/assets/images/hero_body_violinist.png";
+import PT_composer__main from "~/assets/images/PT_composer_main.png";
 
 const ALL_PAGE_BODY_IMG = {
     composer: heroBodyConductorImg,
