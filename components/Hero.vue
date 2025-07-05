@@ -87,7 +87,7 @@ import PT_composer__main from "~/assets/images/PT_composer_main.png";
 
 const ALL_PAGE_BODY_IMG = {
     composer: heroBodyConductorImg,
-    conductor: heroBodyConductorImg,
+    conductor: PT_composer__main,
     violinist: heroBodyViolinistImg,
 };
 const PAGE_BODY_TRANSITION_MS = 500;

@@ -23,8 +23,8 @@ export default defineI18nConfig(() => ({
             hero: {
                 title: "tamas panczel",
                 subtitle: {
-                    violinist: "Violinist",
                     composer: "Composer",
+                    violinist: "Violinist",
                     conductor: "Conductor"
                 },
                 introduction: {
@@ -45,11 +45,11 @@ export default defineI18nConfig(() => ({
             meta: {
                 title: "Pánczél Tamás",
                 pageTitle: {
-                    violinist: "Hegedűművész",
                     composer: "Zeneszerző",
+                    violinist: "Hegedűművész",
                     conductor: "Karmester"
                 },
-                content: "Pánczél Tamás magyar zeneszerző, karmester és hegedűművész hivatalos oldala."
+                content: "Pánczél Tamás magyar zeneszerző, hegedűművész és karmester hivatalos oldala."
             },
             error: {
                 general: "Hiba történt, vissza a főoldalra",
