@@ -26,12 +26,12 @@ export default {
                     type: CONTENT_TYPE.AUDIO,
                     en: {
                         author: "Tamas Panczel",
-                        title: "Bach Largo",
+                        title: "J.S.Bach - Largo from C major solo sonata",
                         description: ""
                     },
                     hu: {
                         author: "Pánczél Tamás",
-                        title: "Bach Largo",
+                        title: "J.S.Bach - Largo C dúr szóló szonátából",
                         description: ""
                     },
                     src: Bach_Largo,
@@ -41,12 +41,12 @@ export default {
                     type: CONTENT_TYPE.AUDIO,
                     en: {
                         author: "Tamas Panczel",
-                        title: "extract of g-minor fuge",
+                        title: "J.S.Bach - Fuge (extract) from g-minor",
                         description: ""
                     },
                     hu: {
                         author: "Pánczél Tamás",
-                        title: "g-moll fuga részlet",
+                        title: "J.S.Bach - Fúga (részlet) g-moll szonátából",
                         description: ""
                     },
                     src: gmollfugareszlet,

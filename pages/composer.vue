@@ -64,7 +64,7 @@ export default {
                     content: [
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=Z_wT0pKZZf4" 
+                            src: "https://www.youtube.com/embed/Z_wT0pKZZf4?si=V5jqnvrByMw94RFM" 
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
@@ -196,7 +196,7 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=bTg4-bp8DKU&list=RDbTg4-bp8DKU&start_radio=1" 
+                            src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3" 
                         },
                     ]
                 },
@@ -212,19 +212,19 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=c6KBV3-ljEw" 
+                            src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z" 
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=GoFo-taTX5w" 
+                            src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m" 
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=3hfql7b-DnQ" 
+                            src: "https://www.youtube.com/embed/3hfql7b-DnQ?si=PE1LpV6PGdIrOiNw" 
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=8D7ZzNtR-eI" 
+                            src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI" 
                         }
                     ]
                 },

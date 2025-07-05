@@ -18,7 +18,12 @@ useHead({
 export default {
     data() {
         return {
-            content: []
+            content: [
+                {
+                            type: CONTENT_TYPE.IFRAME,
+                            src: "https://www.youtube.com/embed/vZqGJ2_cAr4?si=6F6KNZ9VSHXNukQR" 
+                }
+            ]
         };
     }
 };
