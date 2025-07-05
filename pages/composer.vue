@@ -68,7 +68,7 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/watch?v=3Tpobd5Fn80&list=RD3Tpobd5Fn80&start_radio=1" 
+                            src: "https://www.youtube.com/embed/3Tpobd5Fn80?si=TTI-8mjiCoIYfTpV" 
                         },
                         {
                             type: CONTENT_TYPE.AUDIO,

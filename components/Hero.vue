@@ -22,18 +22,18 @@
                     </h1>
                     <div class="d-flex d-sm-block justify-content-center flex-wrap" style="row-gap: 0.5rem;">
                         <NuxtLinkLocale
-                            to="/violinist"
-                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
-                            activeClass="menu-active"
-                        >
-                            {{ $t('hero.subtitle.violinist') }}
-                        </NuxtLinkLocale>
-                        <NuxtLinkLocale
                             to="/composer"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             activeClass="menu-active"
                         >
                             {{ $t('hero.subtitle.composer') }}
+                        </NuxtLinkLocale>
+                        <NuxtLinkLocale
+                            to="/violinist"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
+                            activeClass="menu-active"
+                        >
+                            {{ $t('hero.subtitle.violinist') }}
                         </NuxtLinkLocale>
                         <NuxtLinkLocale
                             to="/conductor"
