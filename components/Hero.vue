@@ -1,9 +1,12 @@
 <template>
     <div class="hero-container position-relative">
-        <div class="hero-body-img-container">
+        <div
+            class="hero-body-img-container"
+            :class="[currentPageBodyImg?.isAlignLeft ? 'hero-body-img-align-left' : null]"
+        >
             <img
                 :key="imgUpdateKey"
-                :src="currentPageBodyImg"
+                :src="currentPageBodyImg?.src"
                 class="hero-body-img"
                 ref="pageBodyImg"
                 height="1177"
@@ -83,12 +86,21 @@ import { useMainStore } from "~/stores";
 
 import heroBodyConductorImg from "~/assets/images/hero_body_conductor.png";
 import heroBodyViolinistImg from "~/assets/images/hero_body_violinist.png";
-import PT_composer__main from "~/assets/images/PT_composer_main.png";
+import heroBodyComposer from "~/assets/images/hero_body_composer.png";
 
 const ALL_PAGE_BODY_IMG = {
-    composer: PT_composer__main,
-    conductor: heroBodyConductorImg,
-    violinist: heroBodyViolinistImg,
+    composer: {
+        src: heroBodyComposer,
+        isAlignLeft: true
+    },
+    conductor: {
+        src: heroBodyConductorImg,
+        isAlignLeft: false
+    },
+    violinist: {
+        src: heroBodyViolinistImg,
+        isAlignLeft: false
+    }
 };
 const PAGE_BODY_TRANSITION_MS = 500;
 
@@ -237,27 +249,36 @@ export default {
     }
 
     .hero-body-img-container {
-        left: 5%;
-        width: 25%;
+        left: 17.5%;
         height: 95%;
         position: absolute;
         bottom: 0;
         display: flex;
         justify-content: center;
+        width: 0;
+
+        &.hero-body-img-align-left {
+            left: 0%;
+            justify-content: start;
+
+            @media ((orientation: landscape) and (max-height: 576px)) or (max-width: 576px) {
+                left: -15% !important;
+            }
+        }
 
         @media (max-aspect-ratio: 12/9) {
             height: 90%;
-            left: 8%;
+            left: 20.5%;
         }
 
         @media (max-aspect-ratio: 9/9) {
             left: 50%;
             transform: translate(-50%, 0);
             height: 98%;
-        }
 
-        @media screen and (orientation:landscape) and (max-height: SM) {
-            width: 20%;
+            &.hero-body-img-align-left {
+                transform: none;
+            }
         }
 
         .hero-body-img {

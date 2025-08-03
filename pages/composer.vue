@@ -64,11 +64,13 @@ export default {
                     content: [
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/Z_wT0pKZZf4?si=V5jqnvrByMw94RFM" 
+                            src: "https://www.youtube.com/embed/Z_wT0pKZZf4?si=V5jqnvrByMw94RFM",
+                            aspectRatio: IFRAME_ASPECT_RATIO.LOW
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/3Tpobd5Fn80?si=TTI-8mjiCoIYfTpV" 
+                            src: "https://www.youtube.com/embed/3Tpobd5Fn80?si=TTI-8mjiCoIYfTpV",
+                            aspectRatio: IFRAME_ASPECT_RATIO.LOW
                         },
                         {
                             type: CONTENT_TYPE.AUDIO,
@@ -117,7 +119,8 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD" 
+                            src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD",
+                            aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                         },
                         {
                             type: CONTENT_TYPE.AUDIO,
@@ -196,7 +199,8 @@ export default {
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3" 
+                            src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3",
+                            aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                         },
                     ]
                 },
@@ -208,23 +212,28 @@ export default {
                     content: [
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9" 
+                            src: "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9",
+                            aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z" 
+                            src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z",
+                            aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m" 
+                            src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m",
+                            aspectRatio: IFRAME_ASPECT_RATIO.LOW
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/3hfql7b-DnQ?si=PE1LpV6PGdIrOiNw" 
+                            src: "https://www.youtube.com/embed/3hfql7b-DnQ?si=PE1LpV6PGdIrOiNw",
+                            aspectRatio: IFRAME_ASPECT_RATIO.LOW
                         },
                         {
                             type: CONTENT_TYPE.IFRAME,
-                            src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI" 
+                            src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI",
+                            aspectRatio: IFRAME_ASPECT_RATIO.LOW
                         }
                     ]
                 },

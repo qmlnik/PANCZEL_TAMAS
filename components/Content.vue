@@ -9,7 +9,16 @@
             class="w-100 mb-3"
         >
             <div class="p-3 rounded bg-light">
-                <iframe class="w-100" style="aspect-ratio: 16 / 9;" :src="content.src" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe
+                    :class="[content.aspectRatio === IFRAME_ASPECT_RATIO.LOW ? 'iframe-aspect-ratio-low' : 'iframe-aspect-ratio-normal']"
+                    class="w-100 content-iframe"
+                    :src="content.src"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
             </div>
         </ScrollFadeIn>
         <ScrollFadeIn
@@ -50,5 +59,22 @@ export default {
 }; 
 </script>
 
-<style>
+<style lang="scss">
+@import "~/node_modules/bootstrap/scss/functions";
+@import "~/node_modules/bootstrap/scss/variables";
+@import "~/node_modules/bootstrap/scss/mixins/breakpoints";
+
+.content-iframe {
+    aspect-ratio: 16 / 9;
+
+    @include media-breakpoint-up(lg) {
+        &.iframe-aspect-ratio-low {
+            aspect-ratio: 16 / 5;
+        }
+
+        &.iframe-aspect-ratio-normal {
+            aspect-ratio: 16 / 7;
+        }
+    }
+}
 </style>
