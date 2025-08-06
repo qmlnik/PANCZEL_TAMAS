@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         scrollToContent() {
-            this.$refs.content.scrollIntoView();
+            setTimeout(() => this.$refs.content.scrollIntoView(), 1000);
         },
         backgroundImgLoaded() {
             this.isBackgroundImgLoaded = true;

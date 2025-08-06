@@ -14,9 +14,6 @@
                 alt="portrait"
             >
         </div>
-        <div class="language-selector-container">
-            <LanguageSelector />
-        </div>
         <div class="hero-content">
             <ScrollFadeIn :isBlockFadeInAfterLoad="true">
                 <div class="hero-title-container">
@@ -49,16 +46,27 @@
                 </div>
             </ScrollFadeIn>
             
-            <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
+            <ScrollFadeIn
+                :transitionDelay="0.5"
+                :isBlockFadeInAfterLoad="true"
+                :style="{
+                    display: 'flex',
+                    'flex-direction': 'column',
+                    'min-height': 0
+                }"
+            >
                 <div class="hero-introduction text-secondary backdrop">
                     <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                    <div>
+                    <div class="hero-introduction-content">
                         {{ $t('hero.introduction.content') }}
-                    </div>
+                     </div>
                 </div>
             </ScrollFadeIn>
+        </div>
+        <div class="language-selector-container">
+            <LanguageSelector />
         </div>
         <div class="scroll-indicator-container">
             <ScrollIndicator />
@@ -66,14 +74,15 @@
     </div>
     <div class="introduction-separate py-4">
         <div class="container">
-            <ScrollFadeIn :transitionDelay="0.5" :isBlockFadeInAfterLoad="true">
+            <ScrollFadeIn
+                :transitionDelay="0.5"
+                :isBlockFadeInAfterLoad="true"
+            >
                 <div class="hero-introduction text-secondary backdrop">
                     <h2 class="hero-introduction-title text-uppercase fw-bold">{{ $t('hero.introduction.title') }}</h2>
                     <div>{{ $t('hero.introduction.subtitle') }}</div>
                     <div class="bg-primary mt-4 mb-4" style="width: 50px; height: 3px;"></div>
-                    <div>
-                        {{ $t('hero.introduction.content') }}
-                    </div>
+                    <ShowMore :content="$t('hero.introduction.content')" />
                 </div>
             </ScrollFadeIn>
         </div>
@@ -209,11 +218,11 @@ export default {
             emit("navigationBodyImgFinished");
         })
 
-        return { imgUpdateKey, currentPageBodyImg, $store: useMainStore() };
+        return { imgUpdateKey, currentPageBodyImg, store: useMainStore() };
     },
     mounted() {
         setTimeout(() => {
-            this.$store.isHeroLoaded = true; 
+            this.store.isHeroLoaded = true; 
         }, 500);
     }
 };
@@ -228,14 +237,9 @@ export default {
 .hero-container {
     width: 100%;
     height: 90vh;
-    min-height: 720px;
 
-    @media (max-aspect-ratio: 12/9) {
-        min-height: auto;
-    }
-
-    @media (max-aspect-ratio: 9/9) {
-        height: 95vh;
+    @media screen and (orientation: landscape) and (max-height: 576px) {
+        min-height: 500px;
     }
 
     &:after {
@@ -257,31 +261,32 @@ export default {
         justify-content: center;
         width: 0;
 
+        @include media-breakpoint-down(xl) {
+            height: 90%;
+            left: 15%;
+        }
+
+        @include media-breakpoint-down(lg) {
+            height: 95%;
+            left: 50%;
+        }
+
         &.hero-body-img-align-left {
-            left: 0%;
+            left: 0;
             justify-content: start;
 
-            @media ((orientation: landscape) and (max-height: 576px)) or (max-width: 576px) {
-                left: -15% !important;
+            @include media-breakpoint-down(xl) {
+                left: -7%;
             }
-        }
 
-        @media (max-aspect-ratio: 12/9) {
-            height: 90%;
-            left: 20.5%;
-        }
-
-        @media (max-aspect-ratio: 9/9) {
-            left: 50%;
-            transform: translate(-50%, 0);
-            height: 98%;
-
-            &.hero-body-img-align-left {
-                transform: none;
+            @include media-breakpoint-down(lg) {
+                left: 0;
             }
         }
 
         .hero-body-img {
+            max-width: 100vw;
+            object-fit: cover;
             opacity: 0;
             bottom: 30px;
             position: relative;
@@ -292,47 +297,38 @@ export default {
         }
     }
 
-    .language-selector-container {
-        position: absolute;
-        right: 5%;
-        top: 5%;
-    }
-
     .hero-content {
         position: absolute;
         left: 35%;
         width: 60%;
-        top: 15%;
+        height: 80%;
+        top: 10%;
+        display: flex;
+        flex-direction: column;
 
-        @media (max-aspect-ratio: 12/9) {
-            left: 41%;
-            width: 54%;
+        @include media-breakpoint-down(xl) {
+            top: 7%;
+            left: 30%;
+            width: 65%;
         }
 
-        @media (max-aspect-ratio: 9/9) {
-            width: 80%;
-            left: 10%;
-            top: 25%;
+        @include media-breakpoint-down(lg) {
+            width: 100%;
+            left: 0;
             display: flex;
             align-items: center;
-            flex-direction: column;
-        }
-
-        @media (max-aspect-ratio: 7/9) {
             top: auto;
             bottom: 18%;
+            height: auto;
+        }
+
+        @include media-breakpoint-down(sm) {
             width: 94%;
             left: 3%;
         }
 
-        @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
-            width: 65%;
-            left: 30%;
-            top: 12%;
-        }
-
         .hero-title-container {
-            @media (max-aspect-ratio: 9/9) {
+            @include media-breakpoint-down(lg) {
                 background: $backdrop;
                 padding: 1.5rem;
                 border-radius: 0.5rem;
@@ -340,7 +336,7 @@ export default {
                 display: inline-block;
             }
 
-            @media (max-aspect-ratio: 6/9) {
+            @include media-breakpoint-down(sm) {
                 padding: 4vw;
             }
 
@@ -349,48 +345,26 @@ export default {
                 font-size: 4rem;
                 font-family: heroHeader;
 
-                @media (max-aspect-ratio: 12/9) {
-                    font-size: 6vw;
+                @include media-breakpoint-down(xl) {
+                    font-size: 3.5rem;
                 }
 
-                @media (max-aspect-ratio: 9/9) {
-                    font-size: 7vw;
-                }
-
-                @media (max-aspect-ratio: 7/9) {
-                    font-size: 7.75vw;
-                }
-
-                @media (max-aspect-ratio: 6/9) {
+                @include media-breakpoint-down(sm) {
                     font-size: 9vw;
-                }
-
-                @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
-                    font-size: 6.75vw;
+                    letter-spacing: 0.5vw;
                 }
             }
 
             .menu-element {
                 transition: .3s;
+                font-size: 1.2rem;
 
-                @media (max-aspect-ratio: 12/9) {
-                    font-size: 1.75vw;
+                @include media-breakpoint-down(xl) {
+                    font-size: 1rem;
                 }
 
-                @media (max-aspect-ratio: 9/9) {
-                    font-size: 2vw;
-                }
-
-                @media (max-aspect-ratio: 7/9) {
-                    font-size: 3vw;
-                }
-
-                @media (max-aspect-ratio: 6/9) {
+                @include media-breakpoint-down(sm) {
                     font-size: 3.5vw;
-                }
-
-                @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
-                    font-size: 2.25vw;
                 }
 
                 &:hover, &.menu-active {
@@ -401,6 +375,12 @@ export default {
         }
     }
 
+    .language-selector-container {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+    }
+
     .scroll-indicator-container {
         position: absolute;
         bottom: 5%;
@@ -408,66 +388,32 @@ export default {
         transform: translate(-50%, 0);
         width: 20px;
         height: 20px;
-
-        @media (max-aspect-ratio: 12/9) {
-            width: 2vw;
-            height: 2vw;
-        }
-
-        @media (max-aspect-ratio: 9/9) {
-            bottom: 8%;
-            width: 3vw;
-            height: 3vw;
-        }
-
-        @media (max-aspect-ratio: 7/9) {
-            width: 4vw;
-            height: 4vw;
-        }
     }
 }
 
 .hero-introduction {
     border-radius: 0.5rem;
     padding: 1.75rem;
-    margin-top: 7%;
-    max-width: 600px;
+    margin-top: 3rem;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
 
-    @media (max-aspect-ratio: 12/9) {
-        font-size: 1.5vw;
-        max-width: none;
+    @include media-breakpoint-down(xl) {
+        margin-top: 2rem;
     }
 
-    @media (max-aspect-ratio: 9/9) {
-        margin-top: 5%;
-        font-size: 2vw;
-    }
-
-    @media (max-aspect-ratio: 7/9) {
+    @include media-breakpoint-down(lg) {
         display: none;
-        font-size: 1rem;
     }
 
-    @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
-        font-size: 2.15vw;
-    }
-
-    .hero-introduction-title {
-        @media (max-aspect-ratio: 12/9) {
-            font-size: 3vw;
-        }
-
-        @media (max-aspect-ratio: 9/9) {
-            font-size: 3.5vw;
-        }
-
-        @media (max-aspect-ratio: 7/9) {
-            font-size: 1.5rem;
-        }
-
-        @media screen and (min-aspect-ratio: 4/3) and (max-width: 992px) {
-            font-size: 3.5vw;
-        }
+    .hero-introduction-content {
+        overflow: auto;
+        scrollbar-color: $secondary transparent;
+        scrollbar-width: thin;
+        scrollbar-gutter: stable both-edges;
+        padding-right: 6px;
     }
 }
 
@@ -475,15 +421,23 @@ export default {
     background: $content-backdrop;
     display: none;
 
-    @media (max-aspect-ratio: 7/9) {
+    @include media-breakpoint-down(lg) {
         display: block;
     }
 
     .hero-introduction {
         margin: 0;
 
-        @media (max-aspect-ratio: 7/9) {
+        @include media-breakpoint-down(lg) {
             display: block !important;
+        }
+
+        :deep(.simplebar-scrollbar::before) {
+            background: $secondary;
+        }
+
+        :deep(.simplebar-track.simplebar-vertical) {
+            right: -8px;
         }
     }
 }

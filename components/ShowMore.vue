@@ -20,7 +20,7 @@
 </template>
 
 <script>
-const COLLAPSED_HEIGHT = 200;
+const COLLAPSED_HEIGHT = 300;
 
 export default {
     props: {
@@ -36,8 +36,12 @@ export default {
         resizeEventListener: null
     }),
     watch: {
-        isShowMoreOpen() {
+        isShowMoreOpen(nextIsShowMoreOpen) {
             this.setCollapseHeight();
+
+            if (!nextIsShowMoreOpen) {
+                this.scrollToContentTop();
+            }
         }
     },
     mounted() {
@@ -57,7 +61,15 @@ export default {
     methods: {
         setCollapseHeight() {
             this.collapseHeight =
-                `${this.isDisplayShowMore && !this.isShowMoreOpen ? COLLAPSED_HEIGHT : this.$refs.content.offsetHeight}px`;
+                `${this.isDisplayShowMore && !this.isShowMoreOpen ? COLLAPSED_HEIGHT : this.$refs.content.offsetHeight}px`;            
+        },
+        scrollToContentTop() {
+            const { top } = this.$refs.content.getBoundingClientRect();
+            const isScrollToContentTop = top < 0;
+
+            if (isScrollToContentTop) {
+                this.$refs.content.scrollIntoView();
+            }
         }
     }
 }
@@ -66,13 +78,7 @@ export default {
 <style lang="scss" scoped>
 @import "~/assets/bootstrap/variables";
 
-.collapse-fade:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: linear-gradient(to top, $light, rgba(0, 0, 0, 0) 50px),
+.collapse-fade {
+    mask-image: linear-gradient(to top, transparent, black 50px);
 }
 </style>

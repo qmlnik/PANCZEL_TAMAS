@@ -69,7 +69,7 @@ export default defineI18nConfig(() => ({
                 introduction: {
                     title: "bemutatkozás",
                     subtitle: "Minden hangot a szenvedély vezet",
-                    content: "Lórum ipse száran, jogán, de a medó besítő, a főzés pedig egészen gyűjtő pali. A válka tömbjére üvözölte: a bibecske csakis a ferges kozás zölését kodja bőgőnek, mégpedig szigorúan a korábban boros nésetlevények között. Jelletesség handék adódta: a bibecske nem feselyedi a jáló foránok bűnök, de mert a szajlomta tapált kozás szerdes lecskenyelése a ferges szenség lenne, és mert a mozás részéről erre nem ingol mozmányos."
+                    content: ""
                 }
             },
             categories: "Kategóriák",
