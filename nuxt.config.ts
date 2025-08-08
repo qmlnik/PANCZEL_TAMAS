@@ -44,16 +44,16 @@ export default defineNuxtConfig({
                 hu: "/zeneszerzo/klasszikus"
             },
              'composer-classic-orchestra': {
-                en: "/composer/classic/zenekari-muvek",
-                hu: "/zeneszerzo/klasszikus/orchestra-compositions"
+                en: "/composer/classic/orchestra-compositions",
+                hu: "/zeneszerzo/klasszikus/zenekari-muvek"
             },
             'composer-classic-vocal': {
                 en: "/composer/classic/vocal-compositions",
                 hu: "/zeneszerzo/klasszikus/vokalis-muvek"
             },
             'composer-classic-chamber': {
-                en: "/composer/classic/kamara-muvek",
-                hu: "/zeneszerzo/klasszikus/chamber-compositions"
+                en: "/composer/classic/chamber-compositions",
+                hu: "/zeneszerzo/klasszikus/kamara-muvek"
             }, 
             'composer-others': {
                 en: "/composer/others",

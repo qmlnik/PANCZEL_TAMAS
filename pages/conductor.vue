@@ -22,7 +22,6 @@ export default {
                 {
                     type: CONTENT_TYPE.IFRAME,
                     src: "https://www.youtube.com/embed/vZqGJ2_cAr4?si=6F6KNZ9VSHXNukQR",
-                    aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                 }
             ]
         };

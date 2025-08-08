@@ -1,18 +1,17 @@
 <template>
     <div class="row">
-        
         <NuxtLinkLocale
             v-for="{ img, page, title, description } in albums"
             :key="page"
             :to="page"
             class="album-container col-md-3"
+            style="cursor: pointer;"
         >
             <ScrollFadeIn>
                 <div class="album-image-container rounded mb-2">
                     <img
                         :src="img?.length ? cover : coverPlaceholder"
                         class="w-100 ratio ratio-1x1"
-                        style=""
                     />
                 </div>
                 <div class="fw-bold">{{ title[$i18n.locale] }}</div>

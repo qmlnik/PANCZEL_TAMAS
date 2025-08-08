@@ -36,12 +36,10 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/Z_wT0pKZZf4?si=V5jqnvrByMw94RFM",
-                                aspectRatio: IFRAME_ASPECT_RATIO.LOW
                             },
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/3Tpobd5Fn80?si=TTI-8mjiCoIYfTpV",
-                                aspectRatio: IFRAME_ASPECT_RATIO.LOW
                             },
                             {
                                 type: CONTENT_TYPE.AUDIO,
@@ -91,7 +89,6 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD",
-                                aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                             },
                             {
                                 type: CONTENT_TYPE.AUDIO,
@@ -199,7 +196,6 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3",
-                                aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                             },
                         ]
                     }
@@ -227,17 +223,14 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m",
-                                aspectRatio: IFRAME_ASPECT_RATIO.LOW
                             },
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/3hfql7b-DnQ?si=PE1LpV6PGdIrOiNw",
-                                aspectRatio: IFRAME_ASPECT_RATIO.LOW
                             },
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI",
-                                aspectRatio: IFRAME_ASPECT_RATIO.LOW
                             }
                         ]
                     },
@@ -256,12 +249,10 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9",
-                                aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                             },
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/watch?v=s3qfyOAARdc",
-                                aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                             },
                         ]
                     },
@@ -280,7 +271,6 @@ const categoriesContent = {
                             {
                                 type: CONTENT_TYPE.IFRAME,
                                 src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z",
-                                aspectRatio: IFRAME_ASPECT_RATIO.NORMAL
                             },
                         ]
                     }
@@ -369,17 +359,19 @@ function getAlbums(category, subCategory = null) {
     return null;
 }
 
-function getContent(category, subCategory = null, albumPage = null) {
-    if (albumPage !== null) {
-        const albums = getAlbums(category, subCategory);
+function getAlbumContent(category, subCategory, albumPage) {
+    const albums = getAlbums(category, subCategory);
 
-        if (albums !== null) {
-            const album = albums.find(({ page }) => page === albumPage);
+    if (albums !== null) {
+        const album = albums.find(({ page }) => page === albumPage);
 
-            return JSON.parse(JSON.stringify(album?.content || null));
-        }
+        return JSON.parse(JSON.stringify(album || null));
     }
 
+    return null;
+}
+
+function getRegularContent(category, subCategory = null,) {
     if (subCategory !== null) {
         return JSON.parse(JSON.stringify(categoriesContent[category].subCategoies[subCategory].content));
     }
@@ -387,4 +379,4 @@ function getContent(category, subCategory = null, albumPage = null) {
     return JSON.parse(JSON.stringify(categoriesContent[category].content));
 }
 
-export { getSubcategoryMenu, getAlbums, getContent };
+export { getSubcategoryMenu, getAlbums, getAlbumContent, getRegularContent };

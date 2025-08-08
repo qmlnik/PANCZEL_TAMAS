@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import { getSubcategoryMenu, getContent } from "~/pages/musicCategoryContent.js";
+import { getSubcategoryMenu, getRegularContent } from "~/pages/musicCategoryContent.js";
 
 export default {
     data() {
         return {
             subcategoryMenu: getSubcategoryMenu("composer"),
-            content: getContent("composer", "gospel")
+            content: getRegularContent("composer", "gospel")
         };
     }
 };

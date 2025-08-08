@@ -17,3 +17,8 @@ a {
 .text-primary-light {
     color: $primary-light;
 }
+
+* {
+    scrollbar-color: $secondary $content-backdrop;
+}
+        

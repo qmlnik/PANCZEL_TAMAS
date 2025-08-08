@@ -1,20 +1,27 @@
 <template>
-    <img
-        v-show="isBackgroundImgLoaded"
-        src="~/assets/images/Hero_Background.webp"
-        class="background-img"
-        ref="backgroundImg"
-        alt="background"
-        @load="backgroundImgLoaded"
-    >
+    <div class="d-flex flex-column h-100">
+        <div class="content-container" style="overflow-y: auto;">
+            <img
+                v-show="isBackgroundImgLoaded"
+                src="~/assets/images/Hero_Background.webp"
+                class="background-img"
+                ref="backgroundImg"
+                alt="background"
+                @load="backgroundImgLoaded"
+            >
 
-    <Hero @navigation-body-img-finished="scrollToContent" />
-    <div class="content-backdrop w-100 d-inline-block" ref="content">
-        <div class="container-md">
-            <NuxtPage />
+            <Hero @navigation-body-img-finished="scrollToContent" />
+            <div class="content-backdrop w-100 d-inline-block" ref="content">
+                <div class="container-md">
+                    <NuxtPage />
+                </div>
+            </div>
+            <Footer />
+        </div>
+        <div class="flex-shrink-0">
+            <AudioPlayerFinal />
         </div>
     </div>
-    <Footer />
 </template>
 
 <script setup>

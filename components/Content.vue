@@ -1,6 +1,6 @@
 <template>
     <div
-        v-for="content in contents"
+        v-for="(content, index) in contents"
         :key="getContentKey(content)"
         style="display: contents;"
     >
@@ -8,24 +8,50 @@
             v-if="content.type === CONTENT_TYPE.IFRAME"
             class="w-100 mb-3"
         >
-            <div class="p-3 rounded bg-light">
-                <iframe
-                    :class="[content.aspectRatio === IFRAME_ASPECT_RATIO.LOW ? 'iframe-aspect-ratio-low' : 'iframe-aspect-ratio-normal']"
-                    class="w-100 content-iframe"
-                    :src="content.src"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
+            <a :href="content.src" target="_blank" class="media-container text-secondary w-100 d-flex align-items-center p-3 ps-0 rounded bg-light">
+                <div class="d-flex align-items-center justify-content-center fs-4" style="width: 60px;">
+                    <span class="media-default-view">{{ index + 1 }}</span>
+                    <i class="media-hover-view bi bi-youtube"></i>
+                </div>
+                <div>
+                    <div class="fw-bold">{{ "egy hosszú cím" }}</div>
+                    <div>{{ "Tamás" }}</div>
+                </div>
+            </a>
         </ScrollFadeIn>
         <ScrollFadeIn
             v-else
             class="w-100 mb-3"
         >
-            <AudioPlayer
+            <div class="media-container text-secondary w-100 d-flex justify-content-between align-items-center p-3 ps-0 rounded bg-light">
+                <div class="d-flex">
+                    <div class="d-flex align-items-center justify-content-center fs-4" style="width: 60px;">
+                        <div class="media-default-view">
+                            <i
+                                v-if="isPlaying"
+                                class="bi bi-music-note-beamed"
+                                style="cursor: pointer;"
+                                @click="togglePlay"
+                            ></i>
+                            <span v-else>{{ index + 1 }}</span>
+                        </div>
+                        <div class="media-hover-view">
+                            <i
+                                class="bi"
+                                :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"  
+                                style="cursor: pointer;"
+                                @click="togglePlay"
+                            ></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fw-bold">{{ content[$i18n.locale].title }}</div>
+                        <div>{{ content[$i18n.locale].author }}</div>
+                    </div>
+                </div>
+                <div>{{ "00:00" }}</div>
+            </div>
+            <!--<AudioPlayer
                 ref="songs"
                 :author="content[$i18n.locale].author"
                 :title="content[$i18n.locale].title"
@@ -33,7 +59,7 @@
                 :cover="content.cover"
                 :description="content[$i18n.locale].description"
                 @play="$emit('audioPlay')"
-            />
+            />-->
         </ScrollFadeIn>
     </div>
 </template>
@@ -59,21 +85,27 @@ export default {
 }; 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "~/node_modules/bootstrap/scss/functions";
 @import "~/node_modules/bootstrap/scss/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
-.content-iframe {
-    aspect-ratio: 16 / 9;
+.media-container {
+    .media-default-view {
+        display: block;
+    }
 
-    @include media-breakpoint-up(lg) {
-        &.iframe-aspect-ratio-low {
-            aspect-ratio: 16 / 5;
+    .media-hover-view {
+        display: none;
+    }
+
+    &:hover {
+        .media-default-view {
+            display: none;
         }
 
-        &.iframe-aspect-ratio-normal {
-            aspect-ratio: 16 / 7;
+        .media-hover-view {
+            display: block;
         }
     }
 }

@@ -415,9 +415,6 @@ export default {
 
     .hero-introduction-content {
         overflow: auto;
-        scrollbar-color: $secondary transparent;
-        scrollbar-width: thin;
-        scrollbar-gutter: stable both-edges;
         padding-right: 6px;
     }
 }

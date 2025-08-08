@@ -3,11 +3,6 @@
         :subcategoryMenu="subcategoryMenu"
         currentSubCategory="others"
     >
-        <!--<Content
-            ref="content"
-            :contents="subCategories[currentCategory].content"
-            @audio-play="stopAllAudio"
-        />-->
         <Albums :albums="albums" />
     </MusicContentLayout>
 </template>
