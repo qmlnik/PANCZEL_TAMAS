@@ -4,13 +4,13 @@ export default defineI18nConfig(() => ({
     messages: {
         en: {
             meta: {
-                title: "Tamas Panczel",
+                title: "Tamás Pánczél",
                 pageTitle: {
                     violinist: "Violinist",
                     composer: "Composer",
                     conductor: "Conductor"
                 },
-                content: "Official site of Tamas Panczel Hungarian composer, conductor and violinist."
+                content: "Official site of Tamás Pánczél Hungarian composer, conductor and violinist."
             },
             error: {
                 general: "An error has occured, back to the homepage",
@@ -21,7 +21,7 @@ export default defineI18nConfig(() => ({
             showLess: "Show less",
             languageSelect: "Select language",
             hero: {
-                title: "tamas panczel",
+                title: "tamás pánczél",
                 subtitle: {
                     composer: "Composer",
                     violinist: "Violinist",
@@ -39,7 +39,8 @@ export default defineI18nConfig(() => ({
                 phone: "Phone",
                 email: "Email",
                 connect: "Connect"
-            }
+            },
+            back: "Back"
         },
         hu: {
             meta: {
@@ -78,7 +79,8 @@ export default defineI18nConfig(() => ({
                 phone: "Telefon",
                 email: "Email",
                 connect: "Kapcsolat"
-            }
+            },
+            back: "Vissza"
         }
     },
 }))

@@ -21,27 +21,33 @@
                         {{ $t('hero.title') }}
                     </h1>
                     <div class="d-flex d-sm-block justify-content-center flex-wrap" style="row-gap: 0.5rem;">
-                        <NuxtLinkLocale
-                            to="/composer"
+                        <div
+                            to="composer-classic"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
-                            activeClass="menu-active"
+                            style="cursor: pointer;"
+                            :class="[getRouteBasePageName($route) === 'composer' ? 'menu-active' : null]"
+                            @click="navigateTo(localePath('composer-classic'))"
                         >
                             {{ $t('hero.subtitle.composer') }}
-                        </NuxtLinkLocale>
-                        <NuxtLinkLocale
-                            to="/violinist"
+                        </div>
+                        <div
+                            to="violinist"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
-                            activeClass="menu-active"
+                            style="cursor: pointer;"
+                            :class="[getRouteBasePageName($route) === 'violinist' ? 'menu-active' : null]"
+                            @click="navigateTo(localePath('violinist'))"
                         >
                             {{ $t('hero.subtitle.violinist') }}
-                        </NuxtLinkLocale>
-                        <NuxtLinkLocale
-                            to="/conductor"
+                        </div>
+                        <div
+                            to="conductor"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
-                            activeClass="menu-active"
+                            style="cursor: pointer;"
+                            :class="[getRouteBasePageName($route) === 'conductor' ? 'menu-active' : null]"
+                            @click="navigateTo(localePath('conductor'))"
                         >
                             {{ $t('hero.subtitle.conductor') }}
-                        </NuxtLinkLocale>
+                        </div>
                     </div>
                 </div>
             </ScrollFadeIn>
@@ -130,9 +136,8 @@ export default {
             });
 
             const route = useRoute();
-            const getRouteBaseName = useRouteBaseName();
 
-            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getRouteBaseName(route)];
+            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getRouteBasePageName(route)];
 
             let isPageBodyImgInitLoaded = false;
 
@@ -152,19 +157,18 @@ export default {
                 }
             };
 
-            if (pageBodyImg.value.complete) {
+            if (pageBodyImg.value?.complete) {
                 pageBodyImgInitLoaded();
             } else {
-                pageBodyImg.value.addEventListener("load", pageBodyImgInitLoaded);
+                pageBodyImg.value?.addEventListener("load", pageBodyImgInitLoaded);
             }
         });
 
         const router = useRouter();
 
         router.afterEach(async (to, from) => {
-            const getRouteBaseName = useRouteBaseName();
-            const toPageName = getRouteBaseName(to);
-            const fromPageName = getRouteBaseName(from);
+            const toPageName = getRouteBasePageName(to);
+            const fromPageName = getRouteBasePageName(from);
 
             const isLocaleRouteChange = toPageName === fromPageName;
 
@@ -218,7 +222,7 @@ export default {
             emit("navigationBodyImgFinished");
         })
 
-        return { imgUpdateKey, currentPageBodyImg, store: useMainStore() };
+        return { imgUpdateKey, currentPageBodyImg, store: useMainStore(), localePath: useLocalePath() };
     },
     mounted() {
         setTimeout(() => {
@@ -358,6 +362,7 @@ export default {
             .menu-element {
                 transition: .3s;
                 font-size: 1.2rem;
+                color: $secondary;
 
                 @include media-breakpoint-down(xl) {
                     font-size: 1rem;

@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: "2024-11-01",
     devtools: { enabled: false },
@@ -40,9 +39,41 @@ export default defineNuxtConfig({
         defaultLocale: "en",
         customRoutes: 'config',
         pages: {
-            composer: {
-                en: "/composer",
-                hu: "/zeneszerzo"
+            'composer-classic': {
+                en: "/composer/classic",
+                hu: "/zeneszerzo/klasszikus"
+            },
+             'composer-classic-orchestra': {
+                en: "/composer/classic/zenekari-muvek",
+                hu: "/zeneszerzo/klasszikus/orchestra-compositions"
+            },
+            'composer-classic-vocal': {
+                en: "/composer/classic/vocal-compositions",
+                hu: "/zeneszerzo/klasszikus/vokalis-muvek"
+            },
+            'composer-classic-chamber': {
+                en: "/composer/classic/kamara-muvek",
+                hu: "/zeneszerzo/klasszikus/chamber-compositions"
+            }, 
+            'composer-others': {
+                en: "/composer/others",
+                hu: "/zeneszerzo/masok-stilusaban"
+            },
+            'composer-others-Bach': {
+                en: "/composer/others/ala-Bach",
+                hu: "/zeneszerzo/masok-stilusaban/ala-Bach"
+            },
+            'composer-others-Mozart': {
+                en: "/composer/others/Mozart-Requiem-additions",
+                hu: "/zeneszerzo/masok-stilusaban/Mozart-Requiem-kiegeszitesek"
+            },
+            'composer-others-Liszt': {
+                en: "/composer/others/Liszt-Les-Quatre-Élémens",
+                hu: "/zeneszerzo/masok-stilusaban/Liszt-Les-Quatre-Élémens"
+            },
+            'composer-gospel': {
+                en: "/composer/gospel",
+                hu: "/zeneszerzo/gospel"
             },
             violinist: {
                 en: "/violinist",
@@ -53,7 +84,7 @@ export default defineNuxtConfig({
                 hu: "/karmester"
             }
         },
-        baseUrl: 'https://panczeltamas.com'
+        baseUrl: 'https://tamaspanczel.com'
     },
     plugins: [
         {

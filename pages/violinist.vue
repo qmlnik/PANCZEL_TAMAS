@@ -25,7 +25,7 @@ export default {
                 {
                     type: CONTENT_TYPE.AUDIO,
                     en: {
-                        author: "Tamas Panczel",
+                        author: "Tamás Pánczél",
                         title: "J.S.Bach - Largo from C major solo sonata",
                         description: ""
                     },
@@ -40,7 +40,7 @@ export default {
                 {
                     type: CONTENT_TYPE.AUDIO,
                     en: {
-                        author: "Tamas Panczel",
+                        author: "Tamás Pánczél",
                         title: "J.S.Bach - Fuge (extract) from g-minor",
                         description: ""
                     },
