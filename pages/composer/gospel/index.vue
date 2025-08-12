@@ -1,12 +1,8 @@
 <template>
     <MusicContentLayout
         :subcategoryMenu="subcategoryMenu"
-        currentSubCategory="gospel"
+        currentSubcategory="gospel"
     >
-        <Content
-            ref="content"
-            :contents="content"
-        />
     </MusicContentLayout>
 </template>
 

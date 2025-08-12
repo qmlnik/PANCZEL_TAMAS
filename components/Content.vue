@@ -28,19 +28,25 @@
                     <div class="d-flex align-items-center justify-content-center fs-4" style="width: 60px;">
                         <div class="media-default-view">
                             <i
-                                v-if="isPlaying"
+                                v-if="content.properties.isPlaying"
                                 class="bi bi-music-note-beamed"
                                 style="cursor: pointer;"
-                                @click="togglePlay"
+                                @click="audioPlayerStore.pause()"
                             ></i>
                             <span v-else>{{ index + 1 }}</span>
                         </div>
                         <div class="media-hover-view">
                             <i
-                                class="bi"
-                                :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"  
+                                v-if="content.properties.isPlaying"
+                                class="bi bi-pause-fill"
                                 style="cursor: pointer;"
-                                @click="togglePlay"
+                                @click="audioPlayerStore.pause()"
+                            ></i>
+                            <i
+                                v-else
+                                class="bi bi-play-fill"
+                                style="cursor: pointer;"
+                                @click="audioPlayerStore.setCurrentAudio(content); audioPlayerStore.play()"
                             ></i>
                         </div>
                     </div>
@@ -49,27 +55,44 @@
                         <div>{{ content[$i18n.locale].author }}</div>
                     </div>
                 </div>
-                <div>{{ "00:00" }}</div>
+                <div>{{ content.properties.length }}</div>
             </div>
-            <!--<AudioPlayer
-                ref="songs"
-                :author="content[$i18n.locale].author"
-                :title="content[$i18n.locale].title"
-                :src="content.src"
-                :cover="content.cover"
-                :description="content[$i18n.locale].description"
-                @play="$emit('audioPlay')"
-            />-->
         </ScrollFadeIn>
     </div>
 </template>
 
 <script>
+import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
+
 export default {
     props: {
         contents: {
+            type: Object,
             required: true
         }
+    },
+    setup() {
+        return { audioPlayerStore: useAudioPlayerStore() };
+    },
+    mounted() {
+        this.contents.forEach(content => {
+            if (content.type === CONTENT_TYPE.AUDIO) {
+                const audioPlayer = new Audio();
+
+                audioPlayer.src = content.src;
+                audioPlayer.volume = .75;
+
+                content.properties.audioPlayer = audioPlayer;
+                
+                audioPlayer.addEventListener(
+                    "loadeddata",
+                    () => {
+                        content.properties.length = this.audioPlayerStore.getTimeCodeFromNum(audioPlayer.duration);
+                    },
+                    { once: true }
+                );
+            }
+        });
     },
     methods: {
         getContentKey(content) {

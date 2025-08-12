@@ -1,39 +1,46 @@
 <template>
     <section class="p-sm-4 d-flex align-items-center flex-column">
         <div
-            v-if="subcategoryMenu !== null"
+            v-if="route.subcategory !== null"
             class="bg-light p-3 mb-4 fs-6 rounded"
         >
             <h3 class="mb-3 text-primary-light text-center">{{ $t("categories") }}</h3>
             <div class="d-flex justify-content-center flex-wrap" style="gap: 0.5rem;">
                 <NuxtLinkLocale
-                    v-for="subcategory in subcategoryMenu.subCategoryOrder"
+                    v-for="subcategory in audioPlayerStore.categories[route.category].subcategoryOrder"
                     :key="subcategory"
-                    :to="subcategoryMenu.subCategoryContent[subcategory].page"
-                    :class="[subcategory === currentSubCategory ? 'category-selected' : null]"
+                    :to="getPage(subcategory)"
+                    :class="[subcategory === route.subcategory ? 'category-selected' : null]"
                     class="song-category p-3 rounded border border-dark"
                 >
-                    {{ subcategoryMenu.subCategoryContent[subcategory].title[$i18n.locale] }}
+                    {{ audioPlayerStore.categories[route.category].subcategoies[subcategory].title[$i18n.locale] }}
                 </NuxtLinkLocale>
             </div>
         </div>
-        <h3 class="text-center fs-2 text-primary-light mb-4 fw-bold">{{
-            subcategoryMenu.subCategoryContent[currentSubCategory].title[$i18n.locale] }}
+        <h3 class="text-center fs-2 text-primary-light mb-4 fw-bold">   
+            {{ audioPlayerStore.categories[route.category].subcategoies[route.subcategory].title[$i18n.locale] }}
         </h3>
         <slot></slot>
     </section>
 </template>
 
 <script>
+import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
+
 export default {
     props: {
-        subcategoryMenu: {
-            type: [Object, null],
-            default: null
-        },
-        currentSubCategory: {
-            type: [String, null],
-            default: null
+        route: {
+            type: Object,
+            required: true
+        }
+    },
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    created() {
+        //console.log(this.route, this.audioPlayerStore.categories[this.route.category]);
+    },
+    methods: {
+        getPage(subcategory) {
+            return `${this.route.category}-${subcategory}`;
         }
     }
 };

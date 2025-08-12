@@ -1,36 +1,57 @@
 <template>
     <div class="row">
         <NuxtLinkLocale
-            v-for="{ img, page, title, description } in albums"
-            :key="page"
-            :to="page"
+            v-for="currentAlbum in audioPlayerStore.categories[route.category].subcategoies[route.subcategory].albumContent.albumOrder"
+            :key="currentAlbum"
+            :to="getPage(currentAlbum)"
             class="album-container col-md-3"
             style="cursor: pointer;"
         >
             <ScrollFadeIn>
                 <div class="album-image-container rounded mb-2">
                     <img
-                        :src="img?.length ? cover : coverPlaceholder"
+                        :src="audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, currentAlbum).img"
                         class="w-100 ratio ratio-1x1"
                     />
                 </div>
-                <div class="fw-bold">{{ title[$i18n.locale] }}</div>
-                <div>{{ description[$i18n.locale] }}</div>
+                <div class="fw-bold">{{
+                    audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, currentAlbum)
+                        .title[$i18n.locale]
+                }}</div>
+                <div>{{
+                    audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, currentAlbum)
+                        .description[$i18n.locale]
+                }}</div>
             </ScrollFadeIn>
         </NuxtLinkLocale>
     </div>
 </template>
 <script>
-import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
+import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
 
 export default {
     props: {
-        albums: {
+        route: {
             type: Object,
             required: true
         }
     },
-    data: () => ({ coverPlaceholder: cover_placeholder })
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    methods: {
+        getPage(album) {
+            const { category, subcategory } = this.route;
+
+            let page = category;
+
+            if (subcategory !== null) {
+                page += `-${subcategory}`;
+            }
+
+            page += `-${album}`;
+
+            return page;
+        }
+    }
 };
 </script>
 

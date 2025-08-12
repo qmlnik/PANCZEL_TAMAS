@@ -1,14 +1,14 @@
 export default defineNuxtConfig({
     compatibilityDate: "2024-11-01",
-    devtools: { enabled: false },
+    devtools: { enabled: true },
     app: {
         head: {
             link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-                { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-                { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-                { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-                { rel: 'manifest', href: '/site.webmanifest' }
+                { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+                { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+                { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+                { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+                { rel: "manifest", href: "/site.webmanifest" }
             ]
         }
     },
@@ -29,49 +29,49 @@ export default defineNuxtConfig({
         locales: [
             {
                 code: "en",
-                language: 'en'
+                language: "en"
             },
             {
                 code: "hu",
-                language: 'hu-HU'
+                language: "hu-HU"
             }
         ],
         defaultLocale: "en",
-        customRoutes: 'config',
+        customRoutes: "config",
         pages: {
-            'composer-classic': {
+            "composer-classic": {
                 en: "/composer/classic",
                 hu: "/zeneszerzo/klasszikus"
             },
-             'composer-classic-orchestra': {
+            "composer-classic-orchestra": {
                 en: "/composer/classic/orchestra-compositions",
                 hu: "/zeneszerzo/klasszikus/zenekari-muvek"
             },
-            'composer-classic-vocal': {
+            "composer-classic-vocal": {
                 en: "/composer/classic/vocal-compositions",
                 hu: "/zeneszerzo/klasszikus/vokalis-muvek"
             },
-            'composer-classic-chamber': {
+            "composer-classic-chamber": {
                 en: "/composer/classic/chamber-compositions",
                 hu: "/zeneszerzo/klasszikus/kamara-muvek"
             }, 
-            'composer-others': {
+            "composer-others": {
                 en: "/composer/others",
                 hu: "/zeneszerzo/masok-stilusaban"
             },
-            'composer-others-Bach': {
+            "composer-others-Bach": {
                 en: "/composer/others/ala-Bach",
                 hu: "/zeneszerzo/masok-stilusaban/ala-Bach"
             },
-            'composer-others-Mozart': {
+            "composer-others-Mozart": {
                 en: "/composer/others/Mozart-Requiem-additions",
                 hu: "/zeneszerzo/masok-stilusaban/Mozart-Requiem-kiegeszitesek"
             },
-            'composer-others-Liszt': {
+            "composer-others-Liszt": {
                 en: "/composer/others/Liszt-Les-Quatre-Élémens",
                 hu: "/zeneszerzo/masok-stilusaban/Liszt-Les-Quatre-Élémens"
             },
-            'composer-gospel': {
+            "composer-gospel": {
                 en: "/composer/gospel",
                 hu: "/zeneszerzo/gospel"
             },
@@ -84,7 +84,7 @@ export default defineNuxtConfig({
                 hu: "/karmester"
             }
         },
-        baseUrl: 'https://tamaspanczel.com'
+        baseUrl: "https://tamaspanczel.com"
     },
     plugins: [
         {

@@ -1,49 +1,91 @@
 <template>
-<div class="audio-player d-flex flex-column justify-content-center align-items-center">
-    <div style="width: 80%;">
-        <div class="position-relative d-flex justify-content-center align-items-center mb-1">
+<div
+    v-if="isMobileView !== null"
+    class="audio-player-container d-flex flex-column justify-content-center align-items-center"
+    @click="openMobileView"
+>
+    <div class="audio-player-content">
+        <div class="position-relative d-flex justify-content-center align-items-center mb-3 mb-sm-1">
             <div
-                class="fs-1 me-2 position-absolute" style="left: -6px; cursor: pointer;"
+                class="audio-control position-absolute" style="cursor: pointer;"
                 @click="togglePlay"
             >
                 <i
                     class="bi"
-                    :class="[isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
+                    :class="[audioPlayerStore.currentlyPlayingAudio?.properties.isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
                 ></i>
             </div>
-            {{ author }} - <span class="fw-bold">{{ title }}</span>
+            <div class="title-container text-center">
+                {{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].author }}
+                -&nbsp;<span class="fw-bold">{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].title }}</span>
+            </div>
         </div>
-        <div class="d-flex align-items-center ">
-            <span class="current me-2">{{ currentTime }}</span>
+        <div class="d-flex align-items-center">
+            <span class="timeline-time current me-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.currentTime || "00:00" }}</span>
             <div
                 ref="timeline"
-                class="w-100 bg-secondary"
-                style="height: 8px; cursor: pointer;"
+                class="timeline-bar w-100 bg-secondary"
+                style="cursor: pointer;"
                 @click="setTime"
             >
                 <div
                     ref="progressBar"
                     class="bg-primary h-100"
-                    style="transition: .25s; width: 0;"
+                    :style="{ width: `${(audioPlayerStore.currentlyPlayingAudio?.properties.progressPercentage || 0) * 100}%` }"
+                    style="transition: .25s;"
                 ></div>
             </div>
-            <span class="ms-2">{{ length }}</span>
+            <span class="timeline-time ms-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.length || "00:00" }}</span>
             <div
-                class="fs-3 ms-4 me-2"
+                class="volume-icon fs-3 ms-4 me-2"
                 style="cursor: pointer;"
-                @click="toggleMute"
+                @click="audioPlayerStore.toggleMute"
             >
                 <i
                     class="bi"
-                    :class="[isMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
+                    :class="[audioPlayerStore.currentlyPlayingAudioIsMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
                 ></i>
             </div>
             <div
                 ref="volumeSlider"
                 class="volume-slider"
-                @click="setVolume"
+                @mouseup="setVolume"
             >
-                <div class="volume-percentage" ref="volumePercentage"></div>
+                <div
+                    class="volume-percentage"
+                    :style="{
+                        width: `${
+                            audioPlayerStore.currentlyPlayingAudioIsMuted
+                                ? 0
+                                : audioPlayerStore.currentlyPlayingAudioVolumePercentage * 100
+                        }%`
+                    }"
+                >
+                    <div
+                        class="volume-percentage-dot"
+                        @mousedown="isVolumePercentageMouseDown = true"
+                    ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" ref="mobileModal">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="position-relative d-flex align-items-center justify-content-center" style="height: 10%">
+                    <i
+                        class="position-absolute fs-1 bi bi-arrow-left"
+                        style="left: 0;"
+                        data-bs-dismiss="modal"
+                    ></i>
+                    <div class="text-center fs-4" style="width: 75%">{{ currentAlbum?.title[$i18n.locale] }}</div>
+                </div>
+                    <img
+                        :src="currentAlbum?.img"
+                        class="w-100 ratio ratio-1x1 rounded"
+                    />
             </div>
         </div>
     </div>
@@ -51,166 +93,167 @@
 </template>
 
 <script>
-import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
+import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
 
 export default {
-    props: {
-        src: {
-            type: String,
-            required: true
-        },
-        author: {
-            type: String,
-            required: true
-        },
-        title: {
-            type: String,
-            default: ""
-        },
-        cover: {
-            type: String,
-            default: ""   
-        },
-        description: {
-            type: String,
-            default: ""   
-        },
-    },
-    data() {
-        return {
-            audioPlayer: null,
-            currentTime: "00:00",
-            length: "00:00",
-            progressBarInterval: null,
-            isPlaying: false,
-            isMuted: false,
-            coverPlaceholder: cover_placeholder,
-            isMobileView: false,
-            resizeEventListener: null
-        };
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    data: () => ({ isVolumePercentageMouseDown: false, isMobileView: null, isMobileViewOpen: false }),
+    computed: {
+        currentAlbum() {
+            const isAudioAlreadyPlayed = this.audioPlayerStore.currentlyPlayingAudio !== null;
+            
+            if (isAudioAlreadyPlayed) {
+                const { category, subcategory, album } = this.audioPlayerStore.currentlyPlayingAudio?.properties.route;
+            
+                return this.audioPlayerStore.getAlbumByRoute(category, subcategory, album);
+            }
+            
+            return null;
+        }
     },
     mounted() {
-        this.audioPlayer = new Audio();
-        this.audioPlayer.src = this.src;
-        this.audioPlayer.volume = .75;
+        document.addEventListener("mousemove", ({ clientX }) => {
+            if (this.isVolumePercentageMouseDown) {
+                const { left } = this.$refs.volumeSlider.getBoundingClientRect();
 
-        this.audioPlayer.addEventListener(
-            "loadeddata",
-            () => {
-                this.length = this.getTimeCodeFromNum(this.audioPlayer.duration);
-            },
-            false
-        );
+                const cursorPositionXToSliderLeft = clientX - left;
+                const sliderWidth = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).width);
+                const positionUpperBounded = Math.min(cursorPositionXToSliderLeft, sliderWidth);
+                const positionLowerBounded = Math.max(positionUpperBounded, 0);
+                
+                const volumePercentage = positionLowerBounded / sliderWidth;
+
+                this.audioPlayerStore.setVolume(volumePercentage);
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            this.isVolumePercentageMouseDown = false;
+        });
 
         this.isMobileView = window.innerWidth < 576;
-        
-        this.resizeEventListener = () => {
-            this.isMobileView = window.innerWidth < 576;
-        };
 
-        window.addEventListener("resize", this.resizeEventListener);
-    },
-    beforeUnmount() {
-        window.removeEventListener("resize", this.resizeEventListener);
+        window.addEventListener("resize", () => {
+            this.isMobileView = window.innerWidth < 576;
+        });
     },
     methods: {
-        getTimeCodeFromNum(num) {
-            let seconds = parseInt(num);
-            let minutes = parseInt(seconds / 60);
-            seconds -= minutes * 60;
-            const hours = parseInt(minutes / 60);
-            minutes -= hours * 60;
-
-            if (hours === 0) {
-                return `${minutes}:${String(seconds % 60).padStart(2, 0)}`
-            };
-
-            return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-                seconds % 60
-            ).padStart(2, 0)}`;
-        },
         setTime({ offsetX }) {
-            const timelineWidth = window.getComputedStyle(this.$refs.timeline).width;
-            const timeToSeek = offsetX / parseInt(timelineWidth) * this.audioPlayer.duration;
-            this.audioPlayer.currentTime = timeToSeek;
-            this.currentTime = this.getTimeCodeFromNum(this.audioPlayer.currentTime);
-            this.$refs.progressBar.style.width = this.audioPlayer.currentTime / this.audioPlayer.duration * 100 + "%";
+            if (!this.isMobileView) {
+                const timelineWidth = parseFloat(window.getComputedStyle(this.$refs.timeline).width);
+                const progressPercentage = offsetX / timelineWidth;
+                this.audioPlayerStore.setTime(progressPercentage);
+            }
         },
         setVolume({ offsetX }) {
-            const sliderWidth = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).width);
-            const newVolume = offsetX / sliderWidth;
-            this.audioPlayer.volume = newVolume;
-            this.$refs.volumePercentage.style.width = (newVolume * 100) + "%";
+            if (!this.isVolumePercentageMouseDown) {
+                const sliderWidth = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).width);
+                const volumePercentage = offsetX / sliderWidth;
+                this.audioPlayerStore.setVolume(volumePercentage);
+            }
         },
-        togglePlay() {
-            this.isPlaying ? this.pause() : this.play();
+        openMobileView() {
+            const isAudioAlreadyPlayed = this.audioPlayerStore.currentlyPlayingAudio !== null;
+
+            if (this.isMobileView && isAudioAlreadyPlayed) {
+                const modal = this.$nuxt.$bootstrap.Modal.getOrCreateInstance(this.$refs.mobileModal);
+                modal.show();
+            }
         },
-        play() {
-            this.$emit("play");
-            this.audioPlayer.play();
-            this.isPlaying = true;
-
-            this.progressBarInterval = setInterval(() => {
-                this.currentTime = this.getTimeCodeFromNum(this.audioPlayer.currentTime);
-                this.$refs.progressBar.style.width = this.audioPlayer.currentTime / this.audioPlayer.duration * 100 + "%";
-                
-
-                const isAudioFinished = this.isPlaying && this.audioPlayer.paused;
-
-                if (isAudioFinished) {
-                    this.togglePlay();
-                }
-            }, 500);
-        },
-        pause() {
-            this.audioPlayer.pause();
-            this.isPlaying = false;
-
-            clearInterval(this.progressBarInterval);
-        },
-        toggleMute() {
-            this.isMuted = !this.isMuted;
-            this.audioPlayer.muted = !this.audioPlayer.muted;
+        togglePlay(event) {
+            this.audioPlayerStore.togglePlay();
+            event.stopPropagation();
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+@import "~/node_modules/bootstrap/scss/functions";
+@import "~/node_modules/bootstrap/scss/variables";
 @import "~/assets/bootstrap/variables";
+@import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
-.audio-player {
+.audio-player-container {
     height: 100px;
     background: $veryDark;
     color: $secondary;
 
-    .volume-slider {
-        width: 120px;
-        height: 4px;
-        position: relative;
-        cursor: pointer;
-        border-radius: 1px;
-        background: $light;
-        
-        .volume-percentage {
-            height: 100%;
-            width: 75%;
-            position: absolute;
-            background: $secondary;
-            transition: 0.1s;
-            display: flex;
-            align-items: center;
-            border-radius: 1px;
+    .audio-player-content {
+        width: 80%;
 
-            &::after {
-                content: "";
+        .audio-control {
+            font-size: 2rem;
+            left: -6px;
+        }
+
+        .title-container {
+            width: 80%;
+        }
+
+        .timeline-bar {
+            height: 8px;
+        }
+
+        .volume-slider {
+            width: 120px;
+            height: 4px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 1px;
+            background: $light;
+            
+            .volume-percentage {
+                height: 100%;
                 position: absolute;
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
                 background: $secondary;
                 transition: 0.1s;
-                right: -6px;
+                display: flex;
+                align-items: center;
+                border-radius: 1px;
+
+                .volume-percentage-dot {
+                    position: absolute;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background: $secondary;
+                    transition: 0.1s;
+                    right: -6px;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .audio-player-container {
+        min-height: 80px;
+        padding: 1rem 0;
+        height: auto;
+
+        .audio-player-content {
+            width: 90%;
+
+            .audio-control {
+                font-size: 2.5rem;
+                left: -8px;
+            }
+
+            .timeline-time {
+                display: none;
+            }
+
+            .timeline-bar {
+                height: 3px;
+            }
+
+            .volume-icon {
+                display: none;
+            }
+
+            .volume-slider {
+                display: none;
             }
         }
     }

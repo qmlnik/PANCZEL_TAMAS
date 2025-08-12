@@ -1,9 +1,5 @@
 <template>
     <h3 class="text-center fs-2 text-primary-light py-4 fw-bold">{{ $t('hero.subtitle.violinist') }}</h3>
-    <Content
-        ref="content"
-        :contents="content"
-    />
 </template>
 
 <script setup>

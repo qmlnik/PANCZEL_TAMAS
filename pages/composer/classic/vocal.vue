@@ -1,7 +1,7 @@
 <template>
     <MusicContentLayout
         :subcategoryMenu="subcategoryMenu"
-        currentSubCategory="classic"
+        currentSubcategory="classic"
     >
         <div class="w-100 mb-4">
             <AlbumHeader
@@ -10,10 +10,6 @@
                 :description="albumContent.description"
             />
         </div>
-        <Content
-            ref="content"
-            :contents="albumContent.content"
-        />
     </MusicContentLayout>
 </template>
 

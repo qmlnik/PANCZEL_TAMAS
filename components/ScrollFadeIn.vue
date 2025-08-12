@@ -43,7 +43,7 @@ export default {
         this.observer.observe(this.$refs.scrollRef);
     },
     beforeUnmount() {
-        this.observer.unobserve(this.$refs.scrollRef);
+        //this.observer.unobserve(this.$refs.scrollRef);
     },
     methods: {
         observerCallback([scrollRef]) {

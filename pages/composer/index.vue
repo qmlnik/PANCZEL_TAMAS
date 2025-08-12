@@ -1,11 +1,11 @@
 <template>
     <MusicContentLayout
-        currentSubCategoryMenu="composer"
-        :currentSubCategory="null"
+        currentSubcategoryMenu="composer"
+        :currentSubcategory="null"
     >
         <Content
             ref="content"
-            :contents="subCategories[currentCategory].content"
+            :contents="subcategories[currentCategory].content"
             @audio-play="stopAllAudio"
         />
     </MusicContentLayout>
@@ -38,8 +38,8 @@ export default {
     data() {
         return {
             currentCategory: "classic",
-            subCategoryOrder: ["classic", "anotherComposerStyle", "gospel"],
-            subCategories: {
+            subcategoryOrder: ["classic", "anotherComposerStyle", "gospel"],
+            subcategories: {
                 classic: {
                     title: {
                         en: "Classic",

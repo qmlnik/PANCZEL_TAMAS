@@ -25,7 +25,7 @@
                             to="composer-classic"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             style="cursor: pointer;"
-                            :class="[getRouteBasePageName($route) === 'composer' ? 'menu-active' : null]"
+                            :class="[getCategoryByPath($route) === 'composer' ? 'menu-active' : null]"
                             @click="navigateTo(localePath('composer-classic'))"
                         >
                             {{ $t('hero.subtitle.composer') }}
@@ -34,7 +34,7 @@
                             to="violinist"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             style="cursor: pointer;"
-                            :class="[getRouteBasePageName($route) === 'violinist' ? 'menu-active' : null]"
+                            :class="[getCategoryByPath($route) === 'violinist' ? 'menu-active' : null]"
                             @click="navigateTo(localePath('violinist'))"
                         >
                             {{ $t('hero.subtitle.violinist') }}
@@ -43,7 +43,7 @@
                             to="conductor"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
                             style="cursor: pointer;"
-                            :class="[getRouteBasePageName($route) === 'conductor' ? 'menu-active' : null]"
+                            :class="[getCategoryByPath($route) === 'conductor' ? 'menu-active' : null]"
                             @click="navigateTo(localePath('conductor'))"
                         >
                             {{ $t('hero.subtitle.conductor') }}
@@ -137,7 +137,7 @@ export default {
 
             const route = useRoute();
 
-            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getRouteBasePageName(route)];
+            currentPageBodyImg.value = ALL_PAGE_BODY_IMG[getCategoryByPath(route)];
 
             let isPageBodyImgInitLoaded = false;
 
@@ -167,8 +167,8 @@ export default {
         const router = useRouter();
 
         router.afterEach(async (to, from) => {
-            const toPageName = getRouteBasePageName(to);
-            const fromPageName = getRouteBasePageName(from);
+            const toPageName = getCategoryByPath(to);
+            const fromPageName = getCategoryByPath(from);
 
             const isLocaleRouteChange = toPageName === fromPageName;
 

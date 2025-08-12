@@ -1,7 +1,7 @@
 <template>
     <MusicContentLayout
         :subcategoryMenu="subcategoryMenu"
-        currentSubCategory="others"
+        currentSubcategory="others"
     >
         <Albums :albums="albums" />
     </MusicContentLayout>
