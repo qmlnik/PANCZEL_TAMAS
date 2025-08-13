@@ -305,7 +305,7 @@ export default {
         position: absolute;
         left: 35%;
         width: 60%;
-        height: 80%;
+        height: 75%;
         top: 10%;
         display: flex;
         flex-direction: column;
@@ -369,7 +369,7 @@ export default {
                 }
 
                 @include media-breakpoint-down(sm) {
-                    font-size: 3.5vw;
+                    font-size: 4vw;
                 }
 
                 &:hover, &.menu-active {
@@ -388,7 +388,7 @@ export default {
 
     .scroll-indicator-container {
         position: absolute;
-        bottom: 5%;
+        bottom: 8%;
         left: 50%;
         transform: translate(-50%, 0);
         width: 20px;

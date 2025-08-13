@@ -1,14 +1,16 @@
 <template>
-    <div class="row text-secondary">
+    <div class="row text-secondary" style="row-gap: 1rem;">
         <div class="col-md-4">
             <img
-                :src="audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, route.album).img"
+                :src="audioPlayerStore.getAlbumByRoute(route).img"
                 class="w-100 ratio ratio-1x1 rounded"
             />
         </div>
-        <div class="col-md-8">
-            <h4 class="mb-2">{{ audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, route.album).title[$i18n.locale] }}</h4>
-            <div>{{ audioPlayerStore.getAlbumByRoute(route.category, route.subcategory, route.album).description[$i18n.locale] }}</div>
+        <div class="col-md-8" >
+            <div class="content-backdrop rounded p-3 h-100">
+                <h4 class="mb-2">{{ audioPlayerStore.getAlbumByRoute(route).title[$i18n.locale] }}</h4>
+                <div>{{ audioPlayerStore.getAlbumByRoute(route).description[$i18n.locale] }}</div>
+            </div>
         </div>
     </div>
 </template>

@@ -15,7 +15,12 @@
                     :class="[audioPlayerStore.currentlyPlayingAudio?.properties.isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
                 ></i>
             </div>
-            <div class="title-container text-center">
+            <div
+                class="title-container text-center"
+                style="cursor: pointer;"
+                @click="navigateToAlbum"
+            >
+                <div>{{ currentAlbum?.title[$i18n.locale] }}</div>
                 {{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].author }}
                 -&nbsp;<span class="fw-bold">{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].title }}</span>
             </div>
@@ -23,69 +28,131 @@
         <div class="d-flex align-items-center">
             <span class="timeline-time current me-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.currentTime || "00:00" }}</span>
             <div
-                ref="timeline"
+                ref="timelineDesktop"
                 class="timeline-bar w-100 bg-secondary"
                 style="cursor: pointer;"
                 @click="setTime"
             >
                 <div
-                    ref="progressBar"
-                    class="bg-primary h-100"
+                    class="timeline-progress-bar bg-primary h-100"
                     :style="{ width: `${(audioPlayerStore.currentlyPlayingAudio?.properties.progressPercentage || 0) * 100}%` }"
                     style="transition: .25s;"
                 ></div>
             </div>
             <span class="timeline-time ms-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.length || "00:00" }}</span>
-            <div
-                class="volume-icon fs-3 ms-4 me-2"
-                style="cursor: pointer;"
-                @click="audioPlayerStore.toggleMute"
-            >
-                <i
-                    class="bi"
-                    :class="[audioPlayerStore.currentlyPlayingAudioIsMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
-                ></i>
-            </div>
-            <div
-                ref="volumeSlider"
-                class="volume-slider"
-                @mouseup="setVolume"
-            >
+            <div class="volume-container">
                 <div
-                    class="volume-percentage"
-                    :style="{
-                        width: `${
-                            audioPlayerStore.currentlyPlayingAudioIsMuted
-                                ? 0
-                                : audioPlayerStore.currentlyPlayingAudioVolumePercentage * 100
-                        }%`
-                    }"
+                    class="volume-icon fs-3 ms-4 me-2"
+                    style="cursor: pointer;"
+                    @click="audioPlayerStore.toggleMute"
+                >
+                    <i
+                        class="bi"
+                        :class="[audioPlayerStore.currentlyPlayingAudioIsMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
+                    ></i>
+                </div>
+                <div
+                    ref="volumeSliderDesktop"
+                    class="volume-slider"
+                    @mouseup="setVolume"
                 >
                     <div
-                        class="volume-percentage-dot"
-                        @mousedown="isVolumePercentageMouseDown = true"
-                    ></div>
+                        class="volume-percentage"
+                        :style="{
+                            width: `${
+                                audioPlayerStore.currentlyPlayingAudioIsMuted
+                                    ? 0
+                                    : audioPlayerStore.currentlyPlayingAudioVolumePercentage * 100
+                            }%`
+                        }"
+                    >
+                        <div
+                            class="volume-percentage-dot"
+                            @mousedown="isVolumePercentageMouseDown = true"
+                        ></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" ref="mobileModal">
+<div class="modal fade mobile-audio-player-container" ref="mobileModal">
     <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="position-relative d-flex align-items-center justify-content-center" style="height: 10%">
+        <div class="modal-content mobile-audio-player-content">
+            <div class="modal-body pt-0 pb-5">
+                <div class="position-relative d-flex align-items-center justify-content-center" style="height: 70px;">
                     <i
                         class="position-absolute fs-1 bi bi-arrow-left"
                         style="left: 0;"
                         data-bs-dismiss="modal"
+                        @click="isMobileViewOpen = false;"
                     ></i>
-                    <div class="text-center fs-4" style="width: 75%">{{ currentAlbum?.title[$i18n.locale] }}</div>
+                    <div class="text-center fs-5" style="width: 75%">{{ currentAlbum?.title[$i18n.locale] }}</div>
                 </div>
-                    <img
-                        :src="currentAlbum?.img"
-                        class="w-100 ratio ratio-1x1 rounded"
-                    />
+                <img
+                    :src="currentAlbum?.img"
+                    class="w-100 ratio ratio-1x1 rounded"
+                    style="object-fit: contain; max-height: 300px;"
+                />
+                <div class="fs-2 text-center mt-3">
+                    <div class="fw-bold">{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].title }}</div>
+                    <div>{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].author }}</div>
+                </div>
+                <div
+                    ref="timelineMobile"
+                    class="timeline-bar w-100 bg-secondary mt-4"
+                    @click="setTime"
+                >
+                    <div
+                        class="timeline-progress-bar bg-primary h-100"
+                        :style="{ width: `${(audioPlayerStore.currentlyPlayingAudio?.properties.progressPercentage || 0) * 100}%` }"
+                        style="transition: .25s;"
+                    ></div>
+                </div>
+                <div class="d-flex justify-content-between mt-1" style="margin-bottom: -5px;">
+                    <span class="timeline-time current me-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.currentTime || "00:00" }}</span>
+                    <span class="timeline-time ms-2">{{ audioPlayerStore.currentlyPlayingAudio?.properties.length || "00:00" }}</span>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <i
+                        class="audio-control bi"
+                    
+                        :class="[audioPlayerStore.currentlyPlayingAudio?.properties.isPlaying ? 'bi-pause-fill' : 'bi-play-fill']"
+                        @click="togglePlay"
+                    ></i>
+                </div>
+                <div class="volume-container">
+                    <div
+                        ref="volumeSliderMobile"
+                        class="volume-slider"
+                        @mouseup="setVolume"
+                    >
+                        <div
+                            class="volume-icon"
+                            @click="audioPlayerStore.toggleMute"
+                        >
+                            <i
+                                class="bi"
+                                :class="[audioPlayerStore.currentlyPlayingAudioIsMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill']"
+                            ></i>
+                        </div>
+                        <div
+                            class="volume-percentage"
+                            :style="{
+                                width: `${
+                                    audioPlayerStore.currentlyPlayingAudioIsMuted
+                                        ? 0
+                                        : audioPlayerStore.currentlyPlayingAudioVolumePercentage * 100
+                                }%`
+                            }"
+                        >
+                            <div
+                                class="volume-percentage-dot"
+                                @mousedown="isVolumePercentageMouseDown = true"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -102,10 +169,8 @@ export default {
         currentAlbum() {
             const isAudioAlreadyPlayed = this.audioPlayerStore.currentlyPlayingAudio !== null;
             
-            if (isAudioAlreadyPlayed) {
-                const { category, subcategory, album } = this.audioPlayerStore.currentlyPlayingAudio?.properties.route;
-            
-                return this.audioPlayerStore.getAlbumByRoute(category, subcategory, album);
+            if (isAudioAlreadyPlayed) {            
+                return this.audioPlayerStore.getAlbumByRoute(this.audioPlayerStore.currentlyPlayingAudio?.properties.route);
             }
             
             return null;
@@ -139,15 +204,17 @@ export default {
     },
     methods: {
         setTime({ offsetX }) {
-            if (!this.isMobileView) {
-                const timelineWidth = parseFloat(window.getComputedStyle(this.$refs.timeline).width);
+            if (!this.isMobileView || this.isMobileViewOpen) {
+                const timelineRef = this.isMobileView ? this.$refs.timelineMobile : this.$refs.timelineDesktop;
+                const timelineWidth = parseFloat(window.getComputedStyle(timelineRef).width);
                 const progressPercentage = offsetX / timelineWidth;
                 this.audioPlayerStore.setTime(progressPercentage);
             }
         },
         setVolume({ offsetX }) {
             if (!this.isVolumePercentageMouseDown) {
-                const sliderWidth = parseFloat(window.getComputedStyle(this.$refs.volumeSlider).width);
+                const volumeSliderRef = this.isMobileView ? this.$refs.volumeSliderMobile : this.$refs.volumeSliderDesktop;
+                const sliderWidth = parseFloat(window.getComputedStyle(volumeSliderRef).width);
                 const volumePercentage = offsetX / sliderWidth;
                 this.audioPlayerStore.setVolume(volumePercentage);
             }
@@ -158,11 +225,20 @@ export default {
             if (this.isMobileView && isAudioAlreadyPlayed) {
                 const modal = this.$nuxt.$bootstrap.Modal.getOrCreateInstance(this.$refs.mobileModal);
                 modal.show();
+                this.isMobileViewOpen = true;
             }
         },
         togglePlay(event) {
             this.audioPlayerStore.togglePlay();
             event.stopPropagation();
+        },
+        navigateToAlbum() {
+            const isNavigate = !this.isMobileView && this.audioPlayerStore.currentlyPlayingAudio !== null;
+            const localePath = useLocalePath();
+
+            if (isNavigate) {
+                navigateTo(localePath(getPageByRoute(this.audioPlayerStore.currentlyPlayingAudio.properties.route)));
+            }
         }
     }
 };
@@ -175,7 +251,8 @@ export default {
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
 
 .audio-player-container {
-    height: 100px;
+    min-height: 110px;
+    padding: 1rem 0;
     background: $veryDark;
     color: $secondary;
 
@@ -193,34 +270,44 @@ export default {
 
         .timeline-bar {
             height: 8px;
-        }
+            border-radius: 4px;
 
-        .volume-slider {
-            width: 120px;
-            height: 4px;
-            position: relative;
-            cursor: pointer;
-            border-radius: 1px;
-            background: $light;
-            
-            .volume-percentage {
-                height: 100%;
+            .timeline-progress-bar {
+                border-radius: 4px;
+            }
+        }
+    }
+}
+.volume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .volume-slider {
+        width: 120px;
+        height: 4px;
+        position: relative;
+        cursor: pointer;
+        border-radius: 2px;
+        background: $light;
+        
+        .volume-percentage {
+            height: 100%;
+            position: absolute;
+            background: $secondary;
+            transition: 0.1s;
+            display: flex;
+            align-items: center;
+            border-radius: 2px;
+
+            .volume-percentage-dot {
                 position: absolute;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
                 background: $secondary;
                 transition: 0.1s;
-                display: flex;
-                align-items: center;
-                border-radius: 1px;
-
-                .volume-percentage-dot {
-                    position: absolute;
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 50%;
-                    background: $secondary;
-                    transition: 0.1s;
-                    right: -6px;
-                }
+                right: -6px;
             }
         }
     }
@@ -248,12 +335,53 @@ export default {
                 height: 3px;
             }
 
-            .volume-icon {
+            .volume-container {
                 display: none;
             }
+        }
+    }
+}
 
-            .volume-slider {
-                display: none;
+.mobile-audio-player-container {
+    .mobile-audio-player-content {
+        background: $veryDark;
+        color: $secondary;
+
+        .timeline-bar {
+            height: 10px;
+            border-radius: 5px;
+
+            .timeline-progress-bar {
+                border-radius: 5px;
+            }
+        }
+
+        .audio-control {
+            font-size: 3rem;
+        }
+
+        .volume-slider {
+            width: 60%;
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .volume-icon {
+                font-size: 1.7rem;
+                position: absolute;
+                left: -2.2rem; 
+            }
+
+            .volume-percentage {
+                border-radius: 4px;
+
+                .volume-percentage-dot {
+                    width: 16px;
+                    height: 16px;
+                    right: -8px;
+                }
             }
         }
     }

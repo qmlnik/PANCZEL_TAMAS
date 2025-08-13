@@ -1,30 +1,15 @@
 <template>
-    <div
-        v-for="(content, index) in contents"
-        :key="getContentKey(content)"
-        style="display: contents;"
-    >
-        <ScrollFadeIn
-            v-if="content.type === CONTENT_TYPE.IFRAME"
+    <div style="display: contents;">
+            <ScrollFadeIn
+            v-for="(content, index) in contents"
+            :key="getContentKey(content)"
             class="w-100 mb-3"
         >
-            <a :href="content.src" target="_blank" class="media-container text-secondary w-100 d-flex align-items-center p-3 ps-0 rounded bg-light">
-                <div class="d-flex align-items-center justify-content-center fs-4" style="width: 60px;">
-                    <span class="media-default-view">{{ index + 1 }}</span>
-                    <i class="media-hover-view bi bi-youtube"></i>
-                </div>
-                <div>
-                    <div class="fw-bold">{{ "egy hosszú cím" }}</div>
-                    <div>{{ "Tamás" }}</div>
-                </div>
-            </a>
-        </ScrollFadeIn>
-        <ScrollFadeIn
-            v-else
-            class="w-100 mb-3"
-        >
-            <div class="media-container text-secondary w-100 d-flex justify-content-between align-items-center p-3 ps-0 rounded bg-light">
-                <div class="d-flex">
+            <div
+                class="media-container w-100 d-flex justify-content-between align-items-center p-3 ps-0 rounded"
+                :class="[audioPlayerStore.currentlyPlayingAudio === content ? 'current-audio' : null]"
+            >
+                <div class="d-flex w-100">
                     <div class="d-flex align-items-center justify-content-center fs-4" style="width: 60px;">
                         <div class="media-default-view">
                             <i
@@ -50,10 +35,18 @@
                             ></i>
                         </div>
                     </div>
-                    <div>
+                    <div class="d-flex flex-column justify-content-center">
                         <div class="fw-bold">{{ content[$i18n.locale].title }}</div>
                         <div>{{ content[$i18n.locale].author }}</div>
                     </div>
+                    <a
+                        v-if="content.type === CONTENT_TYPE.AUDIO_WITH_VIDEO"
+                        :href="content.video"
+                        class="btn btn-primary d-flex align-items-center ms-4"
+                        target="_blank"
+                    >
+                        <span class="d-none d-sm-block me-2">Ugrás</span><i class="bi bi-youtube fs-3"></i>
+                    </a>
                 </div>
                 <div>{{ content.properties.length }}</div>
             </div>
@@ -76,11 +69,12 @@ export default {
     },
     mounted() {
         this.contents.forEach(content => {
-            if (content.type === CONTENT_TYPE.AUDIO) {
+            const isAudioLoaded = content.properties.audioPlayer !== null;
+
+            if (!isAudioLoaded) {
                 const audioPlayer = new Audio();
 
                 audioPlayer.src = content.src;
-                audioPlayer.volume = .75;
 
                 content.properties.audioPlayer = audioPlayer;
                 
@@ -112,8 +106,18 @@ export default {
 @import "~/node_modules/bootstrap/scss/functions";
 @import "~/node_modules/bootstrap/scss/variables";
 @import "~/node_modules/bootstrap/scss/mixins/breakpoints";
+@import "~/assets/bootstrap/variables";
 
 .media-container {
+    background: $light;
+    color: $secondary;
+    transition: .3s;
+
+    &.current-audio {
+        background: $secondary;
+        color: $light;
+    }
+
     .media-default-view {
         display: block;
     }
@@ -123,6 +127,16 @@ export default {
     }
 
     &:hover {
+        .media-default-view {
+            display: none;
+        }
+
+        .media-hover-view {
+            display: block;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
         .media-default-view {
             display: none;
         }

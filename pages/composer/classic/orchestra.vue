@@ -22,11 +22,7 @@ export default {
 
         return {
             route,
-            contents: vm.audioPlayerStore.getAlbumByRoute(
-                route.category,
-                route.subcategory,
-                route.album
-            ).content
+            contents: vm.audioPlayerStore.getAlbumByRoute(route).content
         };
     }
 };

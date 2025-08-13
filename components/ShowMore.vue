@@ -33,7 +33,7 @@ export default {
         isShowMoreOpen: false,
         isDisplayShowMore: false,
         collapseHeight: 'auto',
-        resizeEventListener: null
+        resizeEventCallback: null
     }),
     watch: {
         isShowMoreOpen(nextIsShowMoreOpen) {
@@ -42,21 +42,23 @@ export default {
             if (!nextIsShowMoreOpen) {
                 this.scrollToContentTop();
             }
+        },
+        content() {
+            this.$nextTick(this.resizeEventCallback);
         }
     },
     mounted() {
-        this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
-        this.setCollapseHeight();
-
-        this.resizeEventListener = () => {
+        this.resizeEventCallback = () => {
             this.isDisplayShowMore = this.$refs.content.offsetHeight > COLLAPSED_HEIGHT;
             this.setCollapseHeight();
         };
 
-        window.addEventListener("resize", this.resizeEventListener);
+        this.resizeEventCallback();
+
+        window.addEventListener("resize", this.resizeEventCallback);
     },
     beforeUnmount() {
-        window.removeEventListener("resize", this.resizeEventListener);
+        window.removeEventListener("resize", this.resizeEventCallback);
     },
     methods: {
         setCollapseHeight() {

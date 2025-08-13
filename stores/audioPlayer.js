@@ -11,18 +11,43 @@ import Passacagila from "~/assets/songs/composer/classic/Passacagila.mp3";
 import Psalm_29 from "~/assets/songs/composer/classic/Psalm_29.mp3";
 import Fuvosotos from "~/assets/songs/composer/classic/Fuvosotos.mp3";
 import Klezmer_Szvit from "~/assets/songs/composer/classic/Klezmer_Szvit.mp3";
+import Violin_Concerto from "~/assets/songs/composer/classic/Violin_Concerto.mp3";
+import Piano_Concerto from "~/assets/songs/composer/classic/Piano_Concerto.mp3";
+import Klezmer_Suite from "~/assets/songs/composer/classic/Klezmer_Suite.mp3";
 
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 
 const categoryContent = {
     "composer-classic-orchestra": [
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/Z_wT0pKZZf4?si=V5jqnvrByMw94RFM",
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Violin Concerto",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Violin Concerto",
+                description: ""
+            },
+            src: Violin_Concerto,
+            video: "https://www.youtube.com/watch?v=Z_wT0pKZZf4"
         },
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/3Tpobd5Fn80?si=TTI-8mjiCoIYfTpV",
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Piano Concerto",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Piano Concerto",
+                description: ""
+            },
+            src: Piano_Concerto,
+            video: "https://www.youtube.com/watch?v=3Tpobd5Fn80"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -67,8 +92,19 @@ const categoryContent = {
             src: Klezmer_Szvit
         },
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/RZtEK81213U?si=hMA05DlpbJTDq-zD",
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Klezmer Suite",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Klezmer Suite",
+                description: ""
+            },
+            src: Klezmer_Suite,
+            video: "https://www.youtube.com/watch?v=RZtEK81213U"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -144,13 +180,13 @@ const categoryContent = {
             },
             src: Fuvosotos
         },
-        {
+        /*{
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3",
-        },
+        },*/
     ],
     "composer-others-Bach": [
-        {
+        /*{
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m",
         },
@@ -161,23 +197,23 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI",
-        }
+        }*/
     ],
     "composer-others-Mozart": [
-        {
+        /*{
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9",
         },
         {
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/watch?v=s3qfyOAARdc",
-        },
+        },*/
     ],
     "composer-others-Liszt": [
-        {
+        /*{
             type: CONTENT_TYPE.IFRAME,
             src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z",
-        },
+        },*/
     ],
     "composer-gospel": [
         {
@@ -214,17 +250,16 @@ const categoryContent = {
 function setAudioContentProperties() {
     Object.entries(categoryContent).forEach(([page, contentList]) => {
         contentList.forEach((content, index) => {
-            if (content.type === CONTENT_TYPE.AUDIO) {
-                content.properties = {
-                    isPlaying: false,
-                    isMuted: false,
-                    currentTime: "00:00",
-                    progressPercentage: 0,
-                    progressInterval: null,
-                    route: getRouteByPage(page),
-                    index
-                };
-            }
+            content.properties = {
+                audioPlayer: null,
+                isPlaying: false,
+                isMuted: false,
+                currentTime: "00:00",
+                progressPercentage: 0,
+                progressInterval: null,
+                route: getRouteByPage(page),
+                index
+            };
         });        
     });
 }
@@ -444,7 +479,7 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
                 seconds % 60
             ).padStart(2, 0)}`;
         },
-        getAlbumByRoute(category, subcategory, album) {
+        getAlbumByRoute({ category, subcategory, album }) {
             if (subcategory !== null) {
                 return this.categories[category].subcategoies[subcategory].albumContent.albums[album];
             }

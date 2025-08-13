@@ -1,5 +1,5 @@
 <template>
-    <section class="p-sm-4 d-flex align-items-center flex-column">
+    <section class="pb-4 p-sm-4 d-flex align-items-center flex-column">
         <div
             v-if="route.subcategory !== null"
             class="bg-light p-3 mb-4 fs-6 rounded"

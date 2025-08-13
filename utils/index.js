@@ -1,5 +1,5 @@
 export const CONTENT_TYPE = {
-    IFRAME: "iframe",
+    AUDIO_WITH_VIDEO: "audio_with_video",
     AUDIO: "audio"
 };
 
@@ -30,4 +30,18 @@ export function getRouteByPage(page) {
     const [category, album] = splitResult;
 
     return { category, subcategory: null, album };
+}
+
+export function getPageByRoute(route) {
+    const { category, subcategory, album } = route;
+
+    let page = category;
+
+    if (subcategory !== null) {
+        page += `-${subcategory}`;
+    }
+
+    page += `-${album}`;
+
+    return page;
 }
