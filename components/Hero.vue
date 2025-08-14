@@ -48,6 +48,14 @@
                         >
                             {{ $t('hero.subtitle.conductor') }}
                         </div>
+                        <a
+                            class="menu-element menu-element-attention d-inline-block py-2 px-4 rounded"
+                            href="https://www.google.com"
+                            target="_blank"
+                        >
+                            {{ $t('composerNight') }}
+                            <i class="bi bi-arrow-right ms-1 fs-6"></i>
+                        </a>
                     </div>
                 </div>
             </ScrollFadeIn>
@@ -375,6 +383,29 @@ export default {
                 &:hover, &.menu-active {
                     background: $primary-light;
                     color: $dark;
+                }
+            }
+
+            .menu-element-attention {
+                $background: #751417;
+                $background-light: #971a1f;
+
+                @keyframes pulsating {
+                    0% { background-color: $background; }
+                    40% { background-color: $background-light; }
+                    60% { background-color: $background-light; }
+                    100% { background-color: $background; }
+                }
+
+                background: $background;
+                text-decoration: underline;
+                animation-name: pulsating;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                color: $secondary !important;
+
+                &:hover {
+                    background-color: $background-light !important;
                 }
             }
         }

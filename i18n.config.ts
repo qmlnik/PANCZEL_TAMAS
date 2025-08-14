@@ -40,7 +40,8 @@ export default defineI18nConfig(() => ({
                 email: "Email",
                 connect: "Connect"
             },
-            back: "Back"
+            back: "Back",
+            composerNight: "Composer night"
         },
         hu: {
             meta: {
@@ -80,7 +81,8 @@ export default defineI18nConfig(() => ({
                 email: "Email",
                 connect: "Kapcsolat"
             },
-            back: "Vissza"
+            back: "Vissza",
+            composerNight: "Szerzői est"
         }
     },
 }))
