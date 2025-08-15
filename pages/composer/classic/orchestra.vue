@@ -3,10 +3,7 @@
         <div class="w-100 mb-4">
             <AlbumHeader :route="route" />
         </div>
-        <Content
-            ref="content"
-            :contents="contents"
-        />
+        <Content :route="route" />
     </MusicContentLayout>
 </template>
 

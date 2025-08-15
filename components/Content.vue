@@ -1,8 +1,8 @@
 <template>
     <div style="display: contents;">
-            <ScrollFadeIn
-            v-for="(content, index) in contents"
-            :key="getContentKey(content)"
+        <ScrollFadeIn
+            v-for="(content, index) in audioPlayerStore.getAlbumByRoute(route).content"
+            :key="`${content.author}-${content.title}`"
             class="w-100 mb-3"
         >
             <div
@@ -59,7 +59,7 @@ import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
 
 export default {
     props: {
-        contents: {
+        route: {
             type: Object,
             required: true
         }
@@ -68,35 +68,29 @@ export default {
         return { audioPlayerStore: useAudioPlayerStore() };
     },
     mounted() {
-        this.contents.forEach(content => {
-            const isAudioLoaded = content.properties.audioPlayer !== null;
-
-            if (!isAudioLoaded) {
-                const audioPlayer = new Audio();
-
-                audioPlayer.src = content.src;
-
-                content.properties.audioPlayer = audioPlayer;
-                
-                audioPlayer.addEventListener(
-                    "loadeddata",
-                    () => {
-                        content.properties.length = this.audioPlayerStore.getTimeCodeFromNum(audioPlayer.duration);
-                    },
-                    { once: true }
-                );
-            }
-        });
+        this.loadAudioPlayer();
     },
     methods: {
-        getContentKey(content) {
-            if (content.type === CONTENT_TYPE.IFRAME) {
-                return content.src;
-            }
+        loadAudioPlayer() {
+            this.audioPlayerStore.getAlbumByRoute(this.route).content.forEach(content => {
+                const isAudioLoaded = content.properties.audioPlayer !== null;
 
-            const { [this.$i18n.locale]: { author, title } } = content;
+                if (!isAudioLoaded) {
+                    const audioPlayer = new Audio();
 
-            return `${author}-${title}`;
+                    audioPlayer.src = content.src;
+
+                    content.properties.audioPlayer = audioPlayer;
+                    
+                    audioPlayer.addEventListener(
+                        "loadeddata",
+                        () => {
+                            content.properties.length = this.audioPlayerStore.getTimeCodeFromNum(audioPlayer.duration);
+                        },
+                        { once: true }
+                    );
+                }
+            });
         }
     }
 }; 

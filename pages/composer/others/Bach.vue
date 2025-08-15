@@ -1,26 +1,25 @@
 <template>
-    <MusicContentLayout
-        :subcategoryMenu="subcategoryMenu"
-        currentSubcategory="others"
-    >
+    <MusicContentLayout :route="route">
         <div class="w-100 mb-4">
-            <AlbumHeader
-                :img="albumContent.img"
-                :title="albumContent.title"
-                :description="albumContent.description"
-            />
+            <AlbumHeader :route="route" />
         </div>
+        <Content :route="route" />
     </MusicContentLayout>
 </template>
 
 <script>
-import { getSubcategoryMenu, getAlbumContent } from "~/pages/musicCategoryContent.js";
-
 export default {
-    data() {
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    data: vm => {
+        const route = {
+            category: "composer",
+            subcategory: "others",
+            album: "Bach"
+        };
+
         return {
-            subcategoryMenu: getSubcategoryMenu("composer"),
-            albumContent: getAlbumContent("composer", "others", "composer-others-Bach")
+            route,
+            contents: vm.audioPlayerStore.getAlbumByRoute(route).content
         };
     }
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="row" style="row-gap: 2rem;">
+    <div class="row w-100" style="row-gap: 2rem;">
         <NuxtLinkLocale
             v-for="currentAlbum in audioPlayerStore.categories[route.category].subcategoies[route.subcategory].albumContent.albumOrder"
             :key="currentAlbum"

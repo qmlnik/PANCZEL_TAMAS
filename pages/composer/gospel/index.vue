@@ -1,21 +1,21 @@
 <template>
-    <MusicContentLayout
-        :subcategoryMenu="subcategoryMenu"
-        currentSubcategory="gospel"
-    >
+    <MusicContentLayout :route="route">
+        <Albums :route="route" />
     </MusicContentLayout>
 </template>
 
 <script>
-import { getSubcategoryMenu, getRegularContent } from "~/pages/musicCategoryContent.js";
+import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
 
 export default {
-    data() {
-        return {
-            subcategoryMenu: getSubcategoryMenu("composer"),
-            content: getRegularContent("composer", "gospel")
-        };
-    }
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    data: () => ({
+        route: {
+            category: "composer",
+            subcategory: "gospel",
+            album: null
+        }
+    })
 };
 </script>
 

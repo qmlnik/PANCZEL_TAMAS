@@ -35,9 +35,6 @@ export default {
         }
     },
     setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
-    created() {
-        //console.log(this.route, this.audioPlayerStore.categories[this.route.category]);
-    },
     methods: {
         getPage(subcategory) {
             return `${this.route.category}-${subcategory}`;

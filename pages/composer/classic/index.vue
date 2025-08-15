@@ -5,10 +5,7 @@
 </template>
 
 <script>
-import { useAudioPlayerStore } from "~/stores/audioPlayer.js";
-
 export default {
-    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
     data: () => ({
         route: {
             category: "composer",

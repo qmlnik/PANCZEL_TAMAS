@@ -14,6 +14,17 @@ import Klezmer_Szvit from "~/assets/songs/composer/classic/Klezmer_Szvit.mp3";
 import Violin_Concerto from "~/assets/songs/composer/classic/Violin_Concerto.mp3";
 import Piano_Concerto from "~/assets/songs/composer/classic/Piano_Concerto.mp3";
 import Klezmer_Suite from "~/assets/songs/composer/classic/Klezmer_Suite.mp3";
+import Pikolo_eletkepek from "~/assets/songs/composer/classic/Pikolo_eletkepek.mp3";
+
+import cisz_moll_fuga_a_la_Bach from "~/assets/songs/composer/other_composers_style/cisz_moll_fuga_a_la_Bach.mp3";
+import Chaconne_baroque from "~/assets/songs/composer/other_composers_style/Chaconne_baroque.mp3";
+import Fuga_a_4_voci_a_la_Bach from "~/assets/songs/composer/other_composers_style/Fuga_a_4_voci_a_la_Bach.mp3";
+import Requiem_Lacrymosa_and_Amen_fugue from "~/assets/songs/composer/other_composers_style/Requiem_Lacrymosa_and_Amen_fugue.mp3";
+import AMEN_FUGUE_to_Mozarts_Requiem from "~/assets/songs/composer/other_composers_style/AMEN_FUGUE_to_Mozarts_Requiem.mp3";
+import Les_quatre_élémens from "~/assets/songs/composer/other_composers_style/Les_quatre_élémens.mp3";
+
+import Bach_Largo from "~/assets/songs/violinist/Bach_Largo.mp3";
+import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
 
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 
@@ -180,42 +191,119 @@ const categoryContent = {
             },
             src: Fuvosotos
         },
-        /*{
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/bTg4-bp8DKU?si=QEtnvoKu8XPDgQf3",
-        },*/
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Genres for piccolo",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Pikoló életképek",
+                description: ""
+            },
+            src: Pikolo_eletkepek,
+            video: "https://www.youtube.com/watch?v=bTg4-bp8DKU"
+        },
     ],
     "composer-others-Bach": [
-        /*{
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/GoFo-taTX5w?si=BRpHtH-vZyTGio9m",
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "fugue in c sharp minor - \"a la Bach\"",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "cisz moll fuga - \"a la Bach\"",
+                description: ""
+            },
+            src: cisz_moll_fuga_a_la_Bach,
+            video: "https://www.youtube.com/watch?v=GoFo-taTX5w"
         },
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/3hfql7b-DnQ?si=PE1LpV6PGdIrOiNw",
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Chaconne (baroque)",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Chaconne (baroque)",
+                description: ""
+            },
+            src: Chaconne_baroque,
+            video: "https://www.youtube.com/watch?v=3hfql7b-DnQ"
         },
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/8D7ZzNtR-eI?si=rbtTmuyXuz_f_-fI",
-        }*/
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Fuga a 4 voci \"à la Bach\"",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Fuga a 4 voci \"à la Bach\"",
+                description: ""
+            },
+            src: Fuga_a_4_voci_a_la_Bach,
+            video: "https://www.youtube.com/watch?v=8D7ZzNtR-eI"
+        },
     ],
     "composer-others-Mozart": [
-        /*{
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/E814iS5w42M?si=nyq70Ad7vDXZJ2z9",
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Requiem Lacrymosa & Amen fugue",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Requiem Lacrymosa & Amen fugue",
+                description: ""
+            },
+            src: Requiem_Lacrymosa_and_Amen_fugue,
+            video: "https://www.youtube.com/watch?v=E814iS5w42M"
         },
         {
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/watch?v=s3qfyOAARdc",
-        },*/
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "AMEN FUGUE to Mozart's Requiem",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "AMEN FUGUE to Mozart's Requiem",
+                description: ""
+            },
+            src: AMEN_FUGUE_to_Mozarts_Requiem,
+            video: "https://www.youtube.com/watch?v=s3qfyOAARdc"
+        },
     ],
     "composer-others-Liszt": [
-        /*{
-            type: CONTENT_TYPE.IFRAME,
-            src: "https://www.youtube.com/embed/c6KBV3-ljEw?si=uyQ7lQFQXzhKSh1z",
-        },*/
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Les quatre élémens",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Les quatre élémens",
+                description: ""
+            },
+            src: Les_quatre_élémens,
+            video: "https://www.youtube.com/watch?v=c6KBV3-ljEw&t=1s"
+        },
     ],
-    "composer-gospel": [
+    "composer-gospel-all": [
         {
             type: CONTENT_TYPE.AUDIO,
             en: {
@@ -244,6 +332,36 @@ const categoryContent = {
             },
             src: Fejes_Zolies_es_a_Vidam_Szimfonikusok,
         },
+    ],
+    "violinist-J_S_Bach": [
+        {
+            type: CONTENT_TYPE.AUDIO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "J.S.Bach - Largo from C major solo sonata",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "J.S.Bach - Largo C dúr szóló szonátából",
+                description: ""
+            },
+            src: Bach_Largo
+        },
+        {
+            type: CONTENT_TYPE.AUDIO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "J.S.Bach - Fuge (extract) from g-minor",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "J.S.Bach - Fúga (részlet) g-moll szonátából",
+                description: ""
+            },
+            src: gmollfugareszlet
+        }
     ]
 };
 
@@ -323,7 +441,7 @@ const categoryStructure = {
                     hu: "Mások stílusában"
                 },
                 albumContent: {
-                    albumOrder: ["Bach", "Mozart, ", "Liszt"],
+                    albumOrder: ["Bach", "Mozart", "Liszt"],
                     albums: {
                         Bach: {
                             img: cover_placeholder,
@@ -369,12 +487,48 @@ const categoryStructure = {
                     en: "Gospel",
                     hu: "Gospel"
                 },
-                content: categoryContent["composer-gospel"],
+                albumContent: {
+                    albumOrder: ["all"],
+                    albums: {
+                        all: {
+                            img: cover_placeholder,
+                            title: {
+                                en: "All Gospel",
+                                hu: "Összes Gospel"
+                            },
+                            description: {
+                                en: "All Gospel",
+                                hu: "Összes Gospel"
+                            },
+                            content: categoryContent["composer-gospel-all"],
+                        }
+                    }
+                }
             }
         }
     },
     violinist: {
-        
+        title: {
+            en: "J.S. Bach",
+            hu: "J.S. Bach"
+        },
+        albumContent: {
+            albumOrder: ["J_S_Bach"],
+            albums: {
+                J_S_Bach: {
+                    img: cover_placeholder,
+                    title: {
+                        en: "All J.S. Bach",
+                        hu: "Összes J.S. Bach"
+                    },
+                    description: {
+                        en: "All J.S. Bach",
+                        hu: "Összes J.S. Bach"
+                    },
+                    content: categoryContent["violinist-J_S_Bach"],
+                }
+            }
+        }
     },
     conductor: {
 
