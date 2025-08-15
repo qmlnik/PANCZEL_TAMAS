@@ -8,7 +8,9 @@ export default defineI18nConfig(() => ({
                 pageTitle: {
                     violinist: "Violinist",
                     composer: "Composer",
-                    conductor: "Conductor"
+                    conductor: "Conductor",
+                    biography: "Biography",
+                    gallery: "Gallery"
                 },
                 content: "Official site of Tamás Pánczél Hungarian composer, conductor and violinist."
             },
@@ -25,7 +27,9 @@ export default defineI18nConfig(() => ({
                 subtitle: {
                     composer: "Composer",
                     violinist: "Violinist",
-                    conductor: "Conductor"
+                    conductor: "Conductor",
+                    biography: "Biography",
+                    gallery: "Gallery"
                 },
                 introduction: {
                     title: "introduction",
@@ -49,7 +53,9 @@ export default defineI18nConfig(() => ({
                 pageTitle: {
                     composer: "Zeneszerző",
                     violinist: "Hegedűművész",
-                    conductor: "Karmester"
+                    conductor: "Karmester",
+                    biography: "Önéletrajz",
+                    gallery: "Galéria"
                 },
                 content: "Pánczél Tamás magyar zeneszerző, hegedűművész és karmester hivatalos oldala."
             },
@@ -66,7 +72,9 @@ export default defineI18nConfig(() => ({
                 subtitle: {
                     violinist: "Hegedűművész",
                     composer: "Zeneszerző",
-                    conductor: "Karmester"
+                    conductor: "Karmester",
+                    biography: "Önéletrajz",
+                    gallery: "Galéria"
                 },
                 introduction: {
                     title: "bemutatkozás",

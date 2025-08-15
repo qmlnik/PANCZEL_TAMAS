@@ -1,10 +1,10 @@
 <template>
     <div class="row w-100" style="row-gap: 2rem;">
         <NuxtLinkLocale
-            v-for="currentAlbum in audioPlayerStore.categories[route.category].subcategoies[route.subcategory].albumContent.albumOrder"
+            v-for="currentAlbum in audioPlayerStore.getCategoryOrSubcategoryByRoute(route.category, route.subcategory).albumContent.albumOrder"
             :key="currentAlbum"
             :to="getPageByRoute({ ...route, album: currentAlbum })"
-            class="album-container col-md-3"
+            class="album-container col-lg-3 col-md-4 col-sm-6"
             style="cursor: pointer;"
         >
             <ScrollFadeIn>

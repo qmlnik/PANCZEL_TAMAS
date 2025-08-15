@@ -48,6 +48,24 @@
                         >
                             {{ $t('hero.subtitle.conductor') }}
                         </div>
+                        <div
+                            to="biography"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
+                            style="cursor: pointer;"
+                            :class="[getCategoryByPath($route) === 'biography' ? 'menu-active' : null]"
+                            @click="navigateTo(localePath('biography'))"
+                        >
+                            {{ $t('hero.subtitle.biography') }}
+                        </div>
+                        <div
+                            to="gallery"
+                            class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
+                            style="cursor: pointer;"
+                            :class="[getCategoryByPath($route) === 'gallery' ? 'menu-active' : null]"
+                            @click="navigateTo(localePath('gallery'))"
+                        >
+                            {{ $t('hero.subtitle.gallery') }}
+                        </div>
                         <a
                             class="menu-element menu-element-attention d-inline-block py-2 px-4 rounded"
                             href="https://www.google.com"

@@ -35,13 +35,5 @@ export function getRouteByPage(page) {
 export function getPageByRoute(route) {
     const { category, subcategory, album } = route;
 
-    let page = category;
-
-    if (subcategory !== null) {
-        page += `-${subcategory}`;
-    }
-
-    page += `-${album}`;
-
-    return page;
+    return [category, subcategory, album].filter(element => element !== null).join("-");
 }

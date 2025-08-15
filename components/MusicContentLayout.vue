@@ -17,8 +17,22 @@
                 </NuxtLinkLocale>
             </div>
         </div>
-        <h3 class="text-center fs-2 text-primary-light mb-4 fw-bold">   
-            {{ audioPlayerStore.categories[route.category].subcategoies[route.subcategory].title[$i18n.locale] }}
+        <h3
+            class="position-relative d-flex flex-column align-items-center justify-content-center fs-2 text-primary-light mb-4 fw-bold w-100"
+            style="row-gap: 1rem;"
+        >
+            <NuxtLinkLocale
+                v-if="route.album !== null"
+                :to="getPageByRoute({ ...route, album: null })"
+                class="title-back-button btn btn-primary fs-5"
+                style="left: 0;"
+            >
+                <i class="bi bi-arrow-left"></i>
+                Vissza
+            </NuxtLinkLocale>
+            <div class="title-text text-center">
+                {{ pageTitle }}
+            </div>
         </h3>
         <slot></slot>
     </section>
@@ -34,7 +48,20 @@ export default {
             required: true
         }
     },
-    setup: () => ({ audioPlayerStore: useAudioPlayerStore() }),
+    setup: () => ({ audioPlayerStore: useAudioPlayerStore(), localePath: useLocalePath() }),
+    computed: {
+        pageTitle() {
+            const { category, subcategory } = this.route;
+
+            let title = this.$t(`hero.subtitle.${category}`);
+
+            if (subcategory !== null) {
+                title += ` - ${this.audioPlayerStore.categories[category].subcategoies[subcategory].title[this.$i18n.locale]}`;
+            }
+
+            return title;
+        }
+    },
     methods: {
         getPage(subcategory) {
             return `${this.route.category}-${subcategory}`;
@@ -66,6 +93,26 @@ export default {
     }
 
     @include media-breakpoint-down(sm) {
+        width: 100%;
+    }
+}
+
+.title-back-button {
+    position: absolute;
+    left: 0;
+}
+
+.title-text {
+    width: 80%;
+}
+
+@include media-breakpoint-down(md) {
+    .title-back-button {
+        position: relative;
+        width: 100%;
+    }
+
+    .title-text {
         width: 100%;
     }
 }

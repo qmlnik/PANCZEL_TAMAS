@@ -26,6 +26,8 @@ import Les_quatre_élémens from "~/assets/songs/composer/other_composers_style/
 import Bach_Largo from "~/assets/songs/violinist/Bach_Largo.mp3";
 import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
 
+import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_vilag_szimfonia.mp3";
+
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 
 const categoryContent = {
@@ -337,13 +339,13 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.AUDIO,
             en: {
-                author: "Tamás Pánczél",
-                title: "J.S.Bach - Largo from C major solo sonata",
+                author: "J.S.Bach",
+                title: "Largo from C major solo sonata",
                 description: ""
             },
             hu: {
-                author: "Pánczél Tamás",
-                title: "J.S.Bach - Largo C dúr szóló szonátából",
+                author: "J.S.Bach",
+                title: "Largo C dúr szóló szonátából",
                 description: ""
             },
             src: Bach_Largo
@@ -362,6 +364,23 @@ const categoryContent = {
             },
             src: gmollfugareszlet
         }
+    ],
+    "conductor-all": [
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Dvorak",
+                title: "IX. (New world) symphony",
+                description: ""
+            },
+            hu: {
+                author: "Dvorak",
+                title: "IX. (Új világ) szimfónia",
+                description: ""
+            },
+            src: Dvorak_IX_uj_vilag_szimfonia,
+            video: "https://www.youtube.com/watch?v=vZqGJ2_cAr4"
+        },
     ]
 };
 
@@ -508,22 +527,18 @@ const categoryStructure = {
         }
     },
     violinist: {
-        title: {
-            en: "J.S. Bach",
-            hu: "J.S. Bach"
-        },
         albumContent: {
             albumOrder: ["J_S_Bach"],
             albums: {
                 J_S_Bach: {
                     img: cover_placeholder,
                     title: {
-                        en: "All J.S. Bach",
-                        hu: "Összes J.S. Bach"
+                        en: "J.S. Bach",
+                        hu: "J.S. Bach"
                     },
                     description: {
-                        en: "All J.S. Bach",
-                        hu: "Összes J.S. Bach"
+                        en: "J.S. Bach",
+                        hu: "J.S. Bach"
                     },
                     content: categoryContent["violinist-J_S_Bach"],
                 }
@@ -531,7 +546,23 @@ const categoryStructure = {
         }
     },
     conductor: {
-
+        albumContent: {
+            albumOrder: ["all"],
+            albums: {
+                all: {
+                    img: cover_placeholder,
+                    title: {
+                        en: "All",
+                        hu: "Összes"
+                    },
+                    description: {
+                        en: "All",
+                        hu: "Összes"
+                    },
+                    content: categoryContent["conductor-all"],
+                }
+            }
+        }
     }
 };
 
@@ -633,12 +664,15 @@ export const useAudioPlayerStore = defineStore("audioPlayer", {
                 seconds % 60
             ).padStart(2, 0)}`;
         },
-        getAlbumByRoute({ category, subcategory, album }) {
+        getCategoryOrSubcategoryByRoute(category, subcategory) {
             if (subcategory !== null) {
-                return this.categories[category].subcategoies[subcategory].albumContent.albums[album];
+                return this.categories[category].subcategoies[subcategory];
             }
 
-            return this.categories[category].albumContent.albums[album];
+            return this.categories[category];
+        },
+        getAlbumByRoute({ category, subcategory, album }) {
+            return this.getCategoryOrSubcategoryByRoute(category, subcategory).albumContent.albums[album];
         }
     },
 });
