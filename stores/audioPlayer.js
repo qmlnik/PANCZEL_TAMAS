@@ -22,6 +22,7 @@ import Fuga_a_4_voci_a_la_Bach from "~/assets/songs/composer/other_composers_sty
 import Requiem_Lacrymosa_and_Amen_fugue from "~/assets/songs/composer/other_composers_style/Requiem_Lacrymosa_and_Amen_fugue.mp3";
 import AMEN_FUGUE_to_Mozarts_Requiem from "~/assets/songs/composer/other_composers_style/AMEN_FUGUE_to_Mozarts_Requiem.mp3";
 import Les_quatre_élémens from "~/assets/songs/composer/other_composers_style/Les_quatre_élémens.mp3";
+import Mozart_Requiem_full_peace_completion from "~/assets/songs/composer/other_composers_style/Mozart_Requiem_full_peace_completion.mp3";
 
 import Egy_megtort_sziv_imaja from "~/assets/songs/composer/classic/Egy_megtort_sziv_imaja.mp3";
 import Emlekek_a_hintaszékben from "~/assets/songs/composer/classic/Emlekek_a_hintaszékben.mp3";
@@ -34,6 +35,7 @@ import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 import pecsitibor from "~/assets/images/pecsitibor.jpg";
 import tamas_zongora from "~/assets/images/tamas_zongora.webp";
+import BDU from "~/assets/images/BDU.webp";
 
 const categoryContent = {
     "composer-classic-orchestra": [
@@ -324,18 +326,33 @@ const categoryContent = {
             src: AMEN_FUGUE_to_Mozarts_Requiem,
             video: "https://www.youtube.com/watch?v=s3qfyOAARdc"
         },
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Mozart - Requiem completion (full peace)",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Mozart - Requiem (teljes)",
+                description: ""
+            },
+            src: Mozart_Requiem_full_peace_completion,
+            video: "https://www.youtube.com/watch?v=BrGSruAOKyg"
+        }
     ],
     "composer-others-Liszt": [
         {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Les quatre élémens",
+                title: "Liszt: Les Quatre Élémens - instrumentations",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Les quatre élémens",
+                title: "Liszt: Les Quatre Élémens - hangszerelés",
                 description: ""
             },
             src: Les_quatre_élémens,
@@ -360,13 +377,13 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.AUDIO,
             en: {
-                author: "Tamás Pánczél",
+                author: "Martin Smith",
                 title: "Fejes Zoli és es a Vidám Szimfónikusok",
                 description: ""
             },
             hu: {
-                author: "Pánczél Tamás",
-                title: "Fejes Zoli és es a Vidám Szimfónikusok",
+                author: "Martin Smith",
+                title: "Megrendülnek mind a hegyek... (szimfonikus zenekari átirat: Pánczél Tamás)",
                 description: ""
             },
             src: Fejes_Zolies_es_a_Vidam_Szimfonikusok,
@@ -400,7 +417,7 @@ const categoryContent = {
                 description: ""
             },
             src: gmollfugareszlet
-        }
+        },
     ],
     "conductor-all": [
         {
@@ -453,7 +470,7 @@ const categoryStructure = {
                     albumOrder: ["orchestra", "vocal", "chamber", "composerParticipate"],
                     albums: {
                         orchestra: {
-                            img: pecsitibor,
+                            img: BDU,
                             title: {
                                 en: "Orchestra compositions",
                                 hu: "Zenekari művek"
@@ -514,23 +531,23 @@ const categoryStructure = {
                         Bach: {
                             img: cover_placeholder,
                             title: {
-                                en: "ala Bach",
-                                hu: "ala Bach"
+                                en: "à la Bach",
+                                hu: "à la Bach"
                             },
                             description: {
-                                en: "ala Bach",
-                                hu: "ala Bach"
+                                en: "à la Bach",
+                                hu: "à la Bach"
                             },
                             content: categoryContent["composer-others-Bach"],
                         },
                         Mozart: {
                             img: cover_placeholder,
                             title: {
-                                en: "Mozart Requiem additions",
+                                en: "Mozart's Requiem completions",
                                 hu: "Mozart Requiem kiegészítések"
                             },
                             description: {
-                                en: "Mozart Requiem additions",
+                                en: "Mozart's Requiem completions",
                                 hu: "Mozart Requiem kiegészítések"
                             },
                             content: categoryContent["composer-others-Mozart"],
@@ -538,12 +555,12 @@ const categoryStructure = {
                         Liszt: {
                             img: cover_placeholder,
                             title: {
-                                en: "Liszt Les Quatre Élémens",
-                                hu: "Liszt Les Quatre Élémens"
+                                en: "Liszt: Les Quatre Élémens - instrumentations",
+                                hu: "Liszt: Les Quatre Élémens - hangszerelés"
                             },
                             description: {
-                                en: "Liszt Les Quatre Élémens",
-                                hu: "Liszt Les Quatre Élémens"
+                                en: "Liszt: Les Quatre Élémens - instrumentations",
+                                hu: "Liszt: Les Quatre Élémens - hangszerelés"
                             },
                             content: categoryContent["composer-others-Liszt"],
                         }

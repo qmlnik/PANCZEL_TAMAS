@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-2 col-sm-6 px-3 py-4">
                 <div class="fw-bold mb-3 text-primary">{{ $t('footer.phone') }}<i class="bi bi-telephone ms-2"></i></div>
-                <div>+36707011912</div>
+                <div>+3670 701 1912</div>
             </div>
             <div class="col-md-2 col-sm-6 px-3 py-4">
                 <div class="fw-bold mb-3 text-primary">{{ $t('footer.email') }}<i class="bi bi-envelope ms-2"></i></div>
