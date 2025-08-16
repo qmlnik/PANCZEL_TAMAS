@@ -125,21 +125,21 @@
 import gsap from "gsap";
 import { useMainStore } from "~/stores";
 
-import heroBodyConductorImg from "~/assets/images/hero_body_conductor.png";
-import heroBodyViolinistImg from "~/assets/images/hero_body_violinist.png";
-import heroBodyComposer from "~/assets/images/hero_body_composer.png";
+import conductor_background from "~/assets/images/conductor_background.png";
+import violinist_background from "~/assets/images/violinist_background.png";
+import composer_background from "~/assets/images/composer_background.png";
 
 const ALL_PAGE_BODY_IMG = {
     composer: {
-        src: heroBodyComposer,
+        src: composer_background,
         isAlignLeft: true
     },
     conductor: {
-        src: heroBodyConductorImg,
+        src: conductor_background,
         isAlignLeft: false
     },
     violinist: {
-        src: heroBodyViolinistImg,
+        src: violinist_background,
         isAlignLeft: false
     }
 };

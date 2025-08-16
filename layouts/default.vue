@@ -1,15 +1,18 @@
 <template>
     <div class="d-flex flex-column h-100">
         <div class="content-container" style="overflow-y: auto;">
-            <img
-                v-show="isBackgroundImgLoaded"
-                src="~/assets/images/Hero_Background.webp"
-                class="background-img"
-                ref="backgroundImg"
-                alt="background"
-                @load="backgroundImgLoaded"
-            >
-
+            <picture>
+                <source media="(min-width:1536px)" srcset="~/assets/images/Hero_background_desktop.webp" />
+                <source media="(min-width:1366px)" srcset="~/assets/images/Hero_background_laptop_1.webp" />
+                <source media="(min-width:576px)" srcset="~/assets/images/Hero_background_laptop_2.webp" />
+                <img
+                    src="~/assets/images/Hero_background_mobile.webp"
+                    alt="background"
+                    class="background-img"
+                    ref="backgroundImg"
+                    @load="backgroundImgLoaded"
+                />
+            </picture>
             <Hero @navigation-body-img-finished="scrollToContent" />
             <div class="content-backdrop w-100 d-inline-block" ref="content">
                 <div class="container-md">

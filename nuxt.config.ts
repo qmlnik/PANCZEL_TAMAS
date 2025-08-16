@@ -55,6 +55,10 @@ export default defineNuxtConfig({
                 en: "/composer/classic/chamber-compositions",
                 hu: "/zeneszerzo/klasszikus/kamara-muvek"
             }, 
+            "composer-classic-composerParticipate": {
+                en: "/composer/classic/the-composer-participates",
+                hu: "/zeneszerzo/klasszikus/a-szerzo-kozremukodik"
+            },
             "composer-others": {
                 en: "/composer/others",
                 hu: "/zeneszerzo/masok-stilusaban"

@@ -210,6 +210,9 @@ const categoryContent = {
             video: "https://www.youtube.com/watch?v=bTg4-bp8DKU"
         },
     ],
+    "composer-classic-composerParticipate": [
+
+    ],
     "composer-others-Bach": [
         {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
@@ -414,7 +417,7 @@ const categoryStructure = {
                     hu: "Klasszikus"
                 },
                 albumContent: {
-                    albumOrder: ["orchestra", "vocal", "chamber"],
+                    albumOrder: ["orchestra", "vocal", "chamber", "composerParticipate"],
                     albums: {
                         orchestra: {
                             img: pecsitibor,
@@ -451,6 +454,18 @@ const categoryStructure = {
                                 hu: "Kamara művek"
                             },
                             content: categoryContent["composer-classic-chamber"],
+                        },
+                        composerParticipate: {
+                            img: cover_placeholder,
+                            title: {
+                                en: "The composer participates",
+                                hu: "A szerző közreműködik"
+                            },
+                            description: {
+                                en: "The composer participates",
+                                hu: "A szerző közreműködik"
+                            },
+                            content: categoryContent["composer-classic-composerParticipate"],
                         }
                     }
                 },
