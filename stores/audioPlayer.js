@@ -351,6 +351,38 @@ const categoryContent = {
             },
             src: "/songs/composer/gospel/Fejes_Zolies_es_a_Vidam_Szimfonikusok.mp3",
         },
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Hymn of Love",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Szeretet himnusza",
+                description: ""
+            },
+            src: "/songs/composer/gospel/Szeretet_himnusza.mp3",
+            video: "https://www.youtube.com/watch?v=NpmSxHjmuzw",
+            onlyLanguages: ["hu"]
+        },
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Hymn of Love",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Szeretet himnusza",
+                description: ""
+            },
+            src: "/songs/composer/gospel/Szeretet_himnusza.mp3",
+            video: "https://www.youtube.com/watch?v=i7q7jP-djqI",
+            onlyLanguages: ["en"]
+        },
     ],
     "violinist-J_S_Bach": [
         {
@@ -433,7 +465,7 @@ const categoryStructure = {
                     albumOrder: ["orchestra", "vocal", "chamber", "composerParticipate"],
                     albums: {
                         orchestra: {
-                            img: "/images/album_cover/szerzo_kozremukodik.webp",
+                            img: "/images/album_cover/zenekari_muvek.webp",
                             title: {
                                 en: "Orchestra compositions",
                                 hu: "Zenekari művek"
@@ -469,7 +501,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-chamber"],
                         },
                         composerParticipate: {
-                            img: "/images/album_cover/zenekari_muvek.webp",
+                            img: "/images/album_cover/szerzo_kozremukodik.webp",
                             title: {
                                 en: "The composer participates",
                                 hu: "A szerző közreműködik"

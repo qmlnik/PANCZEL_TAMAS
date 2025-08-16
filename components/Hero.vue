@@ -20,7 +20,7 @@
                     <h1 class="hero-title text-primary text-uppercase fw-normal">
                         {{ $t('hero.title') }}
                     </h1>
-                    <div class="d-flex d-sm-block justify-content-center flex-wrap" style="row-gap: 0.5rem;">
+                    <div class="d-flex justify-content-center justify-content-lg-start flex-wrap" style="row-gap: 0.5rem;">
                         <div
                             to="composer-classic"
                             class="menu-element d-inline-block p-2 backdrop border border-secondary me-2 rounded"
@@ -336,7 +336,7 @@ export default {
         left: 35%;
         width: 60%;
         height: 75%;
-        top: 10%;
+        top: 8%;
         display: flex;
         flex-direction: column;
 
@@ -452,7 +452,7 @@ export default {
 .hero-introduction {
     border-radius: 0.5rem;
     padding: 1.75rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
     min-height: 0;
     display: flex;
     flex-direction: column;

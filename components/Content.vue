@@ -6,6 +6,7 @@
             class="w-100 mb-3"
         >
             <div
+                v-if="!(content.onlyLanguages !== undefined && !content.onlyLanguages.includes($i18n.locale))"
                 class="media-container w-100 d-flex justify-content-between align-items-center p-3 ps-0 rounded"
                 :class="[audioPlayerStore.currentlyPlayingAudio === content ? 'current-audio' : null]"
             >
