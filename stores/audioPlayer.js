@@ -33,9 +33,10 @@ import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
 import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_vilag_szimfonia.mp3";
 
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
-import pecsitibor from "~/assets/images/pecsitibor.jpg";
 import tamas_zongora from "~/assets/images/tamas_zongora.webp";
 import BDU from "~/assets/images/BDU.webp";
+import vokalis_muvek from "~/assets/images/vokalis_muvek.webp";
+import kamara_muvek from "~/assets/images/kamara_muvek.webp";
 
 const categoryContent = {
     "composer-classic-orchestra": [
@@ -364,12 +365,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Köszönöm hogy vagy (Létay Kiss Gabriella)",
+                title: "Thank your for being here (Gabriella Létay Kiss - singing)",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Köszönöm hogy vagy (Létay Kiss Gabriella)",
+                title: "Köszönöm hogy vagy (Létay Kiss Gabriella - ének)",
                 description: ""
             },
             src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
@@ -378,7 +379,7 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Martin Smith",
-                title: "Fejes Zoli és es a Vidám Szimfónikusok",
+                title: "Did You Feel the Mountains Tremble? (instrumental, symphonyc orchestral version)",
                 description: ""
             },
             hu: {
@@ -393,13 +394,13 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.AUDIO,
             en: {
-                author: "J.S.Bach",
-                title: "Largo from C major solo sonata",
+                author: "J. S. Bach",
+                title: "Largo from the C major sonata, Tamás Pánczél violin",
                 description: ""
             },
             hu: {
-                author: "J.S.Bach",
-                title: "Largo C dúr szóló szonátából",
+                author: "J. S. Bach",
+                title: "Largo a C dúr szólószonátából, Pánczél Tamás hegedű",
                 description: ""
             },
             src: Bach_Largo
@@ -407,13 +408,13 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.AUDIO,
             en: {
-                author: "Tamás Pánczél",
-                title: "J.S.Bach - Fuge (extract) from g-minor",
+                author: "J. S. Bach",
+                title: "Fuge (extract) from g-minor, Tamás Pánczél violin",
                 description: ""
             },
             hu: {
-                author: "Pánczél Tamás",
-                title: "J.S.Bach - Fúga (részlet) g-moll szonátából",
+                author: "J. S. Bach",
+                title: "Fúga (részlet) g-moll szonátából, Pánczél Tamás hegedű",
                 description: ""
             },
             src: gmollfugareszlet
@@ -423,12 +424,12 @@ const categoryContent = {
         {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
             en: {
-                author: "Dvorak",
+                author: "Antonín Dvořák",
                 title: "IX. (New world) symphony",
                 description: ""
             },
             hu: {
-                author: "Dvorak",
+                author: "Antonín Dvořák",
                 title: "IX. (Új világ) szimfónia",
                 description: ""
             },
@@ -482,7 +483,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-orchestra"],
                         },
                         vocal: {
-                            img: cover_placeholder,
+                            img: vokalis_muvek,
                             title: {
                                 en: "Vocal compositions",
                                 hu: "Vokális művek"
@@ -494,7 +495,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-vocal"],
                         },
                         chamber: {
-                            img: cover_placeholder,
+                            img: kamara_muvek,
                             title: {
                                 en: "Chamber compositions",
                                 hu: "Kamara művek"
