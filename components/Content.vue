@@ -78,8 +78,9 @@ export default {
                 if (!isAudioLoaded) {
                     const audioPlayer = new Audio();
 
+                    audioPlayer.preload = "metadata";
                     audioPlayer.src = content.src;
-
+                    
                     content.properties.audioPlayer = audioPlayer;
                     
                     audioPlayer.addEventListener(
