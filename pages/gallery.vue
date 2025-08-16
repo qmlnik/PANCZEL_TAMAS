@@ -33,7 +33,6 @@ import lgZoom from 'lightgallery/plugins/zoom';
 
 import hero_body_composer from "~/assets/images/hero_body_composer.png";
 import hero_body_violinist from "~/assets/images/hero_body_violinist.png";
-import pecsitibor from "~/assets/images/pecsitibor.jpg";
 
 
 export default {
@@ -45,15 +44,11 @@ export default {
         images: [
             {
                 src: hero_body_composer,
-                title: "hero_body_composer"
+                title: ""
             },
             {
                 src: hero_body_violinist,
-                title: "hero_body_violinist"
-            },
-            {
-                src: pecsitibor,
-                title: "pecsitibor"
+                title: ""
             }
         ]        
     }),
