@@ -1,11 +1,5 @@
 import { defineStore } from "pinia";
 
-import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
-import tamas_zongora from "~/assets/images/tamas_zongora.webp";
-import BDU from "~/assets/images/BDU.webp";
-import vokalis_muvek from "~/assets/images/vokalis_muvek.webp";
-import kamara_muvek from "~/assets/images/kamara_muvek.webp";
-
 const categoryContent = {
     "composer-classic-orchestra": [
         {
@@ -439,7 +433,7 @@ const categoryStructure = {
                     albumOrder: ["orchestra", "vocal", "chamber", "composerParticipate"],
                     albums: {
                         orchestra: {
-                            img: BDU,
+                            img: "/images/album_cover/szerzo_kozremukodik.webp",
                             title: {
                                 en: "Orchestra compositions",
                                 hu: "Zenekari művek"
@@ -451,7 +445,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-orchestra"],
                         },
                         vocal: {
-                            img: vokalis_muvek,
+                            img: "/images/album_cover/vokalis_muvek.webp",
                             title: {
                                 en: "Vocal compositions",
                                 hu: "Vokális művek"
@@ -463,7 +457,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-vocal"],
                         },
                         chamber: {
-                            img: kamara_muvek,
+                            img: "/images/album_cover/kamara_muvek.webp",
                             title: {
                                 en: "Chamber compositions",
                                 hu: "Kamara művek"
@@ -475,7 +469,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-chamber"],
                         },
                         composerParticipate: {
-                            img: tamas_zongora,
+                            img: "/images/album_cover/zenekari_muvek.webp",
                             title: {
                                 en: "The composer participates",
                                 hu: "A szerző közreműködik"
@@ -498,7 +492,7 @@ const categoryStructure = {
                     albumOrder: ["Bach", "Mozart", "Liszt"],
                     albums: {
                         Bach: {
-                            img: cover_placeholder,
+                            img: "/images/album_cover/cover_placeholder.jpg",
                             title: {
                                 en: "à la Bach",
                                 hu: "à la Bach"
@@ -510,7 +504,7 @@ const categoryStructure = {
                             content: categoryContent["composer-others-Bach"],
                         },
                         Mozart: {
-                            img: cover_placeholder,
+                            img: "/images/album_cover/cover_placeholder.jpg",
                             title: {
                                 en: "Mozart's Requiem completions",
                                 hu: "Mozart Requiem kiegészítések"
@@ -522,7 +516,7 @@ const categoryStructure = {
                             content: categoryContent["composer-others-Mozart"],
                         },
                         Liszt: {
-                            img: cover_placeholder,
+                            img: "/images/album_cover/cover_placeholder.jpg",
                             title: {
                                 en: "Liszt: Les Quatre Élémens - instrumentations",
                                 hu: "Liszt: Les Quatre Élémens - hangszerelés"
@@ -545,7 +539,7 @@ const categoryStructure = {
                     albumOrder: ["all"],
                     albums: {
                         all: {
-                            img: cover_placeholder,
+                            img: "/images/album_cover/cover_placeholder.jpg",
                             title: {
                                 en: "All Gospel",
                                 hu: "Összes Gospel"
@@ -566,7 +560,7 @@ const categoryStructure = {
             albumOrder: ["J_S_Bach"],
             albums: {
                 J_S_Bach: {
-                    img: cover_placeholder,
+                    img: "/images/album_cover/cover_placeholder.jpg",
                     title: {
                         en: "J.S. Bach",
                         hu: "J.S. Bach"
@@ -585,7 +579,7 @@ const categoryStructure = {
             albumOrder: ["all"],
             albums: {
                 all: {
-                    img: cover_placeholder,
+                    img: "/images/album_cover/cover_placeholder.jpg",
                     title: {
                         en: "All",
                         hu: "Összes"

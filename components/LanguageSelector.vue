@@ -31,9 +31,6 @@
 </template> 
 
 <script>
-import GB_SVG from "~/assets/svgs/gb.svg";
-import HU_SVG from "~/assets/svgs/hu.svg";
-
 export default {
     computed: {
         availableLocalesProcessed() {
@@ -54,11 +51,11 @@ export default {
         getFlag(code) {
             switch(code) {
             case "en":
-                return GB_SVG;
+                return "/images/flags/gb.svg";
             case "hu":
-                return HU_SVG;
+                return "/images/flags/hu.svg";
             default:
-                return HU_SVG;
+                return "/images/flags/hu.svg";
             }
         }
     }

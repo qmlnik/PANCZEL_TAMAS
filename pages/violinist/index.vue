@@ -5,6 +5,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: ["redirect-to-only-album"]
+});
+
 const { t } = useI18n();
 
 useHead({

@@ -4,6 +4,12 @@
     </MusicContentLayout>
 </template>
 
+<script setup>
+definePageMeta({
+    middleware: ["redirect-to-only-album"]
+})
+</script>
+
 <script>
 export default {
     data: () => ({

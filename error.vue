@@ -29,7 +29,7 @@ export default {
     width: 100%;
     /* biztosan leérjen a háttérkép a képernyő aljáig (toolbar issue) */
     height: max(100vh, 100%);
-    background: url(~/assets/images/404_background.jpg);
+    background: url(/images/404_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

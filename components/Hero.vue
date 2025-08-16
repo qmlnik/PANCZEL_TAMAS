@@ -125,31 +125,25 @@
 import gsap from "gsap";
 import { useMainStore } from "~/stores";
 
-import conductor_background from "~/assets/images/conductor_background.png";
-import violinist_background from "~/assets/images/violinist_background.png";
-import composer_background from "~/assets/images/composer_background.png";
-import biography_background from "~/assets/images/biography_background.png";
-import gallery_background from "~/assets/images/gallery_background.png";
-
 const ALL_PAGE_BODY_IMG = {
     composer: {
-        src: composer_background,
+        src: "/images/hero/composer_background.png",
         isAlignLeft: true
     },
     conductor: {
-        src: conductor_background,
+        src: "/images/hero/conductor_background.png",
         isAlignLeft: false
     },
     violinist: {
-        src: violinist_background,
+        src: "/images/hero/violinist_background.png",
         isAlignLeft: false
     },
     biography: {
-        src: biography_background,
+        src: "/images/hero/biography_background.png",
         isAlignLeft: false
     },
     gallery: {
-        src: gallery_background,
+        src: "/images/hero/gallery_background.png",
         isAlignLeft: false
     }
 };

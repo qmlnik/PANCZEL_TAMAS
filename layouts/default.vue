@@ -2,11 +2,11 @@
     <div class="d-flex flex-column h-100">
         <div class="content-container" style="overflow-y: auto;">
             <picture>
-                <source media="(min-width:1536px)" srcset="~/assets/images/Hero_background_desktop.webp" />
-                <source media="(min-width:1366px)" srcset="~/assets/images/Hero_background_laptop_1.webp" />
-                <source media="(min-width:576px)" srcset="~/assets/images/Hero_background_laptop_2.webp" />
+                <source media="(min-width:1536px)" srcset="/images/hero/Hero_background_desktop.webp" />
+                <source media="(min-width:1366px)" srcset="/images/hero/Hero_background_laptop_1.webp" />
+                <source media="(min-width:576px)" srcset="/images/hero/Hero_background_laptop_2.webp" />
                 <img
-                    src="~/assets/images/Hero_background_mobile.webp"
+                    src="/images/hero/Hero_background_mobile.webp"
                     alt="background"
                     class="background-img"
                     ref="backgroundImg"
@@ -51,19 +51,12 @@ useHead({
 <script>
 export default {
     data() {
-        return { isBackgroundImgLoaded: false, asd: "/teszt.mp3" };
+        return { isBackgroundImgLoaded: false };
     },
     mounted() {
         if (this.$refs.backgroundImg.complete) {
             this.backgroundImgLoaded();
         }
-
-        /*const audioPlayer = new Audio();
-
-        audioPlayer.preload = "metadata";
-        audioPlayer.src = this.asd;
-
-        setTimeout(() => audioPlayer.play(), 10000);*/
     },
     methods: {
         scrollToContent() {

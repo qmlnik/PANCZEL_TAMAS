@@ -28,12 +28,8 @@
 
 <script>
 import Lightgallery from "lightgallery/vue";
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-
-import hero_body_composer from "~/assets/images/hero_body_composer.png";
-import hero_body_violinist from "~/assets/images/hero_body_violinist.png";
-
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
 
 export default {
     components: {
@@ -43,13 +39,21 @@ export default {
         plugins: [lgThumbnail, lgZoom],
         images: [
             {
-                src: hero_body_composer,
+                src: "/images/album_cover/kamara_muvek.webp",
                 title: ""
             },
             {
-                src: hero_body_violinist,
+                src: "/images/album_cover/szerzo_kozremukodik.webp",
                 title: ""
-            }
+            },
+                        {
+                src: "/images/album_cover/vokalis_muvek.webp",
+                title: ""
+            },
+                        {
+                src: "/images/album_cover/zenekari_muvek.webp",
+                title: ""
+            },
         ]        
     }),
 };
