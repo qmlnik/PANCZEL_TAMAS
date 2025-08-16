@@ -1,9 +1,5 @@
 <template>
     <div class="d-flex flex-column h-100">
-        <audio controls>
-            <source src="/teszt.mp3" preload="metadata">
-            Your browser does not support the audio element.
-        </audio>
         <div class="content-container" style="overflow-y: auto;">
             <picture>
                 <source media="(min-width:1536px)" srcset="~/assets/images/Hero_background_desktop.webp" />
@@ -55,12 +51,19 @@ useHead({
 <script>
 export default {
     data() {
-        return { isBackgroundImgLoaded: false };
+        return { isBackgroundImgLoaded: false, asd: "/teszt.mp3" };
     },
     mounted() {
         if (this.$refs.backgroundImg.complete) {
             this.backgroundImgLoaded();
         }
+
+        const audioPlayer = new Audio();
+
+        audioPlayer.preload = "metadata";
+        audioPlayer.src = this.asd;
+
+        setTimeout(() => audioPlayer.play(), 10000);
     },
     methods: {
         scrollToContent() {
