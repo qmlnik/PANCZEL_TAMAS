@@ -46,7 +46,7 @@ const categoryContent = {
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Violin Concerto",
+                title: "Hegedűverseny",
                 description: ""
             },
             src: Violin_Concerto,
@@ -61,7 +61,7 @@ const categoryContent = {
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Piano Concerto",
+                title: "Zongoraverseny",
                 description: ""
             },
             src: Piano_Concerto,
@@ -147,7 +147,7 @@ const categoryContent = {
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Passacagliae, Budafoki Dohnányi Zenekar, vezényel: Howard Williams",
+                title: "Passacaglia, Budafoki Dohnányi Zenekar, vezényel: Howard Williams",
                 description: ""
             },
             src: Passacaglia
