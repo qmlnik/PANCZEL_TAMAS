@@ -58,12 +58,12 @@ export default {
             this.backgroundImgLoaded();
         }
 
-        const audioPlayer = new Audio();
+        /*const audioPlayer = new Audio();
 
         audioPlayer.preload = "metadata";
         audioPlayer.src = this.asd;
 
-        setTimeout(() => audioPlayer.play(), 10000);
+        setTimeout(() => audioPlayer.play(), 10000);*/
     },
     methods: {
         scrollToContent() {

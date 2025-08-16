@@ -1,37 +1,5 @@
 import { defineStore } from "pinia";
 
-import Letai_Kis_Gabi_Koszonom_hogy_vagy from "~/assets/songs/composer/gospel/Letai_Kis_Gabi_Koszonom_hogy_vagy.mp3";
-import Szeretet_himnusz from "~/assets/songs/composer/gospel/Szeretet_himnusz.mp3";
-import Fejes_Zolies_es_a_Vidam_Szimfonikusok from "~/assets/songs/composer/gospel/Fejes_Zolies_es_a_Vidam_Szimfonikusok.mp3";
-
-import Atvaltozasok from "~/assets/songs/composer/classic/Atvaltozasok.mp3";
-import Divertimento_Concertante from "~/assets/songs/composer/classic/Divertimento_Concertante.mp3";
-import Hadd_eljek from "~/assets/songs/composer/classic/Hadd_eljek.mp3";
-import Passacaglia from "~/assets/songs/composer/classic/Passacaglia.mp3";
-import Psalm_29 from "~/assets/songs/composer/classic/Psalm_29.mp3";
-import Fuvosotos from "~/assets/songs/composer/classic/Fuvosotos.mp3";
-import Klezmer_Szvit from "~/assets/songs/composer/classic/Klezmer_Szvit.mp3";
-import Violin_Concerto from "~/assets/songs/composer/classic/Violin_Concerto.mp3";
-import Piano_Concerto from "~/assets/songs/composer/classic/Piano_Concerto.mp3";
-import Klezmer_Suite from "~/assets/songs/composer/classic/Klezmer_Suite.mp3";
-import Pikolo_eletkepek from "~/assets/songs/composer/classic/Pikolo_eletkepek.mp3";
-
-import cisz_moll_fuga_a_la_Bach from "~/assets/songs/composer/other_composers_style/cisz_moll_fuga_a_la_Bach.mp3";
-import Chaconne_baroque from "~/assets/songs/composer/other_composers_style/Chaconne_baroque.mp3";
-import Fuga_a_4_voci_a_la_Bach from "~/assets/songs/composer/other_composers_style/Fuga_a_4_voci_a_la_Bach.mp3";
-import Requiem_Lacrymosa_and_Amen_fugue from "~/assets/songs/composer/other_composers_style/Requiem_Lacrymosa_and_Amen_fugue.mp3";
-import AMEN_FUGUE_to_Mozarts_Requiem from "~/assets/songs/composer/other_composers_style/AMEN_FUGUE_to_Mozarts_Requiem.mp3";
-import Les_quatre_élémens from "~/assets/songs/composer/other_composers_style/Les_quatre_élémens.mp3";
-import Mozart_Requiem_full_peace_completion from "~/assets/songs/composer/other_composers_style/Mozart_Requiem_full_peace_completion.mp3";
-
-import Egy_megtort_sziv_imaja from "~/assets/songs/composer/classic/Egy_megtort_sziv_imaja.mp3";
-import Emlekek_a_hintaszékben from "~/assets/songs/composer/classic/Emlekek_a_hintaszékben.mp3";
-
-import Bach_Largo from "~/assets/songs/violinist/Bach_Largo.mp3";
-import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
-
-import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_vilag_szimfonia.mp3";
-
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 import tamas_zongora from "~/assets/images/tamas_zongora.webp";
 import BDU from "~/assets/images/BDU.webp";
@@ -52,7 +20,7 @@ const categoryContent = {
                 title: "Hegedűverseny",
                 description: ""
             },
-            src: Violin_Concerto,
+            src: "/songs/composer/classic/Violin_Concerto.mp3",
             video: "https://www.youtube.com/watch?v=Z_wT0pKZZf4"
         },
         {
@@ -67,7 +35,7 @@ const categoryContent = {
                 title: "Zongoraverseny",
                 description: ""
             },
-            src: Piano_Concerto,
+            src: "/songs/composer/classic/Piano_Concerto.mp3",
             video: "https://www.youtube.com/watch?v=3Tpobd5Fn80"
         },
         {
@@ -82,7 +50,7 @@ const categoryContent = {
                 title: "Átváltozások, Budafoki Dohnányi Zenekar, Koncertmester: Berán Gábor",
                 description: ""
             },
-            src: Atvaltozasok
+            src: "/songs/composer/classic/Atvaltozasok.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -96,7 +64,7 @@ const categoryContent = {
                 title: "Divertimento Concertante, Budafoki Dohnányi Zenekar, vezényel: Hollerung Gábor",
                 description: ""
             },
-            src: Divertimento_Concertante
+            src: "/songs/composer/classic/Divertimento_Concertante.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -110,7 +78,7 @@ const categoryContent = {
                 title: "Klezmer Szvit egész mű (CD felvétel), Budafoki Dohnányi Zenekar, vezényel: Hollerung Gábor",
                 description: ""
             },
-            src: Klezmer_Szvit
+            src: "/songs/composer/classic/Klezmer_Szvit.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
@@ -124,7 +92,7 @@ const categoryContent = {
                 title: "Klezmer Szvit 4. tétel (koncert felvétel)",
                 description: ""
             },
-            src: Klezmer_Suite,
+            src: "/songs/composer/classic/Klezmer_Suite.mp3",
             video: "https://www.youtube.com/watch?v=RZtEK81213U"
         },
         {
@@ -139,7 +107,7 @@ const categoryContent = {
                 title: "Szeretet himnusza - kísérőzene, Budafoki Dohnányi Zenekar, vezényel: Kanyó Dávid",
                 description: ""
             },
-            src: Szeretet_himnusz
+            src: "/songs/composer/gospel/Szeretet_himnusz.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -153,7 +121,7 @@ const categoryContent = {
                 title: "Passacaglia, Budafoki Dohnányi Zenekar, vezényel: Howard Williams",
                 description: ""
             },
-            src: Passacaglia
+            src: "/songs/composer/classic/Passacaglia.mp3"
         },
     ],
     "composer-classic-vocal": [
@@ -169,7 +137,7 @@ const categoryContent = {
                 title: "29. Zsoltár",
                 description: ""
             },
-            src: Psalm_29
+            src: "/songs/composer/classic/Psalm_29.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -183,7 +151,7 @@ const categoryContent = {
                 title: "Hadd éljek! - szoprán ária",
                 description: ""
             },
-            src: Hadd_eljek
+            src: "/songs/composer/classic/Hadd_eljek.mp3"
         },
     ],
     "composer-classic-chamber": [
@@ -199,7 +167,7 @@ const categoryContent = {
                 title: "Fúvósötös",
                 description: ""
             },
-            src: Fuvosotos
+            src: "/songs/composer/classic/Fuvosotos.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
@@ -213,7 +181,7 @@ const categoryContent = {
                 title: "Pikoló életképek",
                 description: ""
             },
-            src: Pikolo_eletkepek,
+            src: "/songs/composer/classic/Pikolo_eletkepek.mp3",
             video: "https://www.youtube.com/watch?v=bTg4-bp8DKU"
         },
     ],
@@ -230,7 +198,7 @@ const categoryContent = {
                 title: "Egy megtört szív imája",
                 description: ""
             },
-            src: Egy_megtort_sziv_imaja,
+            src: "/songs/composer/classic/Egy_megtort_sziv_imaja.mp3",
             video: "https://www.youtube.com/watch?v=ewOjPIhHAhM"
         },
         {
@@ -245,7 +213,7 @@ const categoryContent = {
                 title: "Emlékek a hintaszékben",
                 description: ""
             },
-            src: Emlekek_a_hintaszékben,
+            src: "/songs/composer/classic/Emlekek_a_hintaszékben.mp3",
             video: "https://www.youtube.com/watch?v=KN_wiPNI4HM"
         },
     ],
@@ -262,7 +230,7 @@ const categoryContent = {
                 title: "cisz moll fuga - \"a la Bach\"",
                 description: ""
             },
-            src: cisz_moll_fuga_a_la_Bach,
+            src: "/songs/composer/other_composers_style/cisz_moll_fuga_a_la_Bach.mp3",
             video: "https://www.youtube.com/watch?v=GoFo-taTX5w"
         },
         {
@@ -277,7 +245,7 @@ const categoryContent = {
                 title: "Chaconne (baroque)",
                 description: ""
             },
-            src: Chaconne_baroque,
+            src: "/songs/composer/other_composers_style/Chaconne_baroque.mp3",
             video: "https://www.youtube.com/watch?v=3hfql7b-DnQ"
         },
         {
@@ -292,7 +260,7 @@ const categoryContent = {
                 title: "Fuga a 4 voci \"à la Bach\"",
                 description: ""
             },
-            src: Fuga_a_4_voci_a_la_Bach,
+            src: "/songs/composer/other_composers_style/Fuga_a_4_voci_a_la_Bach.mp3",
             video: "https://www.youtube.com/watch?v=8D7ZzNtR-eI"
         },
     ],
@@ -309,7 +277,7 @@ const categoryContent = {
                 title: "Requiem Lacrymosa & Amen fugue",
                 description: ""
             },
-            src: Requiem_Lacrymosa_and_Amen_fugue,
+            src: "/songs/composer/other_composers_style/Requiem_Lacrymosa_and_Amen_fugue.mp3",
             video: "https://www.youtube.com/watch?v=E814iS5w42M"
         },
         {
@@ -324,7 +292,7 @@ const categoryContent = {
                 title: "AMEN FUGUE to Mozart's Requiem",
                 description: ""
             },
-            src: AMEN_FUGUE_to_Mozarts_Requiem,
+            src: "/songs/composer/other_composers_style/AMEN_FUGUE_to_Mozarts_Requiem.mp3",
             video: "https://www.youtube.com/watch?v=s3qfyOAARdc"
         },
         {
@@ -339,7 +307,7 @@ const categoryContent = {
                 title: "Mozart - Requiem (teljes)",
                 description: ""
             },
-            src: Mozart_Requiem_full_peace_completion,
+            src: "/songs/composer/other_composers_style/Mozart_Requiem_full_peace_completion.mp3",
             video: "https://www.youtube.com/watch?v=BrGSruAOKyg"
         }
     ],
@@ -356,7 +324,7 @@ const categoryContent = {
                 title: "Liszt: Les Quatre Élémens - hangszerelés",
                 description: ""
             },
-            src: Les_quatre_élémens,
+            src: "/songs/composer/other_composers_style/Les_quatre_élémens.mp3",
             video: "https://www.youtube.com/watch?v=c6KBV3-ljEw&t=1s"
         },
     ],
@@ -373,7 +341,7 @@ const categoryContent = {
                 title: "Köszönöm hogy vagy (Létay Kiss Gabriella - ének)",
                 description: ""
             },
-            src: Letai_Kis_Gabi_Koszonom_hogy_vagy,
+            src: "/songs/composer/gospel/Letai_Kis_Gabi_Koszonom_hogy_vagy.mp3",
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -387,7 +355,7 @@ const categoryContent = {
                 title: "Megrendülnek mind a hegyek... (szimfonikus zenekari átirat: Pánczél Tamás)",
                 description: ""
             },
-            src: Fejes_Zolies_es_a_Vidam_Szimfonikusok,
+            src: "/songs/composer/gospel/Fejes_Zolies_es_a_Vidam_Szimfonikusok.mp3",
         },
     ],
     "violinist-J_S_Bach": [
@@ -403,7 +371,7 @@ const categoryContent = {
                 title: "Largo a C dúr szólószonátából, Pánczél Tamás hegedű",
                 description: ""
             },
-            src: Bach_Largo
+            src: "/songs/violinist/Bach_Largo.mp3"
         },
         {
             type: CONTENT_TYPE.AUDIO,
@@ -417,7 +385,7 @@ const categoryContent = {
                 title: "Fúga (részlet) g-moll szonátából, Pánczél Tamás hegedű",
                 description: ""
             },
-            src: gmollfugareszlet
+            src: "/songs/violinist/gmollfugareszlet.mp3"
         },
     ],
     "conductor-all": [
@@ -433,7 +401,7 @@ const categoryContent = {
                 title: "IX. (Új világ) szimfónia",
                 description: ""
             },
-            src: Dvorak_IX_uj_vilag_szimfonia,
+            src: "/songs/conductor/Dvorak_IX_uj_vilag_szimfonia.mp3",
             video: "https://www.youtube.com/watch?v=vZqGJ2_cAr4"
         },
     ]
