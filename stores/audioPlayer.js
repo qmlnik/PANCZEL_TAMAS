@@ -7,7 +7,7 @@ import Fejes_Zolies_es_a_Vidam_Szimfonikusok from "~/assets/songs/composer/gospe
 import Atvaltozasok from "~/assets/songs/composer/classic/Atvaltozasok.mp3";
 import Divertimento_Concertante from "~/assets/songs/composer/classic/Divertimento_Concertante.mp3";
 import Hadd_eljek from "~/assets/songs/composer/classic/Hadd_eljek.mp3";
-import Passacagila from "~/assets/songs/composer/classic/Passacagila.mp3";
+import Passacaglia from "~/assets/songs/composer/classic/Passacaglia.mp3";
 import Psalm_29 from "~/assets/songs/composer/classic/Psalm_29.mp3";
 import Fuvosotos from "~/assets/songs/composer/classic/Fuvosotos.mp3";
 import Klezmer_Szvit from "~/assets/songs/composer/classic/Klezmer_Szvit.mp3";
@@ -67,7 +67,7 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Átváltozások",
+                title: "Transfigurations",
                 description: ""
             },
             hu: {
@@ -124,12 +124,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Szeretet himnusz",
+                title: "Hymn of Love - incidental music",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Szeretet himnusz",
+                title: "Szeretet himnusza - kísérőzene",
                 description: ""
             },
             src: Szeretet_himnusz
@@ -138,15 +138,15 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Passacagila",
+                title: "Passacaglia",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Passacagila",
+                title: "Passacaglia",
                 description: ""
             },
-            src: Passacagila
+            src: Passacaglia
         },
     ],
     "composer-classic-vocal": [
@@ -168,12 +168,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Hadd éljek",
+                title: "Let me Live - air for soprano",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Hadd éljek",
+                title: "Hadd éljek! - szoprán ária",
                 description: ""
             },
             src: Hadd_eljek
