@@ -103,7 +103,7 @@ export default {
 }
 
 .title-text {
-    width: 80%;
+    width: 60%;
 }
 
 @include media-breakpoint-down(md) {

@@ -89,11 +89,13 @@
                     ></i>
                     <div class="text-center fs-5" style="width: 75%">{{ currentAlbum?.title[$i18n.locale] }}</div>
                 </div>
-                <img
-                    :src="currentAlbum?.img"
-                    class="w-100 ratio ratio-1x1 rounded"
-                    style="object-fit: contain; max-height: 300px;"
-                />
+                <div class="ratio ratio-1x1" style="max-height: 300px;">
+                    <img
+                        :src="currentAlbum?.img"
+                        class="w-100 h-100 rounded"
+                        style="object-fit: cover;"
+                    />
+                </div>
                 <div class="fs-2 text-center mt-3">
                     <div class="fw-bold">{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].title }}</div>
                     <div>{{ audioPlayerStore.currentlyPlayingAudio?.[$i18n.locale].author }}</div>

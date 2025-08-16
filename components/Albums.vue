@@ -8,20 +8,18 @@
             style="cursor: pointer;"
         >
             <ScrollFadeIn>
-                <div class="album-image-container rounded mb-2">
-                    <img
-                        :src="audioPlayerStore.getAlbumByRoute({ ...route, album: currentAlbum }).img"
-                        class="w-100 ratio ratio-1x1"
-                    />
+                <div class="album-image-container rounded mb-1">
+                    <div class="ratio ratio-1x1">
+                        <img
+                            :src="audioPlayerStore.getAlbumByRoute({ ...route, album: currentAlbum }).img"
+                            style="object-fit: cover;"
+                        />
+                    </div>
                 </div>
                 <div class="fw-bold content-backdrop p-2 rounded">{{
                     audioPlayerStore.getAlbumByRoute({ ...route, album: currentAlbum })
                         .title[$i18n.locale]
                 }}</div>
-                <!--<div>{{
-                    audioPlayerStore.getAlbumByRoute({ ...route, album: currentAlbum })
-                        .description[$i18n.locale]
-                }}</div> -->
             </ScrollFadeIn>
         </NuxtLinkLocale>
     </div>

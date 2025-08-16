@@ -82,6 +82,14 @@ export default defineNuxtConfig({
             conductor: {
                 en: "/conductor",
                 hu: "/karmester"
+            },
+            biography: {
+                en: "/biography",
+                hu: "/oneletrajz"
+            },
+            gallery: {
+                en: "/gallery",
+                hu: "/galeria"
             }
         },
         baseUrl: "https://tamaspanczel.com"

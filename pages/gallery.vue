@@ -5,18 +5,23 @@
         :settings="{ speed: 500, plugins: plugins }"
         class="row w-100" style="row-gap: 2rem;"
     >
-        <a
+        <div
             v-for="{ title, src } in images"
             :key="title"
             :href="src"
-            class="img-container col-lg-3 col-md-4 col-sm-6"
+            class="col-lg-4 col-md-6 "
+            style="cursor: pointer;"
         >
-            <img
-                :src="src"
-                :alt="title"
-                class="w-100 ratio ratio-1x1"
-            />
-        </a>
+            <div class="ratio ratio-1x1 img-container rounded mb-1">
+                <img
+                    :src="src"
+                    :alt="title"
+                    class="w-100 h-100"
+                    style="object-fit: cover;"
+                />
+            </div>
+            <div class="fw-bold content-backdrop p-2 rounded text-secondary">{{ title }}</div>
+        </div>
     </Lightgallery>
 </section>
 </template>
@@ -28,6 +33,8 @@ import lgZoom from 'lightgallery/plugins/zoom';
 
 import hero_body_composer from "~/assets/images/hero_body_composer.png";
 import hero_body_violinist from "~/assets/images/hero_body_violinist.png";
+import pecsitibor from "~/assets/images/pecsitibor.jpg";
+
 
 export default {
     components: {
@@ -43,6 +50,10 @@ export default {
             {
                 src: hero_body_violinist,
                 title: "hero_body_violinist"
+            },
+            {
+                src: pecsitibor,
+                title: "pecsitibor"
             }
         ]        
     }),

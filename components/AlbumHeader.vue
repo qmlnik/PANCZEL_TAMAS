@@ -1,10 +1,13 @@
 <template>
     <div class="row text-secondary" style="row-gap: 1rem;">
         <div class="col-md-4">
-            <img
-                :src="audioPlayerStore.getAlbumByRoute(route).img"
-                class="w-100 ratio ratio-1x1 rounded"
-            />
+            <div class="ratio ratio-1x1">
+                <img
+                    :src="audioPlayerStore.getAlbumByRoute(route).img"
+                    class="w-100 h-100 rounded"
+                    style="object-fit: cover;"
+                />
+            </div>
         </div>
         <div class="col-md-8" >
             <div class="content-backdrop rounded p-3 h-100">

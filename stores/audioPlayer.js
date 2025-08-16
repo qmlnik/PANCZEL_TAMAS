@@ -29,6 +29,7 @@ import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
 import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_vilag_szimfonia.mp3";
 
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
+import pecsitibor from "~/assets/images/pecsitibor.jpg";
 
 const categoryContent = {
     "composer-classic-orchestra": [
@@ -416,7 +417,7 @@ const categoryStructure = {
                     albumOrder: ["orchestra", "vocal", "chamber"],
                     albums: {
                         orchestra: {
-                            img: cover_placeholder,
+                            img: pecsitibor,
                             title: {
                                 en: "Orchestra compositions",
                                 hu: "Zenekari művek"
