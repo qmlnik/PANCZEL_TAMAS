@@ -23,6 +23,9 @@ import Requiem_Lacrymosa_and_Amen_fugue from "~/assets/songs/composer/other_comp
 import AMEN_FUGUE_to_Mozarts_Requiem from "~/assets/songs/composer/other_composers_style/AMEN_FUGUE_to_Mozarts_Requiem.mp3";
 import Les_quatre_élémens from "~/assets/songs/composer/other_composers_style/Les_quatre_élémens.mp3";
 
+import Egy_megtort_sziv_imaja from "~/assets/songs/composer/classic/Egy_megtort_sziv_imaja.mp3";
+import Emlekek_a_hintaszékben from "~/assets/songs/composer/classic/Emlekek_a_hintaszékben.mp3";
+
 import Bach_Largo from "~/assets/songs/violinist/Bach_Largo.mp3";
 import gmollfugareszlet from "~/assets/songs/violinist/gmollfugareszlet.mp3";
 
@@ -30,6 +33,7 @@ import Dvorak_IX_uj_vilag_szimfonia from "~/assets/songs/conductor/Dvorak_IX_uj_
 
 import cover_placeholder from "~/assets/images/cover_placeholder.jpg";
 import pecsitibor from "~/assets/images/pecsitibor.jpg";
+import tamas_zongora from "~/assets/images/tamas_zongora.webp";
 
 const categoryContent = {
     "composer-classic-orchestra": [
@@ -67,12 +71,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Transfigurations",
+                title: "Transfigurations, Budafok Dohnány Orchestra, concertmaster: Gábor Berán",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Átváltozások",
+                title: "Átváltozások, Budafoki Dohnányi Zenekar, Koncertmester: Berán Gábor",
                 description: ""
             },
             src: Atvaltozasok
@@ -81,12 +85,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Divertimento Concertante",
+                title: "Divertimento Concertante, Budafok Dohnány Orchestra, conductor: Gábor Hollerung",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Divertimento Concertante",
+                title: "Divertimento Concertante, Budafoki Dohnányi Zenekar, vezényel: Hollerung Gábor",
                 description: ""
             },
             src: Divertimento_Concertante
@@ -95,12 +99,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Klezmer Szvit",
+                title: "Klezmer Suite full peace (CD recording), Budafok Dohnány Orchestra, conductor: Gábor Hollerung",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Klezmer Szvit",
+                title: "Klezmer Szvit egész mű (CD felvétel), Budafoki Dohnányi Zenekar, vezényel: Hollerung Gábor",
                 description: ""
             },
             src: Klezmer_Szvit
@@ -109,12 +113,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Klezmer Suite",
+                title: "Klezmer Suite 4. movement (concert recording)",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Klezmer Suite",
+                title: "Klezmer Szvit 4. tétel (koncert felvétel)",
                 description: ""
             },
             src: Klezmer_Suite,
@@ -124,12 +128,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Hymn of Love - incidental music",
+                title: "Hymn of Love - incidental music, Budafok Dohnány Orchestra, conductor: Dávid Kanyó",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Szeretet himnusza - kísérőzene",
+                title: "Szeretet himnusza - kísérőzene, Budafoki Dohnányi Zenekar, vezényel: Kanyó Dávid",
                 description: ""
             },
             src: Szeretet_himnusz
@@ -138,12 +142,12 @@ const categoryContent = {
             type: CONTENT_TYPE.AUDIO,
             en: {
                 author: "Tamás Pánczél",
-                title: "Passacaglia",
+                title: "Passacaglia, Budafok Dohnány Orchestra, conductor: Howard Williams",
                 description: ""
             },
             hu: {
                 author: "Pánczél Tamás",
-                title: "Passacaglia",
+                title: "Passacagliae, Budafoki Dohnányi Zenekar, vezényel: Howard Williams",
                 description: ""
             },
             src: Passacaglia
@@ -211,7 +215,36 @@ const categoryContent = {
         },
     ],
     "composer-classic-composerParticipate": [
-
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "The Prayer of a Broken Heart",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Egy megtört szív imája",
+                description: ""
+            },
+            src: Egy_megtort_sziv_imaja,
+            video: "https://www.youtube.com/watch?v=ewOjPIhHAhM"
+        },
+        {
+            type: CONTENT_TYPE.AUDIO_WITH_VIDEO,
+            en: {
+                author: "Tamás Pánczél",
+                title: "Reminiscences in the Rocking Chair",
+                description: ""
+            },
+            hu: {
+                author: "Pánczél Tamás",
+                title: "Emlékek a hintaszékben",
+                description: ""
+            },
+            src: Emlekek_a_hintaszékben,
+            video: "https://www.youtube.com/watch?v=KN_wiPNI4HM"
+        },
     ],
     "composer-others-Bach": [
         {
@@ -456,7 +489,7 @@ const categoryStructure = {
                             content: categoryContent["composer-classic-chamber"],
                         },
                         composerParticipate: {
-                            img: cover_placeholder,
+                            img: tamas_zongora,
                             title: {
                                 en: "The composer participates",
                                 hu: "A szerző közreműködik"
