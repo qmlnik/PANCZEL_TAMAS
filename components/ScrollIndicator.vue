@@ -1,11 +1,22 @@
 <template>
-    <div class="w-100 h-100">
+    <div
+        class="w-100 h-100"
+        style="cursor: pointer;"
+        @click="scrollToContent"
+    >
         <div class="scroll-indicator-arrow" style="margin-bottom: -3px;"></div>
         <div class="scroll-indicator-arrow" style="animation-delay: 100ms"></div>
     </div>
 </template>
 
 <script>
+export default {
+    methods: {
+        scrollToContent() {
+            document.getElementById("content").scrollIntoView({ behavior: "smooth" });
+        }
+    }
+};
 </script>
 
 <style lang="scss">
