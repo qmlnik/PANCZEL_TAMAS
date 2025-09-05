@@ -79,7 +79,7 @@ export default defineI18nConfig(() => ({
                 introduction: {
                     title: "bemutatkozás",
                     subtitle: "Minden hangot a szenvedély vezet",
-                    content: ""
+                    content: "Petrovics Emil és Vajda János növendékeként szereztem zeneszerzés diplomát a Zeneakadémián. Alkotásaimmal mindenekelőtt szeretnék adni valamit a zenehallgató számára; ez a legalapvetőbb vágy, mely a zeneszerzésre motivál. Hangjaimmal szeretném a zenehallgató figyelmét megragadni, elvinni őt valahova, felemelni és valamelyest a „szívéhez szólni”. Mindezt a zenében rejlő kifejezőeszközök gazdag és csodálatos tárházával. A zene ugyanis beszélni tud, emberi érzéseket, állapotokat tud kifejezni, a lélek egyfajta tükre lehet, mélységekbe és magasságokba vihet el, jeleneteket vagy akár egy egész dramaturgiát képes ábrázolni."
                 }
             },
             categories: "Kategóriák",
