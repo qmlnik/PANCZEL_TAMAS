@@ -34,7 +34,7 @@ export default defineI18nConfig(() => ({
                 introduction: {
                     title: "introduction",
                     subtitle: "Passion drives every note",
-                    content: "At the heart of this extraordinary artist\"s musical journey lies a profound and unwavering motivation, one that has been the driving force behind every note played, composed, and conducted. The motivation is not merely personal accomplishment or recognition, but the genuine desire to touch the lives of others through the universal language of music, forging emotional connections that transcend boundaries and time itself."
+                    content: " I graduated in composition at the Liszt Academy of Music as a student of Emil Petrovics and János Vajda. With my works, I first and foremost wish to offer something to the listener; this is the most fundamental desire that motivates me to compose. Through my sounds I strive to capture the listener’s attention, to take them somewhere, to lift them up, and in some way to “speak to their heart.” All this with the rich and marvelous array of expressive means inherent in music. For music can indeed speak: it can express human emotions and states of being, serve as a mirror of the soul, lead into depths and heights, and depict scenes or even an entire dramaturgy."
                 }
             },
             categories: "Categories",
@@ -79,7 +79,7 @@ export default defineI18nConfig(() => ({
                 introduction: {
                     title: "bemutatkozás",
                     subtitle: "Minden hangot a szenvedély vezet",
-                    content: "Petrovics Emil és Vajda János növendékeként szereztem zeneszerzés diplomát a Zeneakadémián. Alkotásaimmal mindenekelőtt szeretnék adni valamit a zenehallgató számára; ez a legalapvetőbb vágy, mely a zeneszerzésre motivál. Hangjaimmal szeretném a zenehallgató figyelmét megragadni, elvinni őt valahova, felemelni és valamelyest a „szívéhez szólni”. Mindezt a zenében rejlő kifejezőeszközök gazdag és csodálatos tárházával. A zene ugyanis beszélni tud, emberi érzéseket, állapotokat tud kifejezni, a lélek egyfajta tükre lehet, mélységekbe és magasságokba vihet el, jeleneteket vagy akár egy egész dramaturgiát képes ábrázolni."
+                    content: "Petrovics Emil és Vajda János növendékeként szereztem zeneszerzés diplomát a Zeneakadémián. Alkotásaimmal mindenekelőtt szeretnék adni valamit a zenehallgató számára; ez a legalapvetőbb vágy, mely a zeneszerzésre motivál. Hangjaimmal szeretném a zenehallgató figyelmét megragadni, elvinni őt valahova, felemelni és a „szívéhez szólni” - mindezt a zenében rejlő kifejezőeszközök gazdag és csodálatos tárházával. A zene ugyanis beszélni tud, emberi érzéseket, állapotokat tud kifejezni, a lélek egyfajta tükre lehet, mélységekbe és magasságokba vihet el, jeleneteket vagy akár egy egész dramaturgiát képes ábrázolni."
                 }
             },
             categories: "Kategóriák",
