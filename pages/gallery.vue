@@ -39,19 +39,19 @@ export default {
         plugins: [lgThumbnail, lgZoom],
         images: [
             {
-                src: "/images/album_cover/kamara_muvek.webp",
+                src: "",
                 title: ""
             },
             {
-                src: "/images/album_cover/szerzo_kozremukodik.webp",
+                src: "",
                 title: ""
             },
                         {
-                src: "/images/album_cover/vokalis_muvek.webp",
+                src: "",
                 title: ""
             },
                         {
-                src: "/images/album_cover/zenekari_muvek.webp",
+                src: "",
                 title: ""
             },
         ]        
