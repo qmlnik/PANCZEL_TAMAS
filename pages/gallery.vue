@@ -39,19 +39,19 @@ export default {
         plugins: [lgThumbnail, lgZoom],
         images: [
             {
-                src: "",
+                src: "/images/gallery/Miskolc_egy.webp",
                 title: ""
             },
             {
-                src: "",
+                src: "/images/gallery/Miskolc 2.webp",
+                title: ""
+            },
+            {
+                src: "/images/gallery/Miskolc 3.webp",
                 title: ""
             },
                         {
-                src: "",
-                title: ""
-            },
-                        {
-                src: "",
+                src: "/images/gallery/Miskolc 4.webp",
                 title: ""
             },
         ]        
