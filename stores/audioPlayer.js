@@ -524,7 +524,7 @@ const categoryStructure = {
                     albumOrder: ["Bach", "Mozart", "Liszt"],
                     albums: {
                         Bach: {
-                            img: "/images/album_cover/cover_placeholder.jpg",
+                            img: "/images/album_cover/Bach.webp",
                             title: {
                                 en: "à la Bach",
                                 hu: "à la Bach"
@@ -536,7 +536,7 @@ const categoryStructure = {
                             content: categoryContent["composer-others-Bach"],
                         },
                         Mozart: {
-                            img: "/images/album_cover/cover_placeholder.jpg",
+                            img: "/images/album_cover/Mozart.webp",
                             title: {
                                 en: "Mozart's Requiem completions",
                                 hu: "Mozart Requiem kiegészítések"
@@ -548,7 +548,7 @@ const categoryStructure = {
                             content: categoryContent["composer-others-Mozart"],
                         },
                         Liszt: {
-                            img: "/images/album_cover/cover_placeholder.jpg",
+                            img: "/images/album_cover/Liszt.webp",
                             title: {
                                 en: "Liszt: Les Quatre Élémens - instrumentations",
                                 hu: "Liszt: Les Quatre Élémens - hangszerelés"
@@ -592,7 +592,7 @@ const categoryStructure = {
             albumOrder: ["J_S_Bach"],
             albums: {
                 J_S_Bach: {
-                    img: "/images/album_cover/cover_placeholder.jpg",
+                    img: "/images/album_cover/hegedumuvesz.webp",
                     title: {
                         en: "J.S. Bach",
                         hu: "J.S. Bach"
@@ -611,7 +611,7 @@ const categoryStructure = {
             albumOrder: ["all"],
             albums: {
                 all: {
-                    img: "/images/album_cover/cover_placeholder.jpg",
+                    img: "/images/album_cover/karmester.webp",
                     title: {
                         en: "All",
                         hu: "Összes"

@@ -43,17 +43,25 @@ export default {
                 title: ""
             },
             {
-                src: "/images/gallery/Miskolc 2.webp",
+                src: "/images/gallery/Miskolc_2.webp",
                 title: ""
             },
             {
-                src: "/images/gallery/Miskolc 3.webp",
+                src: "/images/gallery/Miskolc_3.webp",
                 title: ""
             },
-                        {
-                src: "/images/gallery/Miskolc 4.webp",
+            {
+                src: "/images/gallery/Miskolc_4.webp",
                 title: ""
             },
+            {
+                src: "/images/gallery/Miskolc_5.webp",
+                title: ""
+            },
+            {
+                src: "/images/gallery/Miskolc_6.webp",
+                title: ""
+            }
         ]        
     }),
 };
